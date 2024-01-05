@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "paper-and-experiments"
+version = "0.1.0"
+description = ""
+authors = ["Peter Gade <petervistar@hotmail.com>"]
+maintainers = [
+    "Peter Gade <petervistar@hotmail.com>"
+]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/PeterAVG/paper_flex"
+packages = [
+  { include = "src"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# numba = "^0.57.0" # waiting for python 3.11 compatibility...
+# statsforecast # same...
+pandas = "^1.5.2"
+numpy = "^1.23.5"
+python-dotenv = "^0.21.0"
+multipledispatch = "^0.6.0"
+cloudpickle = "^2.2.0"
+scipy = "^1.9.3"
+statsmodels = "^0.13.5"
+
+[tool.poetry.group.optimization.dependencies]
+# cvxpy
+# glpk
+# pyomo
+# ipopt
+pyomo = "^6.4.3"
+
+[tool.poetry.group.julia.dependencies]
+julia = "^0.6.0"
+
+[tool.poetry.group.machine_learning.dependencies]
+# tensorflow
+# pytorch
+scikit-learn = "^1.1.3"
+
+[tool.poetry.group.api.dependencies]
+fastparquet = "^2022.12.0"
+pydantic = "^1.10.2"
+requests = "^2.28.1"
+boto3 = "^1.26.24"
+fastapi = "^0.88.0"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.20.0"
+black = "^22.10.0"
+flake8 = "^6.0.0"
+flake8-print = "^5.0.0"
+flake8-breakpoint = "^1.1.0"
+flake8-bugbear = "^22.12.6"
+mypy = "^0.991"
+isort = "^5.10.1"
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+
+[tool.poetry.group.interactive.dependencies]
+ipython = "^8.7.0"
+jupyter = "^1.0.0"
+ipdb = "^0.13.9"
+radian = "^0.6.4"
+
+[tool.poetry.group.plot.dependencies]
+streamlit = "^1.15.2"
+streamlit-aggrid = "^0.3.3"
+dash = "^2.7.0"
+matplotlib = "^3.6.2"
+seaborn = "^0.12.1"
+jupyter-dash = "^0.4.2"
+pydeck = "^0.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.4.0"]
+build-backend = "poetry.core.masonry.api"

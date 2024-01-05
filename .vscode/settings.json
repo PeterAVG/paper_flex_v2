@@ -1,0 +1,17 @@
+{
+    "cSpell.words": [
+        "deadband"
+    ],
+    "files.associations": {
+        "iostream": "cpp",
+        "*.inc": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp",
+        "deque": "cpp",
+        "limits": "cpp"
+    },
+}

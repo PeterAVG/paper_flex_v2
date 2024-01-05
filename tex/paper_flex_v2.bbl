@@ -1,0 +1,1078 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{koch2011modeling}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=89aa66ae44c19e63600ccc6f03bbae26}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6e5c2d6396fcaaaba72383bd1f38781e}{%
+           family={Mathieu},
+           familyi={M\bibinitperiod},
+           given={Johanna\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=81df36c7f2108db7d47e8de999e11c70}{%
+           family={Callaway},
+           familyi={C\bibinitperiod},
+           given={Duncan\bibnamedelima S},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Stockholm, Sweden}%
+      }
+      \strng{namehash}{90326cd7eb2b30955dfdfae59e74238c}
+      \strng{fullhash}{90326cd7eb2b30955dfdfae59e74238c}
+      \strng{bibnamehash}{90326cd7eb2b30955dfdfae59e74238c}
+      \strng{authorbibnamehash}{90326cd7eb2b30955dfdfae59e74238c}
+      \strng{authornamehash}{90326cd7eb2b30955dfdfae59e74238c}
+      \strng{authorfullhash}{90326cd7eb2b30955dfdfae59e74238c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{17th Power Systems Computation Conference (PSCC)}
+      \field{title}{Modeling and control of aggregated heterogeneous thermostatically controlled loads for ancillary services}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+    \endentry
+    \entry{gade2022ecosystem}{article}{}
+      \name{author}{4}{}{%
+        {{hash=bf83c2b983eae5b0d4f904951ef10e82}{%
+           family={Gade},
+           familyi={G\bibinitperiod},
+           given={Peter\bibnamedelima AV},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b78d2aaf037082ff1ffd4914837f88b1}{%
+           family={Skj{ø}tskift},
+           familyi={S\bibinitperiod},
+           given={Trygve},
+           giveni={T\bibinitperiod}}}%
+        {{hash=26c86ec85a3fabba1e0bc1a3ff076911}{%
+           family={Bindner},
+           familyi={B\bibinitperiod},
+           given={Henrik\bibnamedelima W},
+           giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=fb57606afd9b59c3703d379efaef4553}{%
+           family={Kazempour},
+           familyi={K\bibinitperiod},
+           given={Jalal},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{15df3f247e04ee70588e4a91c4a85564}
+      \strng{fullhash}{25dbcba3416f5a5a1d5ad9da426e39aa}
+      \strng{bibnamehash}{15df3f247e04ee70588e4a91c4a85564}
+      \strng{authorbibnamehash}{15df3f247e04ee70588e4a91c4a85564}
+      \strng{authornamehash}{15df3f247e04ee70588e4a91c4a85564}
+      \strng{authorfullhash}{25dbcba3416f5a5a1d5ad9da426e39aa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Electricity Journal}
+      \field{number}{9}
+      \field{title}{Ecosystem for Demand-side Flexibility Revisited: The {D}anish Solution}
+      \field{volume}{35}
+      \field{year}{2022}
+      \field{pages}{107206}
+      \range{pages}{1}
+    \endentry
+    \entry{petersen2012eso2}{report}{}
+      \name{author}{3}{}{%
+        {{hash=57c049e56420512b2ac0d18d567da367}{%
+           family={Petersen},
+           familyi={P\bibinitperiod},
+           given={Lars\bibnamedelima Norbert},
+           giveni={L\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8f3a3323675b932221b05c92b157a121}{%
+           family={Heerup},
+           familyi={H\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{b31c921653026e86de21aea41542d2be}
+      \strng{fullhash}{b31c921653026e86de21aea41542d2be}
+      \strng{bibnamehash}{b31c921653026e86de21aea41542d2be}
+      \strng{authorbibnamehash}{b31c921653026e86de21aea41542d2be}
+      \strng{authornamehash}{b31c921653026e86de21aea41542d2be}
+      \strng{authorfullhash}{b31c921653026e86de21aea41542d2be}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Technical University of Denmark}
+      \field{title}{{ESO2} optimization of supermarket refrigeration systems: {Mixed integer MPC and system performance}}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://eudp.dk/files/slutrapporter/3.pdf
+      \endverb
+      \verb{url}
+      \verb https://eudp.dk/files/slutrapporter/3.pdf
+      \endverb
+    \endentry
+    \entry{pedersen2013direct}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{hash=67990674b9100831b301fac234f9bd8f}{%
+           family={Pedersen},
+           familyi={P\bibinitperiod},
+           given={Rasmus},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e649c2f439c66b7e3c122faf19609aa9}{%
+           family={Schwensen},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=893eab3d79e710d13023263c2e3a58ca}{%
+           family={Sivabalan},
+           familyi={S\bibinitperiod},
+           given={Senthuran},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a6d9a65fbdf02ba6c28cf3b2c40def65}{%
+           family={Corazzol},
+           familyi={C\bibinitperiod},
+           given={Chiara},
+           giveni={C\bibinitperiod}}}%
+        {{hash=81ba661cc9cc2b4c1ab1bad367c648e8}{%
+           family={Shafiei},
+           familyi={S\bibinitperiod},
+           given={Seyed\bibnamedelima Ehsan},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=6c9660eae40f055a7dca1f7b80bfa4dd}{%
+           family={Vinther},
+           familyi={V\bibinitperiod},
+           given={Kasper},
+           giveni={K\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Washington, DC, USA}%
+      }
+      \strng{namehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{fullhash}{69d103feede8d12e3721e0872f85e187}
+      \strng{bibnamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authorbibnamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authornamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authorfullhash}{69d103feede8d12e3721e0872f85e187}
+      \field{extraname}{1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2013 American Control Conference}
+      \field{title}{Direct control implementation of a refrigeration system in smart grid}
+      \field{year}{2013}
+      \field{pages}{3954\bibrangedash 3959}
+      \range{pages}{6}
+    \endentry
+    \entry{pedersen2016improving}{article}{}
+      \name{author}{5}{}{%
+        {{hash=67990674b9100831b301fac234f9bd8f}{%
+           family={Pedersen},
+           familyi={P\bibinitperiod},
+           given={Rasmus},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e649c2f439c66b7e3c122faf19609aa9}{%
+           family={Schwensen},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e17090457bc8b7e4c6cf5eae846c0957}{%
+           family={Biegel},
+           familyi={B\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=7b737196b5bf5b86867b5422864a098b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Torben},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{fullhash}{7d1d43116b76eee5907072dafab68371}
+      \strng{bibnamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authorbibnamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authornamehash}{b8fb1cb7547ee253098647f5eabe737e}
+      \strng{authorfullhash}{7d1d43116b76eee5907072dafab68371}
+      \field{extraname}{2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Control Systems Technology}
+      \field{number}{3}
+      \field{title}{Improving demand response potential of a supermarket refrigeration system: A food temperature estimation approach}
+      \field{volume}{25}
+      \field{year}{2017}
+      \field{pages}{855\bibrangedash 863}
+      \range{pages}{9}
+    \endentry
+    \entry{hao2014aggregate}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5cfb4755c6b041f7f0436808eb75205f}{%
+           family={Hao},
+           familyi={H\bibinitperiod},
+           given={He},
+           giveni={H\bibinitperiod}}}%
+        {{hash=4a672293045f4b4575b6091ef5ee9a7e}{%
+           family={Sanandaji},
+           familyi={S\bibinitperiod},
+           given={Borhan\bibnamedelima M},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a1613e53cc38aed6549280ec5c477d4d}{%
+           family={Poolla},
+           familyi={P\bibinitperiod},
+           given={Kameshwar},
+           giveni={K\bibinitperiod}}}%
+        {{hash=1253aa5b1183b7140eb318ba7eb06cef}{%
+           family={Vincent},
+           familyi={V\bibinitperiod},
+           given={Tyrone\bibnamedelima L},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{be43509d7809ad26227e35f83984ec8c}
+      \strng{fullhash}{b4a8c85c9bd4867c14df882dc7248859}
+      \strng{bibnamehash}{be43509d7809ad26227e35f83984ec8c}
+      \strng{authorbibnamehash}{be43509d7809ad26227e35f83984ec8c}
+      \strng{authornamehash}{be43509d7809ad26227e35f83984ec8c}
+      \strng{authorfullhash}{b4a8c85c9bd4867c14df882dc7248859}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Power Systems}
+      \field{number}{1}
+      \field{title}{Aggregate flexibility of thermostatically controlled loads}
+      \field{volume}{30}
+      \field{year}{2014}
+      \field{pages}{189\bibrangedash 198}
+      \range{pages}{10}
+    \endentry
+    \entry{petersen2013taxonomy}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=28bf7f9cdd015134b42304e97b6125fb}{%
+           family={Petersen},
+           familyi={P\bibinitperiod},
+           given={Mette\bibnamedelima K},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=161e1a25dc41403a23d09d18c511ca49}{%
+           family={Edlund},
+           familyi={E\bibinitperiod},
+           given={Kristian},
+           giveni={K\bibinitperiod}}}%
+        {{hash=28329f3180f98091dfd139cc1caa3329}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Lars\bibnamedelima Henrik},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=7bf02c6d4de8ae8bf10ab878f85135dc}{%
+           family={Bendtsen},
+           familyi={B\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Washington, DC, USA}%
+      }
+      \strng{namehash}{e498bbea0dd494584f20cd695a1405aa}
+      \strng{fullhash}{5c7a840e0ae3a21f5a13fa6cb9095780}
+      \strng{bibnamehash}{e498bbea0dd494584f20cd695a1405aa}
+      \strng{authorbibnamehash}{e498bbea0dd494584f20cd695a1405aa}
+      \strng{authornamehash}{e498bbea0dd494584f20cd695a1405aa}
+      \strng{authorfullhash}{5c7a840e0ae3a21f5a13fa6cb9095780}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2013 American Control Conference}
+      \field{title}{A taxonomy for modeling flexibility and a computationally efficient algorithm for dispatch in smart grids}
+      \field{year}{2013}
+      \field{pages}{1150\bibrangedash 1156}
+      \range{pages}{7}
+    \endentry
+    \entry{de2019leveraging}{article}{}
+      \name{author}{5}{}{%
+        {{hash=43764b3dd3bd9655f49d9164ba3db971}{%
+           family={De\bibnamedelima Zotti},
+           familyi={D\bibinitperiod\bibinitdelim Z\bibinitperiod},
+           given={Giulia},
+           giveni={G\bibinitperiod}}}%
+        {{hash=656c6371a4f3fbe8548bdd25531c1e87}{%
+           family={Pourmousavi},
+           familyi={P\bibinitperiod},
+           given={S.\bibnamedelimi A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=6d0b8a7e1fc991d42d96c44ca4d6c75b}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={Juan\bibnamedelima Miguel},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+        {{hash=967bf324c07b864a38486b52f7cc9669}{%
+           family={Kjølstad\bibnamedelima Poulsen},
+           familyi={K\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Niels},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb9b6b7b3d6f36609898c3d9901b498b}
+      \strng{fullhash}{b1fb7f6376f1d83c303469fedb0f9cb5}
+      \strng{bibnamehash}{fb9b6b7b3d6f36609898c3d9901b498b}
+      \strng{authorbibnamehash}{fb9b6b7b3d6f36609898c3d9901b498b}
+      \strng{authornamehash}{fb9b6b7b3d6f36609898c3d9901b498b}
+      \strng{authorfullhash}{b1fb7f6376f1d83c303469fedb0f9cb5}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Power Systems}
+      \field{number}{3}
+      \field{title}{Consumers' flexibility estimation at the {TSO} level for balancing services}
+      \field{volume}{34}
+      \field{year}{2019}
+      \field{pages}{1918\bibrangedash 1930}
+      \range{pages}{13}
+    \endentry
+    \entry{schaperow2019simulation}{article}{}
+      \name{author}{4}{}{%
+        {{hash=33607ca2f45512dfc46124c738703c96}{%
+           family={Schaperow},
+           familyi={S\bibinitperiod},
+           given={Jacob\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=226561991e4f82af8b0749707a589ccf}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fccf88c6cd5918ca4cfa70adfccf1860}{%
+           family={Siemann},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=11dd1f31ecf48d403c07d02515b2eb8f}{%
+           family={Crawford},
+           familyi={C\bibinitperiod},
+           given={Jaden},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{30608401b3199cdace84b80d153e8217}
+      \strng{fullhash}{5c849dbead47d441d6a2dabc6c2237f0}
+      \strng{bibnamehash}{30608401b3199cdace84b80d153e8217}
+      \strng{authorbibnamehash}{30608401b3199cdace84b80d153e8217}
+      \strng{authornamehash}{30608401b3199cdace84b80d153e8217}
+      \strng{authorfullhash}{5c849dbead47d441d6a2dabc6c2237f0}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Energy Markets}
+      \field{number}{4}
+      \field{title}{A simulation-based model for optimal demand response load shifting: A case study for the {T}exas power market}
+      \field{volume}{12}
+      \field{year}{2019}
+      \field{pages}{53\bibrangedash 80}
+      \range{pages}{28}
+    \endentry
+    \entry{chanpiwat2020using}{article}{}
+      \name{author}{4}{}{%
+        {{hash=46ecf74cb5ecbc648f9dae5da7284346}{%
+           family={Chanpiwat},
+           familyi={C\bibinitperiod},
+           given={Pattanun},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e856d3030e8d0a727ea4c0e1cfe19be0}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Steven\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=fd0e728c3c3dd5eaa2adac5b4a7d10ee}{%
+           family={Moglen},
+           familyi={M\bibinitperiod},
+           given={Rachel\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=adb61538ebcd3e8e87f9e76c8829b3b9}{%
+           family={Siemann},
+           familyi={S\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Society of Mechanical Engineers Digital Collection}%
+      }
+      \strng{namehash}{28e1ddca08683b550f6d2085f34dac47}
+      \strng{fullhash}{0a37ab9a64825d9e80dd76a41f7e0f60}
+      \strng{bibnamehash}{28e1ddca08683b550f6d2085f34dac47}
+      \strng{authorbibnamehash}{28e1ddca08683b550f6d2085f34dac47}
+      \strng{authornamehash}{28e1ddca08683b550f6d2085f34dac47}
+      \strng{authorfullhash}{0a37ab9a64825d9e80dd76a41f7e0f60}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ASME Journal of Engineering for Sustainable Buildings and Cities}
+      \field{number}{1}
+      \field{title}{Using Cluster Analysis and Dynamic Programming for Demand Response Applied to Electricity Load in Residential Homes}
+      \field{volume}{1}
+      \field{year}{2020}
+      \field{pages}{011006}
+      \range{pages}{1}
+    \endentry
+    \entry{moglen2020optimal}{article}{}
+      \name{author}{4}{}{%
+        {{hash=fd0e728c3c3dd5eaa2adac5b4a7d10ee}{%
+           family={Moglen},
+           familyi={M\bibinitperiod},
+           given={Rachel\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=46ecf74cb5ecbc648f9dae5da7284346}{%
+           family={Chanpiwat},
+           familyi={C\bibinitperiod},
+           given={Pattanun},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e856d3030e8d0a727ea4c0e1cfe19be0}{%
+           family={Gabriel},
+           familyi={G\bibinitperiod},
+           given={Steven\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=7f682c5f4c1b047685557f6451fafd51}{%
+           family={Blohm},
+           familyi={B\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{07b5bfbfe1c125e2bc106a5904ae40e0}
+      \strng{fullhash}{8e07c1107ece67c35325843285bec65f}
+      \strng{bibnamehash}{07b5bfbfe1c125e2bc106a5904ae40e0}
+      \strng{authorbibnamehash}{07b5bfbfe1c125e2bc106a5904ae40e0}
+      \strng{authornamehash}{07b5bfbfe1c125e2bc106a5904ae40e0}
+      \strng{authorfullhash}{8e07c1107ece67c35325843285bec65f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Energy Systems}
+      \field{title}{Optimal thermostatically-controlled residential demand response for retail electric providers}
+      \field{volume}{14}
+      \field{year}{2023}
+      \field{pages}{641\bibrangedash 661}
+      \range{pages}{21}
+    \endentry
+    \entry{siemann2013performance}{report}{}
+      \name{author}{1}{}{%
+        {{hash=fccf88c6cd5918ca4cfa70adfccf1860}{%
+           family={Siemann},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \strng{fullhash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \strng{bibnamehash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \strng{authorbibnamehash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \strng{authornamehash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \strng{authorfullhash}{fccf88c6cd5918ca4cfa70adfccf1860}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{{PhD} Dissertation, University of Maryland, College Park}
+      \field{title}{Performance and applications of residential building energy grey-box models}
+      \field{year}{2013}
+    \endentry
+    \entry{MarkovProperty}{book}{}
+      \name{author}{2}{}{%
+        {{hash=aad507867078b409374fbe7e0efbe063}{%
+           family={Gihman},
+           familyi={G\bibinitperiod},
+           given={I.\bibnamedelimi I.},
+           giveni={I\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=cf74ce336d0e27c6293c0d0b210a8e1a}{%
+           family={Skorohod},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi V.},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \strng{fullhash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \strng{bibnamehash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \strng{authorbibnamehash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \strng{authornamehash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \strng{authorfullhash}{7ff720acd7039adfedefe9da9ffa81f1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The theory of stochastic processes II}
+      \field{year}{2004}
+    \endentry
+    \entry{bobo2018offering}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=407a5b473021183239d813b426a70505}{%
+           family={Bobo},
+           familyi={B\bibinitperiod},
+           given={Lucien},
+           giveni={L\bibinitperiod}}}%
+        {{hash=3bfa054e7c9c1a7a44736c52b59bef4d}{%
+           family={Delikaraoglou},
+           familyi={D\bibinitperiod},
+           given={Stefanos},
+           giveni={S\bibinitperiod}}}%
+        {{hash=adde50f60f1ea5a9e44bab7c584aae7f}{%
+           family={Vespermann},
+           familyi={V\bibinitperiod},
+           given={Niklas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=fb57606afd9b59c3703d379efaef4553}{%
+           family={Kazempour},
+           familyi={K\bibinitperiod},
+           given={Jalal},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f868152a252ba8f399a537f3a95cf9f3}{%
+           family={Pinson},
+           familyi={P\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Dublin, Ireland}%
+      }
+      \strng{namehash}{f174720efe651047e2ea2dab4483f8d0}
+      \strng{fullhash}{7040baf933f2e1e9db927cce3da2e946}
+      \strng{bibnamehash}{f174720efe651047e2ea2dab4483f8d0}
+      \strng{authorbibnamehash}{f174720efe651047e2ea2dab4483f8d0}
+      \strng{authornamehash}{f174720efe651047e2ea2dab4483f8d0}
+      \strng{authorfullhash}{7040baf933f2e1e9db927cce3da2e946}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Power Systems Computation Conference (PSCC)}
+      \field{title}{Offering strategy of a flexibility aggregator in a balancing market using asymmetric block offers}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+    \endentry
+    \entry{ecogrid}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6ce32bfb1a3c6a149811426e5756389e}{%
+           family={Ecogrid},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{6ce32bfb1a3c6a149811426e5756389e}
+      \strng{fullhash}{6ce32bfb1a3c6a149811426e5756389e}
+      \strng{bibnamehash}{6ce32bfb1a3c6a149811426e5756389e}
+      \strng{authorbibnamehash}{6ce32bfb1a3c6a149811426e5756389e}
+      \strng{authornamehash}{6ce32bfb1a3c6a149811426e5756389e}
+      \strng{authorfullhash}{6ce32bfb1a3c6a149811426e5756389e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Ecogrid 2.0}
+      \verb{urlraw}
+      \verb http://ecogrid.dk/
+      \endverb
+      \verb{url}
+      \verb http://ecogrid.dk/
+      \endverb
+    \endentry
+    \entry{biegel2013information}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=b53d74348a6d74a282665bd48267d5ca}{%
+           family={Biegel},
+           familyi={B\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2526b2c7392016b6b5268e754820fafe}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Palle},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=28329f3180f98091dfd139cc1caa3329}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Lars\bibnamedelima Henrik},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c9113e54d4537f6a660c51d65b32ad1d}{%
+           family={Tackie},
+           familyi={T\bibinitperiod},
+           given={David\bibnamedelima Victor},
+           giveni={D\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Washington, DC, USA}%
+      }
+      \strng{namehash}{122887590f4868455dd64a008c9d2f0a}
+      \strng{fullhash}{064377ee20edec7da733adc68ddaed1b}
+      \strng{bibnamehash}{122887590f4868455dd64a008c9d2f0a}
+      \strng{authorbibnamehash}{122887590f4868455dd64a008c9d2f0a}
+      \strng{authornamehash}{122887590f4868455dd64a008c9d2f0a}
+      \strng{authorfullhash}{064377ee20edec7da733adc68ddaed1b}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{American Control Conference}
+      \field{title}{Information modeling for direct control of distributed energy resources}
+      \field{year}{2013}
+      \field{pages}{3498\bibrangedash 3504}
+      \range{pages}{7}
+    \endentry
+    \entry{BiegelConstractingFlexServices}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0ae1591e39afd973468f3c78780abd07}{%
+           family={Harbo},
+           familyi={H\bibinitperiod},
+           given={Silas},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e17090457bc8b7e4c6cf5eae846c0957}{%
+           family={Biegel},
+           familyi={B\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Lyngby, Denmark}%
+      }
+      \strng{namehash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \strng{fullhash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \strng{bibnamehash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \strng{authorbibnamehash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \strng{authornamehash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \strng{authorfullhash}{7b969eae7df32fd1a32c20274c0ffef0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE PES ISGT Europe}
+      \field{title}{Contracting flexibility services}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+    \endentry
+    \entry{biegel2013electricity}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=e17090457bc8b7e4c6cf5eae846c0957}{%
+           family={Biegel},
+           familyi={B\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2526b2c7392016b6b5268e754820fafe}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Palle},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3326e8ec9aa469ea9beebbe3f388733f}{%
+           family={Pedersen},
+           familyi={P\bibinitperiod},
+           given={Tom\bibnamedelima S},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=848e4ec5c00c04cb047a58aa3dc4e0d7}{%
+           family={Nielsen},
+           familyi={N\bibinitperiod},
+           given={Kirsten\bibnamedelima M{ø}lgaard},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=28329f3180f98091dfd139cc1caa3329}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Lars\bibnamedelima Henrik},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Hyderabad, India}%
+      }
+      \strng{namehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{fullhash}{201ba0582a406204ab3793b4bac14331}
+      \strng{bibnamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authorbibnamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authornamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authorfullhash}{201ba0582a406204ab3793b4bac14331}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE International Conference on Control Applications (CCA)}
+      \field{title}{Electricity market optimization of heat pump portfolio}
+      \field{year}{2013}
+      \field{pages}{294\bibrangedash 301}
+      \range{pages}{8}
+    \endentry
+    \entry{biegel2013lumped}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=e17090457bc8b7e4c6cf5eae846c0957}{%
+           family={Biegel},
+           familyi={B\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2526b2c7392016b6b5268e754820fafe}{%
+           family={Andersen},
+           familyi={A\bibinitperiod},
+           given={Palle},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4b79bfed2a6d3a96de4876fd3d4d683b}{%
+           family={Stoustrup},
+           familyi={S\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=190e0622ff337184cde23c3a13d0a87c}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Mathias\bibnamedelima B{æ}kdal},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=28329f3180f98091dfd139cc1caa3329}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Lars\bibnamedelima Henrik},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Lyngby, Denmark}%
+      }
+      \strng{namehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{fullhash}{315204c5cc28dd039893d4dd546bedb0}
+      \strng{bibnamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authorbibnamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authornamehash}{e69b2da9bf02702fb175f29d8628c0bb}
+      \strng{authorfullhash}{315204c5cc28dd039893d4dd546bedb0}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE PES ISGT Europe 2013}
+      \field{title}{Lumped thermal household model}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+    \endentry
+    \entry{juhl2016ctsmr}{report}{}
+      \name{author}{3}{}{%
+        {{hash=6b3ccd09637d375ba4d1df9e489648e5}{%
+           family={Juhl},
+           familyi={J\bibinitperiod},
+           given={Rune},
+           giveni={R\bibinitperiod}}}%
+        {{hash=de341522d92c0810968059270c804930}{%
+           family={M{ø}ller},
+           familyi={M\bibinitperiod},
+           given={Jan\bibnamedelima Kloppenborg},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d33cbb1be02a958cd28259adfaf5271d}
+      \strng{fullhash}{d33cbb1be02a958cd28259adfaf5271d}
+      \strng{bibnamehash}{d33cbb1be02a958cd28259adfaf5271d}
+      \strng{authorbibnamehash}{d33cbb1be02a958cd28259adfaf5271d}
+      \strng{authornamehash}{d33cbb1be02a958cd28259adfaf5271d}
+      \strng{authorfullhash}{d33cbb1be02a958cd28259adfaf5271d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ctsmr--Continuous time stochastic modeling in {R}}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1606.00242
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1606.00242
+      \endverb
+    \endentry
+    \entry{madsen2007time}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{ac5d1263fca18a1f2d85317607e7d734}
+      \strng{fullhash}{ac5d1263fca18a1f2d85317607e7d734}
+      \strng{bibnamehash}{ac5d1263fca18a1f2d85317607e7d734}
+      \strng{authorbibnamehash}{ac5d1263fca18a1f2d85317607e7d734}
+      \strng{authornamehash}{ac5d1263fca18a1f2d85317607e7d734}
+      \strng{authorfullhash}{ac5d1263fca18a1f2d85317607e7d734}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Time series analysis}
+      \field{year}{2007}
+    \endentry
+    \entry{energinet:Systemydelser}{article}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Energinet}
+      \field{note}{Accessed: 2021-09-06}
+      \field{title}{Introduktion til Systemydelser}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://energinet.dk/-/media/8F2B403B3A724197A179FF6DFD9A926C.pdf
+      \endverb
+      \verb{url}
+      \verb https://energinet.dk/-/media/8F2B403B3A724197A179FF6DFD9A926C.pdf
+      \endverb
+    \endentry
+    \entry{mccormick1976computability}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7739550035c60286aba0e8c173be7077}{%
+           family={McCormick},
+           familyi={M\bibinitperiod},
+           given={Garth\bibnamedelima P},
+           giveni={G\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{7739550035c60286aba0e8c173be7077}
+      \strng{fullhash}{7739550035c60286aba0e8c173be7077}
+      \strng{bibnamehash}{7739550035c60286aba0e8c173be7077}
+      \strng{authorbibnamehash}{7739550035c60286aba0e8c173be7077}
+      \strng{authornamehash}{7739550035c60286aba0e8c173be7077}
+      \strng{authorfullhash}{7739550035c60286aba0e8c173be7077}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{title}{Computability of global solutions to factorable nonconvex programs: Part {I}--{C}onvex underestimating problems}
+      \field{volume}{10}
+      \field{year}{1976}
+      \field{pages}{147\bibrangedash 175}
+      \range{pages}{29}
+    \endentry
+    \entry{boyd2011distributed}{article}{}
+      \name{author}{5}{}{%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2e1b520f90d2b5de02de6cf5f9896399}{%
+           family={Parikh},
+           familyi={P\bibinitperiod},
+           given={Neal},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a9b44e6e637f2b45f96e1c9c60803c93}{%
+           family={Chu},
+           familyi={C\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+        {{hash=92ad2aa46ee810fc7a6c5eb0f0e5965d}{%
+           family={Peleato},
+           familyi={P\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=13ed44c5cacd708185ac02a38c46300e}{%
+           family={Eckstein},
+           familyi={E\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{60ec9bf707fa51b002fec03e755dd98d}
+      \strng{fullhash}{081d98c21c342d5f8f789f5b8c65a059}
+      \strng{bibnamehash}{60ec9bf707fa51b002fec03e755dd98d}
+      \strng{authorbibnamehash}{60ec9bf707fa51b002fec03e755dd98d}
+      \strng{authornamehash}{60ec9bf707fa51b002fec03e755dd98d}
+      \strng{authorfullhash}{081d98c21c342d5f8f789f5b8c65a059}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations and Trends in Machine Learning}
+      \field{number}{1}
+      \field{title}{Distributed optimization and statistical learning via the alternating direction method of multipliers}
+      \field{volume}{3}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 122}
+      \range{pages}{122}
+    \endentry
+    \entry{hong2016convergence}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3dd729fa4a67741744ceede470921b63}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Mingyi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b681d0d7876497511029617df40ca864}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Zhi-Quan},
+           giveni={Z\bibinithyphendelim Q\bibinitperiod}}}%
+        {{hash=8f4fc5330b22362030e16942ab534994}{%
+           family={Razaviyayn},
+           familyi={R\bibinitperiod},
+           given={Meisam},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \strng{fullhash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \strng{bibnamehash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \strng{authorbibnamehash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \strng{authornamehash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \strng{authorfullhash}{849f3e52b3bfc1fe515637f3a20c5034}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Optimization}
+      \field{number}{1}
+      \field{title}{Convergence analysis of alternating direction method of multipliers for a family of nonconvex problems}
+      \field{volume}{26}
+      \field{year}{2016}
+      \field{pages}{337\bibrangedash 364}
+      \range{pages}{28}
+    \endentry
+    \entry{code}{report}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{GitHub repository}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/PeterAVG/paper_flex_v2
+      \endverb
+      \verb{url}
+      \verb https://github.com/PeterAVG/paper_flex_v2
+      \endverb
+    \endentry
+    \entry{MARI}{article}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ENTSO-e}
+      \field{title}{{MARI}}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.entsoe.eu/network_codes/eb/mari/
+      \endverb
+      \verb{url}
+      \verb https://www.entsoe.eu/network_codes/eb/mari/
+      \endverb
+    \endentry
+    \entry{morales2013integrating}{book}{}
+      \name{author}{5}{}{%
+        {{hash=f50d32de5cc3f3544fef3e015a919509}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=aba88c01ff0b7da344a4e8188170b122}{%
+           family={Conejo},
+           familyi={C\bibinitperiod},
+           given={Antonio\bibnamedelima J},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f868152a252ba8f399a537f3a95cf9f3}{%
+           family={Pinson},
+           familyi={P\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=456e13fefd3b662ea016379a9ad85a2b}{%
+           family={Zugno},
+           familyi={Z\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{6dfdd4f31f1a26e88e54a80bebc77f64}
+      \strng{fullhash}{aec39832e21dda2ecd68dd26dd37051e}
+      \strng{bibnamehash}{6dfdd4f31f1a26e88e54a80bebc77f64}
+      \strng{authorbibnamehash}{6dfdd4f31f1a26e88e54a80bebc77f64}
+      \strng{authornamehash}{6dfdd4f31f1a26e88e54a80bebc77f64}
+      \strng{authorfullhash}{aec39832e21dda2ecd68dd26dd37051e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Integrating renewables in electricity markets: Operational problems}
+      \field{year}{2013}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

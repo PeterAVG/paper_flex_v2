@@ -1,0 +1,178 @@
+% delete/add 'monochrome' to allow/disallow colors
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{mathabx}
+\usepackage[tableposition=top]{caption}
+\usepackage{subcaption}
+\usepackage{booktabs} % for \midrule in tables
+\usepackage{float}
+\usepackage[final]{pdfpages}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage[mode=buildnew]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,patterns,intersections}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepgfplotslibrary{fillbetween}
+% \usepackage[abspath]{currfile}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{shellesc}
+\usepackage{authblk}
+\usepackage[symbol]{footmisc}
+\usepackage{hhline}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+% \usepackage[intoc]{nomencl}
+\usepackage[toc]{glossaries}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\astfootnote}[1]{%
+    \let\oldthefootnote=\thefootnote%
+    \setcounter{footnote}{0}%
+    \renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+    \footnote{#1}%
+    \let\thefootnote=\oldthefootnote%
+}
+
+\usepackage[backend=biber,
+            style=numeric, %alphabetic
+            sorting=none,
+            %backref=true,
+            abbreviate=false,
+            dateabbrev=false,
+            alldates=long]{biblatex}
+\renewbibmacro*{volume+number+eid}{%
+    \printfield{volume}%
+    %  \setunit*{\adddot}% DELETED
+    \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+    \printfield{number}%
+    \setunit{\addcomma\space}%
+    \printfield{eid}
+}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+\renewbibmacro*{in:}{%
+    {\printtext{\intitlepunct}}
+}
+
+%\usepackage{natbib}
+%\setcitestyle{semicolon,aysep={},yysep={,},notesep={; }}
+
+\addbibresource{bibliography/Bibliography.bib}
+
+\usepackage{color}   %May be necessary if you want to color links
+
+\newcommand{\Lagr}{\mathcal{L}}
+\newcommand{\Uniform}{\mathcal{U}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\E}{\mathbb{E}}
+
+% \makenomenclature
+\newglossary*{type1}{Nomenclature}
+\newglossary*{type2}{Abbreviations}
+\makenoidxglossaries
+
+
+\newglossaryentry{IS}{
+    name=IS,
+    description={In-sample},
+    type=type1
+}
+\newglossaryentry{OOS}{
+    name=OOS,
+    description={Out-of-sample},
+    type=type2
+}
+
+\begin{document}
+\title{
+    %A Pioneering Market Framework for Promoting Demand-side Flexibility in Denmark
+    %A New Ecosystem for Demand-side Flexibility Aggregators in Denmark
+    Load shifting versus manual frequency reserve: \\ Which one is more appealing to flexible loads?
+}
+% Pioneering Market Framework for the Future Power System: the Case of Denmark
+%\author{Peter Alexander Vistar Gade$^{\textrm{a}}$, Henrik Bindner, Jalal
+%Kazempour}
+\author[1,2]{Peter A.V. Gade\footnote{Corresponding author. Tel.: +45 24263865. \\ Email addresses: pega@dtu.dk (P.A.V. Gade), Trygve.Skjotskift@ibm.com (T. Skjøtskift), hwbi@dtu.dk (H.W. Bindner), jalal@dtu.dk (J. Kazempour).}}
+\author[2]{Trygve Skjøtskift}
+\author[1]{Henrik W. Bindner}
+\author[1]{Jalal Kazempour}
+\affil[1]{Department of Wind and Energy Systems, Technical University of Denmark, Kgs. Lyngby, Denmark}
+\affil[2]{IBM Client Innovation Center, Copenhagen, Denmark}
+%\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\date{\today}
+%\maketitle
+{\let\newpage\relax\maketitle}
+
+\tableofcontents
+
+% \printnomenclature
+\newpage
+
+\printnoidxglossary[type=type1, nonumberlist]
+\printnoidxglossary[type=type2, nonumberlist]
+\glsenablehyper
+
+
+\input{sections/abstract}
+
+Change something here in Overleaf and push to repo.
+
+Test that I can refer to \gls{OOS} and \gls{IS}.
+
+\input{sections/introduction}
+
+\input{sections/section2}
+
+\input{sections/section3}
+
+\input{sections/results}
+
+\input{sections/conclusion}
+
+Test that I can refer to \gls{OOS} and \gls{IS}.
+
+\input{sections/appendix}
+
+\input{sections/acknowledgement}
+
+
+%\listoftodos
+
+% \pagebreak
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+%\bibliography{bibliography/Bibliography}
+\printbibliography
+
+% \pagebreak
+
+\section*{Author Biographies}
+
+\textbf{Peter A.V. Gade} is an Industrial PhD researcher at IBM and affiliated with the Technical University of Denmark, Kongens Lyngby, Denmark, in the Energy Markets and Analytics Section within the Power and Energy Systems division at the Wind and Energy Systems Department. His research focuses on demand-side flexibility and the revenue streams from utilization of demand-side flexibility. He holds a M.S. in Mathematical Modelling and Computing and a B.S. in Biomedical Engineering, both from the Technical University of Denmark.
+\\
+\\
+\textbf{Trygve Skjøtskfit} is an Associate Partner at IBM Denmark, with focus on energy transformation and demand-side flexibility. His solid experience and deep knowledge within intelligent energy systems, buildings, and civil infrastructures makes him a leading figure, strategic advisor, and a first mover in the flexibility market with a strong track record to find and deliver new cutting-edge solutions. He holds an MBA in Strategy from Universitat Pompeu Fabra, and a Master of Export Engineering from Copenhagen University, College of Engineering.
+\\
+\\
+\textbf{Henrik W. Bindner} received the MSc in Electrical Engineering from Technical University of Denmark in 1988. He is currently a senior researcher with the Department of Wind and Energy Systems, Technical University of Denmark. He is heading the \textit{Distributed Energy Systems} Section and his research interests include control and management of smart grids, active distribution networks, and integrated energy systems.
+\\
+\\
+\textbf{Jalal Kazempour} is an Associate Professor with the Department of Wind and Energy Systems, Technical University of Denmark, where he is heading the \textit{Energy Markets and Analytics} Section. He received the Ph.D. degree in Electrical Engineering from the University of Castilla-La Mancha, Ciudad Real, Spain, in 2013. His research interests include intersection of multiple fields, including power and energy systems, electricity markets, optimization, game theory, and machine learning.
+
+
+\end{document}

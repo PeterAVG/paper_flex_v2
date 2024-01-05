@@ -1,0 +1,253 @@
+{\appendices
+\vspace{-1mm}
+\section*{Appendix: MILP problem formulation}\label{appendix:A}
+% \addcontentsline{toc}{section}{Appendices}
+% \renewcommand{\thesubsection}{\Alph{subsection}}
+%\subsection{MILP problem formulation}\label{appendix:A}
+
+%\subsection{Final model formulation}\label{sec:final_model}
+
+% Describe objective function for mFRR and load shifting.
+
+% The set, $\Psi$, then contains all the optimization variables:
+
+% \begin{align}\label{set:OptVariables}
+%     \Psi = \{p_{h,\omega}, p^{\rm{r}, \uparrow}_{h}, & s_{h,\omega}, p^{\rm{b}, \uparrow}_{h,\omega}, p^{\rm{b}, \downarrow}_{h,\omega}, u^{\uparrow}_{h,\omega}, y^{\uparrow}_{h,\omega}, z^{\uparrow}_{h,\omega}, u^{\downarrow}_{h,\omega}, y^{\downarrow}_{h,\omega}, z^{\downarrow}_{h,\omega}, \notag \\ & T^{f}_{\omega, t}, T^{c}_{\omega, t}, T^{f,B}_{t}, T^{c, B}_{t}, \lambda_{h}^{bid}, \phi_{h,\omega}, g_{h,\omega}, \Delta \}
+% \end{align}
+
+
+
+%(\ref{P1:eq4})-(\ref{P1:eq5})
+
+\begingroup
+\allowdisplaybreaks
+The two-stage stochastic MILP problem for the freezer to optimally bid in the mFRR market reads as
+% First, the objective function is presented. Then all auxillary variables and constraints are presented. Third, constraints related to the power consumption for the freezer is shown. Fourth, the physical constraints for the temperatures are presented. Lastly, the rebound constraints are presented.
+% \subsubsection{Objective function}\label{sec:objective_function}
+%
+\begin{subequations}\label{P2:FinalModel}
+    \begin{align}
+       & \underset{p_{h}^{\rm{r},\uparrow}, \alpha, \beta, \Gamma_{h,\omega}}{\text{Maximize}} \ \sum_{h=1}^{24}\lambda_{h}^{\rm{r}} p^{\rm{r}, \uparrow}_{h}+ \sum_{\omega=1}^{|\Omega|} \pi_{\omega}  \Bigl(\sum_{h=1}^{24}  \lambda_{h,\omega}^{\rm{b}} p^{\rm{b},\uparrow}_{h,\omega} - \notag                                                     \\  &  \hspace{3.5cm}\sum_{h=1}^{24}  \lambda_{h,\omega}^{\rm{b}} p^{\rm{b},\downarrow}_{h,\omega} - \sum_{h=1}^{24}  \lambda^{\rm{p}}s_{h,\omega} \Bigr) \label{P2:1} \\
+       %
+        & \   \text{s.t.}  \  (\ref{eq:bid_constraint_relaxed}), \ \forall{h,\omega},   \label{P2:2}    \\ 
+        & \                                               \text{(\ref{P1:eq4})-(\ref{P1:eq6})}, \alpha \geq 0,   \beta \geq 0 \    \label{P2:3}    \\ 
+%
+& T^{\rm{f}}_{t+1,\omega} = T^{\rm{f}}_{t,\omega} +  \frac{dt}{C^{\rm{f}}R^{\rm{cf}}} (T^{\rm{c}}_{t,\omega} - T^{\rm{f}}_{t,\omega}), \ \forall{t<J-1,\omega} \label{P2:state-space-1}                                                                                         \\
+& T^{\rm{c}}_{t+1,\omega} = T^{\rm{c}}_{t,\omega} +    \frac{dt}{C^{\rm{c}}}\Bigl(\frac{1}{R^{\rm{cf}}} (T^{\rm{f}}_{t,\omega} - T^{\rm{c}}_{t,\omega}) +  \notag \\ & \frac{1}{R^{\rm{ci}}} (T^{\rm{i}}_t - T^{\rm{c}}_{t,\omega}) - \eta  \  OD_t \ p_{h,\omega} \Bigr) + \epsilon \mathbbm{1}^{\rm{df}}_{t}, \notag \\ & \hspace{5.6cm} \forall{t<J-1,\omega} \label{P2:state-space-2} \\
+%
+& T^{\rm{f},\text{Base}}_{t+1} = T^{\rm{f},\text{Base}}_{t} +   \frac{dt}{C^{\rm{f}}R^{\rm{cf}}} (T^{\rm{c},\text{Base}}_{t} - T^{\rm{f},\text{Base}}_{t}), \notag \\ & \hspace{6cm}\forall{t<J-1} \label{P2:state-space-3}                                                                                         \\
+& T^{\rm{c},\text{Base}}_{t+1} = T^{\rm{c},\text{Base}}_t +   \frac{dt}{C^{\rm{c}}}\Bigl(\frac{1}{R^{\rm{cf}}} (T^{\rm{f},\text{Base}}_t - T^{\rm{c},\text{Base}}_t) + \notag \\ & \frac{1}{R^{\rm{ci}}} (T^{\rm{i}}_t - T^{\rm{c},\text{Base}}_t) - \eta  \  OD_t \ p_{h}^{\text{Base}} \Bigr) + \epsilon \mathbbm{1}^{\rm{df}}_{t}, \notag \\ & \hspace{6cm} \forall{t<J-1} \label{P2:state-space-4} \\
+%
+& \ p_{h,\omega} = P^{\rm{Base}}_{h} - p^{\rm{b}, \uparrow}_{h,\omega} + p^{\rm{b}, \downarrow}_{h,\omega}, \                                                                                                  \forall{h,\omega}                                                                             \label{power:6}                                                        \\
+        \                                                                                             & p^{\rm{r}, \uparrow}_h \leq P^{\rm{Base}}_h,
+        \                                                                                                                                                        \forall{h}                                                                                     \label{power:7}                                                                                                                                                                                                           \\
+        \                                                                                             & p^{\rm{b}, \uparrow}_{h,\omega} \leq p^{\rm{r}, \uparrow}_h \mathbbm{1}_{h,\omega}^{\lambda^{\rm{b}}_{h,\omega} > \lambda^{\rm{s}}_{h,\omega}} , \                                                                            \forall{h,\omega}                                                                             \label{power:8}                                                   \\
+        \                                                                                             & p^{\rm{b}, \uparrow}_{h,\omega} \leq u_{h,\omega}^{\uparrow} \big(P^{\rm{Base}}_{h} - P^{\rm{Min}}\big) , \                                                                                                       \forall{h,\omega}                                                                             \label{power:9}                                                  \\
+        \                                                                                             & p^{\rm{b}, \downarrow}_{h,\omega} \leq u^{\downarrow}_{h,\omega} \big(P^{\rm{Nom}} -P^{\rm{Base}}_{h}\big), \                                                                                              \forall{h,\omega}                                                                             \label{power:10}                                                        \\
+        \                                                                                             & P^{\rm{Min}} \leq p_{h,\omega} \leq P^{\rm{Nom}}, \                                                                                                                                           \forall{h,\omega}                                                                             \label{power:11}                                                        \\
+        \                                                                                             & 0 \leq s_{h,\omega} \leq P^{\rm{Base}}_{h}, \                                                                                                                                                   \forall{h,\omega}                                                                             \label{power:12}                                                        \\
+        % \                                                                                             & \ p^{\rm{b}, \uparrow}_{h,\omega} + s_{h,\omega} \geq p^{\rm{r},\uparrow}_{h} \  \mathbbm{1}_{h,\omega}^{(\lambda^{\rm{bid}}_{h} < \lambda^{\rm{b}}_{h,\omega}, \lambda^{\rm{b}}_{h,\omega} > \lambda^{s}_{h})}, \                                                                                                              \forall{h,\omega} \label{power:13} \\
+        \                                                                                             & p^{\rm{b}, \downarrow}_{h,\omega} \geq 0.10 \  u^{\downarrow}_{h,\omega} \big(P^{\rm{Nom}} - P^{\rm{Base}}_{h}\big), \                                                                                  \forall{h,\omega}                                                                             \label{power:14}                                                        \\
+        \                                                                                             & p^{\rm{r}, \uparrow}_{h} \leq P^{\rm{Base}}_{h} \big(1 - \mathbbm{1}_{h}^{\rm{df}}\big), \                                                                                                                 \forall{h} \label{power:15}                                                                                                                                           \\
+        \                                                                                             & u_{h-1,\omega}^{\uparrow} - u_{h,\omega}^{\uparrow} + y_{h,\omega}^{\uparrow} - z_{h,\omega}^{\uparrow} = 0, \    \forall{h>1,\omega},                                                                                                         \label{aux:1}                                       \\
+        \                                                                                             & y_{h,\omega}^{\uparrow} + z_{h,\omega}^{\uparrow} \leq 1 \                                                             \forall{h,\omega}                                                                                                                                                                     \label{aux:2}                                              \\
+        \                                                                                             & u_{h-1,\omega}^{\downarrow} - u_{h,\omega}^{\downarrow} + y_{h,\omega}^{\downarrow} - z_{h,\omega}^{\downarrow} = 0, \                                                                                                                                                                                                                                                    \forall{h>1, \omega},                                                                                                                                        \label{aux:3}                                       \\
+        \                                                                                             & y_{h,\omega}^{\downarrow} + z_{h,\omega}^{\downarrow} \leq 1 \                                                         \forall{h,\omega}                                                                                                                                                                     \label{aux:4}                                              \\
+        \                                                                                             & u_{h,\omega}^{\uparrow} + u_{h,\omega}^{\downarrow} \leq 1 \                                                           \forall{h,\omega}                                                                                                                                                                     \label{aux:5}                                              \\
+        \                                                                                             & y_{h,\omega}^{\uparrow} + y_{h,\omega}^{\downarrow} \leq 1 \                                                           \forall{h,\omega}                                                                                                                                                                     \label{aux:6}                                              \\
+        \                                                                                             & z_{h,\omega}^{\uparrow} + z_{h,\omega}^{\downarrow} \leq 1 \                                                           \forall{h,\omega} \label{aux:7}                                                                                                                                                                                                                  \\
+        \                                                                                             & T^{\rm{f}}_{J,\omega} \leq T^{\rm{f}, \rm{Base}}_{J}, \ \forall{\omega} \label{temp:1}                                                                                                                                                                                                                                                                                     \\
+        \                                                                                             & y^{\downarrow}_{h, \omega} \geq z^{\uparrow}_{h, \omega}, \                                                                                                                                                                                                                                                                 \forall{h, \omega} \label{rebound:1}        \\
+        % \                                                                                             & \ y^{\downarrow}_{h, \omega} \leq z^{\uparrow}_{h, \omega}, \                                                                                                                                                                                                                                                                 \forall{h, \omega} \label{rebound:2}        \\
+        \                                                                                             & \sum_{t=4(h-1)}^{4 h} T^{\rm{f}}_{t, \omega} - T^{\rm{f}, \rm{Base}}_{t} \geq \big( z^{\downarrow}_{h, \omega} -1\big)  M,  \  \forall{h>1,\omega} \label{rebound:3}                                                                                                                                                                                 \\
+        \                                                                                             & \sum_{t=4(h-1)}^{4 h} T^{\rm{f}}_{t, \omega} - T^{\rm{f}, \rm{Base}}_{t} \leq \big(1 - z^{\downarrow}_{h, \omega}\big) M,  \  \forall{h>1,\omega} \label{rebound:4}                                                                                                                                                                                 \\
+        \                                                                                             & \sum_{k=1}^{h} y^{\downarrow}_{k,\omega} \leq y^{\uparrow}_{k, \omega}, \ \forall{h, \omega}. \label{up_reg_first}  
+    \end{align}
+\end{subequations}
+
+The objective function (\ref{P2:1}) maximizes the expected flexibility value of the freezer.
+%
+Constraint \eqref{P2:2} contains
+(\ref{eq:bid_constraint_relaxed}), representing the McCormick relaxation of activation conditions. Recall that $\lambda^{\rm{bid}}_{h, \omega}$ in (\ref{eq:bid_constraint_relaxed}) should be replaced as defined in \eqref{eq:affine_policy}. Constraint \eqref{P2:3} declares continuous and binary variables. 
+%There is a set of identical constraints to (\ref{P2:2}) that simulate the baseline temperatures, $T^{\rm{f},\rm{B}}_{t}$ and $T^{\rm{c},\rm{B}}_{t}$, using the baseline power, $P^{\rm{Base}}_{h}$.. Note, the freezer specific variables are indexed by $t$, representing a time step $dt = 0.25$ whereas all other variables are indexed by hour $h$.
+%from mFRR while reducing the rebound and penalty cost for all equiprobable scenarios.
+%
+%Equation (\ref{P2:2}) is 
+%
+%Equations (\ref{P2:3}-\ref{P2:5}) are the bidding policy.
+%
+%Constraints \eqref{power:6}-\eqref{power:15} enforce the power consumption constraints. 
+%
+Aligned with (\ref{eq:2ndFreezerStateSpace}), constraints \eqref{P2:state-space-1}-\eqref{P2:state-space-2} are the state-space model for the food and air temperature dynamics. Similarly, \eqref{P2:state-space-3}-\eqref{P2:state-space-4} include the baseline air temperature $T^{\rm{c},\text{Base}}_{t}$ and the   baseline food temperature $T^{\rm{f},\text{Base}}_{t}$, and model temperature dynamics for the baseline power. %These variables are used in subsequent constraints to determine when the rebound stops. 
+%Note that the freezer-specific variables are indexed by $t$, representing a time step $dt = 0.25$, whereas all other variables are indexed by hour $h$. 
+Recall in case the hour index $h$ runs from 1 to 24, index $t$ runs from 1 to $J=96$.  
+%
+Constraint \eqref{power:6} sets the real-time power consumption $p_{h,\omega}$ equal to the baseline power $P^{\rm{Base}}_{h}$ unless there is up-regulation $p^{\rm{b}, \uparrow}_{h,\omega}$ or down-regulation $p^{\rm{b}, \downarrow}_{h,\omega}$. 
+%
+Constraint (\ref{power:7}) binds the mFRR reservation $p_{h}^{\rm{r},\uparrow}$ to the baseline power. 
+%
+Constraint (\ref{power:8}) ensures that up-regulation is zero when there is no need for up-regulation, and at the same time binds it to the reservation power. 
+%
+Constraint (\ref{power:9}) includes the binary variable $u^{\uparrow}_{h,\omega}$, indicating whether the freezer is up-regulated in hour $h$ under scenario $\omega$. This constraint ensures that up-regulation is zero whenever $u^{\uparrow}_{h,\omega} = 0$, and otherwise restricted to the maximum up-regulation service $P^{\rm{Base}}_{h}-P^{\rm{Min}}$ that can be provided. Note that $P^{\rm{Min}}$ is the minimum consumption level of the freezer. 
+%
+Constraint (\ref{power:10}) works similarly for down-regulation. Note that the binary variable $u^{\downarrow}_{h,\omega}$ indicates whether down-regulation happens, whereas $P^{\rm{Nom}}$ is the nominal (maximum) consumption level of the freezer. 
+%
+Constraint (\ref{power:11}) restricts the power consumption to lie within the minimum and nominal rates.
+%
+Constraint (\ref{power:12}) binds the slack variable $s_{h,\omega}$, representing the service not delivered as promised. 
+%
+Constraint (\ref{power:14}) ensures that down-regulation is equal to at least 10\% of the down-regulation capacity. 
+%
+Constraint (\ref{power:15}) prohibits any up-regulation when defrosting occurs.
+%
+Constraints \eqref{aux:1}-\eqref{aux:7} define auxiliary binary variables $y^{\uparrow}_{h,\omega}$, $y^{\downarrow}_{h,\omega}$, $z^{\uparrow}_{h,\omega}$, and $z^{\downarrow}_{h,\omega}$, identifying transitions from/to up-regulation and down-regulation.
+During all hours with up-regulation, $y^{\uparrow}_{h,\omega}=1$. In the hour that up-regulation is stopped, $z^{\uparrow}_{h,\omega}$ is 1. There is a similar definition for $y^{\downarrow}_{h,\omega}$ and $z^{\downarrow}_{h,\omega}$ related to down-regulation. 
+See Chapter 5 of  \cite{morales2013integrating} for complete details.
+%
+Constraint \eqref{temp:1} restricts the food temperature for the last time period $J$.  
+%For every time period $t$, \eqref{temp:2} and \eqref{temp:3} bind the air temperature by enforcing the maximum deviation $\Delta^{\rm{max}}$.
+%
+Constraints \eqref{rebound:1}-\eqref{rebound:4} control the rebound behavior such that the rebound finishes when the temperature is below the baseline temperature. Note that $M$ is a sufficiently big positive constant such that the food temperature is allowed to deviate from the baseline. Also, they ensure that the rebound happens right after up-regulation.
+%
+Lastly, (\ref{up_reg_first}) ensures that up-regulation happens first. This makes sense since it impossible (or at least difficult) to anticipate potential up-regulation events in the power system. As such, it does not make sense to pre-cool (or pre-heat) a TCL in the context of mFRR.
+
+% \subsubsection{Auxillary variables and constraints}\label{sec:aux_constraints}
+
+% First, we describe the necessary auxillary variables and constraints to identify when up- and down-regulation occurs compared to the baseline power, $P^{\rm{Base}}_{h}$. This is required since the costs and revenues from up-regulation and rebound must be determined explicitly. We therefore introduce the following six binary variables \cite{morales2013integrating}:
+% \\
+% \begin{itemize}
+%     \item $u^{\uparrow}_{h,\omega} \in \{0,1\}$ equal to 1 when starting to deliver up-regulation
+%     \item $y^{\uparrow}_{h,\omega} \in \{0,1\}$ equal to 1 during up-regulation
+%     \item $z^{\uparrow}_{h,\omega} \in \{0,1\}$ equal to 1 when to stopping up-regulation
+%     \item $u^{\downarrow}_{h,\omega} \in \{0,1\}$ equal to 1 when starting to deliver down-regulation
+%     \item $y^{\downarrow}_{h,\omega} \in \{0,1\}$ equal to 1 during down-regulation
+%     \item $z^{\downarrow}_{h,\omega} \in \{0,1\}$ equal to 1 when to stopping down-regulation
+% \end{itemize}
+
+% \noindent The following constraints implements the logic:
+
+% \begin{subequations}\label{eq:auxillary_constraints}
+%     \begin{align}
+%         u_{h-1,\omega}^{\uparrow} - u_{h,\omega}^{\uparrow} + y_{h,\omega}^{\uparrow} - z_{h,\omega}^{\uparrow} = 0 \         & \forall{\omega}, \forall{h} = \{2 \ldots 24 \} \\
+%         y_{h,\omega}^{\uparrow} + z_{h,\omega}^{\uparrow} \leq 1 \                                                            & \forall{h,\omega}                              \\
+%         u_{h-1,\omega}^{\downarrow} - u_{h,\omega}^{\downarrow} + y_{h,\omega}^{\downarrow} - z_{h,\omega}^{\downarrow} = 0 \ & \forall{\omega}, \forall{h} = \{2 \ldots 24 \} \\
+%         y_{h,\omega}^{\downarrow} + z_{h,\omega}^{\downarrow} \leq 1 \                                                        & \forall{h,\omega}                              \\
+%         u_{h,\omega}^{\uparrow} + u_{h,\omega}^{\downarrow} \leq 1 \                                                          & \forall{h,\omega}                              \\
+%         y_{h,\omega}^{\uparrow} + y_{h,\omega}^{\downarrow} \leq 1 \                                                          & \forall{h,\omega}                              \\
+%         z_{h,\omega}^{\uparrow} + z_{h,\omega}^{\downarrow} \leq 1 \                                                          & \forall{h,\omega}
+%     \end{align}
+% \end{subequations}
+
+% \subsubsection{Power constraints}\label{sec:power_constraints}
+
+% The power consumption of the freezer is constrained by:
+
+% \begin{subequations}\label{eq:power_constraints}
+%     \begin{align}
+%         p_{h,\omega} = P^{\rm{Base}}_{h} - p^{\rm{b}, \uparrow}_{h,\omega} + p^{\rm{b}, \downarrow}_{h,\omega}, \                                                                                                 & \forall{h,\omega}                                                                             \label{con_power:subeq1}  \\
+%         p^{\rm{r}, \uparrow}_h \leq P^{\rm{Base}}_h, \                                                                                                                                                       & \forall{h}                                                                                     \label{con_power:subeq2} \\
+%         p^{\rm{b}, \uparrow}_{h,\omega} \leq p^{\rm{r}, \uparrow}_h \mathbbm{1}_{h,\omega}^{\lambda^{\rm{b}}_{h,\omega} > \lambda^{s}_{h}} , \                                                                           & \forall{h,\omega}                                                                             \label{con_power:subeq3}  \\
+%         p^{\rm{b}, \uparrow}_{h,\omega} \leq u_{h,\omega}^{\uparrow} (P^{\rm{Base}}_{h} - P^{Min}) , \                                                                                                       & \forall{h,\omega}                                                                             \label{con_power:subeq4}  \\
+%         p^{\rm{b}, \downarrow}_{h,\omega} \leq u^{\downarrow}_{h,\omega} (P^{\rm{Nom}} -P^{\rm{Base}}_{h}), \                                                                                              & \forall{h,\omega}                                                                             \label{con_power:subeq5}  \\
+%         P^{\rm{Min}} \leq p_{h,\omega} \leq P^{\rm{Nom}}, \                                                                                                                                           & \forall{h,\omega}                                                                             \label{con_power:subeq6}  \\
+%         0 \leq s_{h,\omega} \leq P^{\rm{Base}}_{h}, \                                                                                                                                                   & \forall{h,\omega}                                                                             \label{con_power:subeq7}  \\
+%         p^{\rm{b}, \uparrow}_{h,\omega} + s_{h,\omega} \geq p^{\rm{r},\uparrow}_{h} \  \mathbbm{1}_{h,\omega}^{(\lambda^{\rm{bid}}_{h} < \lambda^{\rm{b}}_{h,\omega}, \lambda^{\rm{b}}_{h,\omega} > \lambda^{s}_{h})}, \ & \forall{h,\omega} \label{con_power:subeq8}                                                                              \\
+%         p^{\rm{b}, \downarrow}_{h,\omega} \geq 0.10 \  u^{\downarrow}_{h,\omega} (P^{\rm{Nom}} - P^{\rm{Base}}_{h}), \                                                                                  & \forall{h,\omega}                                                                             \label{con_power:subeq9}  \\
+%         p^{\rm{r}, \uparrow}_{h} \leq P^{\rm{Base}}_{h} (1 - \mathbbm{1}_{h}^{\rm{df}}), \                                                                                                                 & \forall{h} \label{con_power:subeq10}
+%     \end{align}
+% \end{subequations}
+
+% Constraint (\ref{con_power:subeq1}) sets the power equal to the baseline power unless there is up- or down-regulation. Constraint (\ref{con_power:subeq2}) bounds the reservation power to the baseline power. Constraint (\ref{con_power:subeq3}) ensures that up-regulation is zero when the system does not need it, and at the same time bounds it to the reservation power. Constraint (\ref{con_power:subeq4}) ensures that up-regulation is 0 whenever $u^{\uparrow}_{h,\omega} = 0$, and otherwise bounded to the maximum power that can be upregulated. Constraint (\ref{con_power:subeq5}) works the same way for down-regulation. Constraint (\ref{con_power:subeq6}) bounds the power to be between the minimum and nominal power. Constraint (\ref{con_power:subeq7}) bounds the slack variable which is the energy not delivered as promised. Constraint (\ref{con_power:subeq8}) is the bi-linear constraint from (\ref{eq:bid_constraint}). Constraint (\ref{con_power:subeq9}) ensures that down-regulation is equal to at least 10\% of the down-regulation capacity. Lastly, constraint (\ref{con_power:subeq10}) prohibits any up-regulation when defrosting occurs.
+
+% \subsubsection{Physical constraints}\label{sec:temperature_constraints}
+
+% The state-space model in (\ref{eq:2ndFreezerStateSpace}) is simply added as constraints with $p_{t,\omega}$ being the power of the freezer and an additional index for each scenario, $\omega$.
+
+% Note, the freezer specific variables are indexed by $t$, representing a time step $dt = 0.25$ whereas all other variables are indexed by hour $h$.
+
+% Furthermore, there is a set of identical constraints to (\ref{eq:2ndFreezerStateSpace}) that simulates the baseline temperatures, $T^{f,B}_{t}$ and $T^{c,B}_{t}$, using the baseline power, $P^{Base}_{h}$. These are used for the following boundary constraint, as well as the rebound constraints in Section \ref{sec:rebound_constraints}.
+
+% \begin{align}\label{eq:boundary_constraint}
+%     T^{f}_{96,\omega} \leq T^{f, \rm{Base}}_{96}, \ \forall{\omega}
+% \end{align}
+
+% The boundary constraint in (\ref{eq:boundary_constraint}) ensures that the optimization does not exploit the end state.
+
+% Temperature constraints to the air temperature can easily be added to limit the flexibility of the TCL by introducing a maximum temperature difference to the baseline temperature, $\Delta^{\rm{max}}$:
+
+% \begin{subequations}\label{eq:delta_max_constraints}
+%     \begin{align}
+%         T^{c,\rm{Base}}_{t} - \Delta \leq T^{c}_{t, \omega}, \ & \forall{t, \omega} \\
+%         T^{c,\rm{Base}}_{t} - \Delta \geq T^{c}_{t, \omega}, \ & \forall{t, \omega} \\
+%         \Delta \leq \Delta^{\rm{max}}
+%     \end{align}
+% \end{subequations}
+
+% \subsubsection{Rebound constraints}\label{sec:rebound_constraints}
+
+% The rebound constraints ensures that a rebound happens right after an up-regulation by down-regulating:
+
+% \begin{subequations}\label{eq:rebound_constraints_1}
+%     \begin{align}
+%         y^{\downarrow}_{h, \omega} \geq z^{\uparrow}_{h, \omega}, \ & \forall{h, \omega} \\
+%         y^{\downarrow}_{h, \omega} \leq z^{\uparrow}_{h, \omega}, \ & \forall{h, \omega}
+%     \end{align}
+% \end{subequations}
+
+
+% Furthermore, the following rebound constraints ensures that the rebound will take place until the food temperature is equal to the baseline food temperature, which can be considered the setpoint food temperature:
+
+% \begin{subequations}\label{eq:rebound_constraints_2}
+%     \begin{align}
+%         \sum_{t=4\ (h-1)}^{4 h} T^{f}_{t, \omega} - T^{f, \rm{Base}}_{t} \geq - (1 - z^{\downarrow}_{h, \omega}) \  M, \ & \forall{\omega}, \forall{h} \\
+%         \sum_{t=4\ (h-1)}^{4 h} T^{f}_{t, \omega} - T^{f, \rm{Base}}_{t} \leq - (1 - z^{\downarrow}_{h, \omega}) \  M, \ & \forall{\omega}, \forall{h}
+%     \end{align}
+% \end{subequations}
+
+% In constraints (\ref{eq:rebound_constraints_2}), $M$ is a sufficiently big number such that the food temperature is allowed to deviate from the baseline.
+
+% Lastly, the following constraint ensures that up-regulation happens before down-regulation:
+
+% \begin{align}\label{eq:up_regulation_first}
+%     \sum_{k=0}^{h} y^{\downarrow}_{\omega, k} \leq y^{\uparrow}_{\omega, k}, \ \forall{h, \omega}
+% \end{align}
+
+% This makes sense since it is not possible (or at least difficult) to anticipate potential up-regulation events in the power grid. As such, it does not make sense to pre-cool (or pre-heat) a TCL in the context of mFRR.
+
+
+\endgroup
+
+% \section*{Appendix A}\label{appendix:A}
+% % \addcontentsline{toc}{section}{Appendices}
+% % \renewcommand{\thesubsection}{\Alph{subsection}}
+% % \subsection{Appendix}\label{appendix:A}
+
+% Hao et al. \cite{hao2014aggregate} describes how a TCL can be modelled as a virtual battery using a first-order thermal-electric ODE:
+
+% \begin{align}\label{eq:hao}
+%     \frac{dT(t)}{dt} = \frac{1}{C}\left( \frac{1}{R}(T^{a}(t) - T(t)) + \eta P(t) \right)
+% \end{align}
+
+% Here, $T(t)$ is the temperature, $C$ is the thermal capacitance (kWh/$^{\circ}$C), $R$ is the thermal resistance ($^{\circ}$C/kW), $\eta$ is the coefficient of performance (COP), i.e., the cooling/heating effect, $P(t)$ is the power to the TCL, and $T^{a}(t)$ is the ambient temperature outside the TCL (typically around 20 $^{\circ}$C in an indoor environment).
+
+% Note, (\ref{eq:hao}) can readily be formulated in a deterministic, state-space model as in (\ref{eq:sde1}). The following difference equation yields the Euler approximation of (\ref{eq:hao}) which can be used in an optimization model (with the same time step $dt$):
+
+% \begin{align}\label{eq:hao_discretized}
+%     T_{t+1} = T_t + dt\  \left( \frac{1}{C}\left( \frac{1}{R}(T^{a}_t - T_t) + \eta P_t \right)  \right)
+% \end{align}
+
+% Eq. (\ref{eq:hao}) and (\ref{eq:hao_discretized}) constitutes the most simple model of a TCL one can imagine, but, nevertheless, has a quite powerful interpretation: the rate of change of temperature is determined by the heat flux to the surrounding environment and the heat flux from the power source to the TCL. It thus captures the most fundamental temperature dynamics of a TCL.
+
+% The steady-state power in (\ref{eq:hao}) is given by:
+
+% \begin{align}\label{eq:hao_ss}
+%     P^{ss}(t) = \frac{T^{a}(t) - T(t)}{\eta R}
+% \end{align}
+
+% The steady-state power is thus the power required to keep the temperature of the TCL constant with respect to the outside temperature, $T^{a}(t)$, given the efficiency of the system and the thermal resistance. A better energy efficiency can be achieved by either 1) increasing the mechanical efficiency of the cooling/heating system or 2) increasing the thermal resistance to the outside temperature by, e.g., insulating a freezer.
+
+% The drawback of the first-order model in (\ref{eq:hao}) is that it is only parameterized by three parameters, and it excludes disturbances. Hence, it might not be an accurate model of a real system. The model can easily be extended to include more complicated dynamics such as heat exchange with a barrier between $T^{a}(t)$ and $T(t)$, additional disturbance terms (e.g., when a fridge is opened), hourly values of $C$ and $R$, etc. Nevertheless, (\ref{eq:hao}) serves as a good starting point for a simple TCL model.
+
+% \section*{Appendix B}\label{appendix:B}
+% Appendix two text goes here.
+}

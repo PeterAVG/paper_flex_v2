@@ -1,0 +1,55 @@
+fail_fast: false
+exclude: .idea|.git|src/julia|src/plots|src/experiments/cache/cache.pkl|src/tables|tex/figures|src/scripts
+default_stages: [push, commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: debug-statements
+      - id: trailing-whitespace
+      - id: check-added-large-files
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies: ["flake8-print==v5.0.0"]
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+        types: [python]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.991
+    hooks:
+      - id: mypy
+        require_serial: true
+        language_version: python3.11.0
+        exclude: ".venv|.git"
+        stages: [commit]
+        types: [python]
+        pass_filenames: false
+        entry: ".venv/bin/mypy ."
+
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v2.2.0
+    hooks:
+      - id: seed-isort-config
+        args: [--exclude=.idea|.git]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+        verbose: true
+
+  - repo: local
+    hooks:
+      - id: test
+        stages: [commit]
+        name: test
+        types: [python]
+        language: system
+        pass_filenames: false
+        entry: ".venv/bin/pytest --no-cov"

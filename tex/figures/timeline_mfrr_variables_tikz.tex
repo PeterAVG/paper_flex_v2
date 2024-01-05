@@ -1,0 +1,53 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,patterns,intersections}
+\usetikzlibrary{shapes.multipart}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+\begin{document}
+\definecolor{RectangleColor}{RGB}{197,224,180}
+
+\begin{tikzpicture}[scale=0.75,every text node part/.style={align=center}]
+
+  \draw[rounded corners, fill=RectangleColor, very thick] (0, 1) rectangle (4, 3) node[midway]{\LARGE mFRR \\ \LARGE reservation};
+  \node at (2,0) {\LARGE  $p_{h}^{\rm{r},\uparrow}$};
+  \node at (2,-2) {\LARGE D$-$1};
+  \node at (2,-2.7) {\large (9:30am)};
+
+
+  \draw[rounded corners, fill=RectangleColor, very thick] (5, 1) rectangle (9, 3) node[midway]{\LARGE Day-ahead \\ \LARGE clearing};
+  \node at (7,-2) {\LARGE D$-$1};
+  \node at (7,-2.7) {\large (12:00pm)};
+
+  \draw[rounded corners, fill=RectangleColor, very thick] (10, 1) rectangle (14, 3) node[midway]{\LARGE Regulating  \\ \LARGE power bid};
+  \node at (12,0) { \LARGE $\lambda_{h,\omega}^{\text{bid}}$};
+  \node at (12,-2) {\LARGE D$-$1};
+  \node at (12,-2.7) {\large (5:00pm)};
+
+  \draw[rounded corners, fill=RectangleColor, very thick] (15, 1) rectangle (19, 3) node[midway]{\LARGE Real time};
+  \node at (17,0) {\LARGE $\Gamma_{h,\omega}$};
+  % {\LARGE $\Bigl( \bm{p}^{\rm{r},\uparrow}, \bm{\lambda}_{\omega}^{\text{bid}}, \bm{p}_{\omega}^{b,\uparrow}, \bm{p}_{\omega}^{b,\downarrow}, \bm{s}_{\omega}, \bm{T}_{\omega}^{c}, \bm{T}_{\omega}^{f}, \notag \\ \quad & \quad \bm{T}_{\omega}^{c, B}, \bm{T}_{\omega}^{f,B}, \bm{\phi}_{\omega}, \bm{g}_{\omega} \Bigr)$};
+  \node at (17,-2) {\LARGE D};
+  \node at (17,-2.7) {\large (12pm -- 12am)};
+
+
+  % Right arrow
+  \node (source) at (0, -1) {};
+  \node (destination) at (24,-1){};
+  \draw[->, line width=0.65mm, black](source)--(destination);
+
+
+\end{tikzpicture}
+
+
+
+
+
+\end{document}

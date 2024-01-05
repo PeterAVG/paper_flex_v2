@@ -1,0 +1,15 @@
+[0] Config.pm:306> INFO - This is Biber 2.18
+[0] Config.pm:309> INFO - Logfile is 'paper_flex_v2.blg'
+[123] biber-darwin:340> INFO - === Fri Jan  5, 2024, 09:08:35
+[150] Biber.pm:418> INFO - Reading 'paper_flex_v2.bcf'
+[286] Biber.pm:978> INFO - Found 28 citekeys in bib section 0
+[308] Biber.pm:4401> INFO - Processing section 0
+[327] Biber.pm:4592> INFO - Looking for bibtex file 'bibliography/Bibliography.bib' for section 0
+[332] bibtex.pm:1713> INFO - LaTeX decoding ...
+[465] bibtex.pm:1518> INFO - Found BibTeX data source 'bibliography/Bibliography.bib'
+[734] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[734] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[734] Biber.pm:4221> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[734] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[765] bbl.pm:654> INFO - Writing 'paper_flex_v2.bbl' with encoding 'UTF-8'
+[794] bbl.pm:757> INFO - Output to paper_flex_v2.bbl

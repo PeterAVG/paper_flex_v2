@@ -1,0 +1,179 @@
+\section{Describing flexibility of a TCL}\label{sec:monetizing_flex}
+
+There are several ways to monetize flexibility from TCLs. In this section, we focus on mFRR and load shifting. First, we describe how to mathematically model a TCL as a flexible resource. Second, we describe how to monetize the flexibility from TCLs for mFRR and load shifting, and provide the objective functions in both cases. For mFRR, the objective function includes all costs and revenues for the BRP, while for load shifting, the objective function only includes the flexible demand's perspective. This approach explicitly shows the situation where flexible demand is activated without including the BRP, as this is more realistic.
+
+\subsection{Modeling TCL as a flexible resource}
+%
+TCLs are characterized by being controlled such that the temperature is kept at a specified setpoint. Examples include heat pumps, freezers, air condition units, etc. They constitute an important part of demand-side flexibility due to  inherent thermal inertia of such temperature-driven systems \cite{hao2014aggregate}.
+
+We focus on freezers only, which are a very common type of TCLs. Specifically, we focus on a single freezer display in a Danish supermarket. Freezers are characterized by a large thermal inertia due to the frozen food, which makes them suitable for flexibility. On the other hand, there is a risk of food degradation when utilizing flexibility. Therefore, it is important to model the temperature dynamics in the freezer for a realistic and risk-aware estimation of its flexibility.
+
+The rest of the section is organized as follows. First, we visualize the measurements from a real supermarket freezer. Second, we introduce a second-order grey-box model that characterizes the supermarket freezer. Third, we validate the second-order model and show how it can be used to simulate demand response from a freezer.
+
+\subsubsection{Supermarket freezer description}
+
+%In this paper, data from a single freezer operating in a large Danish supermarket is used as a case study. In Figure \ref{fig:chunk}, the air temperature and opening degree of the freezer is shown together with the electric power of the variable-speed compressor rack for a single day. All values correspond to 15-min averages. Temperature fluctuates around its setpoint at -18 $^{\circ}$C with the exception of hour 7-8, where defrosting is scheduled. While defrosting, a heating element is briefly turned on, and the expansion valve is closed such that the flow of refrigerant stops. Afterwards, while recovering the temperature, the expansion valve is fully opened. The power consumption of the compressor rack, scaled to one freezer, is shown in the bottom plot. Power consumption is highest during opening hours, and it is lowest during closing hours. During opening hours, food is being replaced and customers open the display case constantly. Furthermore, most supermarkets put additional insulation on the display cases during closing hours which reduces thermal losses. For these reasons, there are effectively two regimes for a supermarket freezer plus a short defrosting regime.
+
+We use real data from a single freezer operating in a large Danish supermarket as a case study.
+In Fig. \ref{fig:chunk}, the top plot shows the 15-minute average air temperature of the freezer, whereas the middle plot depicts the opening degree of the valve.
+%
+Temperature fluctuates around its setpoint at -18 $^{\circ}$C with the exception of hours 7 and 8, where defrosting is scheduled.
+While defrosting, a heating element is briefly turned on, and the expansion valve is closed, such that the flow of refrigerant stops. Afterwards, while recovering the temperature, the expansion valve is fully opened.
+The electric power of the variable-speed compressor rack, scaled to one freezer is shown in the bottom plot. Since temperature dynamics are similar for all freezers, homogeneity is assumed. Hence, an equal consumption level is assumed for all freezers.
+
+Consumption is highest during opening hours, and it is lowest during closing hours.
+During opening hours, food is being replaced and customers open the display case constantly.
+Furthermore, most supermarkets put additional insulation on the display cases during closing hours which reduces thermal losses.
+For these reasons, there are effectively two regimes for a supermarket freezer plus a short defrosting regime.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]{../figures/tmp_od_Pt.png}
+    \caption{\textbf{Top}: temperature of a single freezer in a supermarket. \textbf{Middle}: opening degree (OD) of the freezer expansion valve. \textbf{Bottom}: electric power of the compressor rack feeding a single freezer.}
+    \label{fig:chunk}
+    \vspace{-2mm}
+\end{figure}
+
+\subsubsection{Thermal modeling of freezer}
+
+In \cite{hao2014aggregate}, it is described how a simple TCL model can be developed. We extend it to a second-order state-space model that accounts for the thermal mass of the food, which essentially provides the flexibility in freezers:
+%
+\begin{subequations}\label{eq:2ndFreezerStateSpace}
+    \begin{align}
+        T^{\rm{f}}_{t+1} & = T^{\rm{f}}_{t} + dt\  \frac{1}{C^{\rm{f}}}\left(\frac{1}{R^{\rm{cf}}} (T^{\rm{c}}_{t} - T^{\rm{f}}_{t}) \right)                                                                                         \\
+        T^{\rm{c}}_{t+1} & = T^{\rm{c}}_t + dt\  \frac{1}{C^{\rm{c}}}\Bigl(\frac{1}{R^{\rm{cf}}} (T^{\rm{f}}_t - T^{\rm{c}}_t) + \frac{1}{R^{\rm{ci}}} (T^{\rm{i}}_t - T^{\rm{c}}_t)                                          \notag \\ & \mspace{50mu} - \eta\  OD_t \ P_t \Bigr) + \epsilon \mathbbm{1}^{\rm{df}}_{t},
+    \end{align}
+\end{subequations}
+%
+where $T^{\rm{c}}_t$ is the measured air temperature in the freezer at time $t \in \{1, \ldots, J\}$, and $T^{\rm{f}}_t$ is the food temperature which is a latent unobserved state.
+Parameters $C^{\rm{f}}$ and $C^{\rm{c}}$ are the thermal capacitance of the food and air in the freezer, respectively. In addition, $R^{\rm{cf}}$ and $R^{\rm{ci}}$ are the thermal resistance between food and air in the freezer, and air and indoor temperature, respectively.
+There is essentially a low-pass filter of the air temperature in the freezer with the time constant $C^{\rm{f}}$ times $R^{\rm{cf}}$. Parameter $\epsilon$ represents the temperature change when defrosting, whereas $\mathbbm{1}^{\rm{df}}_{t}$ is the indicator function for when defrosting happens. Parameter $R^{\rm{ci}}$ is either one of two values, $R^{\rm{ci}, \text{day}}$ and $R^{\rm{ci}, \text{night}}$, to capture the differences between opening hours (6am to 10pm) and closing hours (10pm to 6am). The opening degree $OD_t$, indoor air temperature $T^{\rm{i}}_t$, and power $P_t$ are exogenous inputs as the opening degree is assumed to be fixed during a demand-response event, while only $P_t$ is controllable, and the indoor air temperature is unaffected by the freezers. Parameter $\eta$ is the compressor efficiency. The model is discretized with a time step of 15 minutes, therefore $dt = 0.25$ and $J = 96$.
+
+\subsubsection{Model validation}
+
+Using the R library of CTSM-R \cite{juhl2016ctsmr}, all parameters in (\ref{eq:2ndFreezerStateSpace}) have been estimated as given in Table \ref{tab:parameter_estimates}. Notice that the thermal capacitance of the air in the freezer is significantly smaller than the thermal capacitance of the food, indicating  that the food temperature changes comparatively slower. The thermal resistance between the food and air inside the freezer, $R^{\rm{cf}}$, is also significantly smaller than the thermal resistance between the air in the freezer and the indoor temperature in the supermarket, $R^{\rm{ci}}$, both during the day and night. This makes sense as the lid acts as a physical barrier insulating the freezer. Furthermore, the thermal resistance to the indoor air temperature is higher during the night, which means that less power is needed, as  observed in Fig. \ref{fig:chunk}.
+
+% LONG FORMAT
+% \begin{table}[!t]
+%     \caption{Parameter Estimates of (\ref{eq:2ndFreezerStateSpace}).}
+%     \label{tab:parameter_estimates}
+%     \centering
+%     \begin{tabular}[b]{|l|l|l|}
+%         \hline
+%         Parameter                   & Value & Unit            \\ \hhline{|=|=|=|}
+%         $C^{\rm{f}}$                & 6.552 & kWh/$^{\circ}$C \\
+%         $C^{\rm{c}}$                & 0.077 & kWh/$^{\circ}$C \\
+%         $R^{\rm{cf}}$               & 5.010 & $^{\circ}$C/kW  \\
+%         $R^{\rm{ci}, \text{day}}$   & 41.05 & $^{\circ}$C/kW  \\
+%         $R^{\rm{ci}, \text{night}}$ & 61.25 & $^{\circ}$C/kW  \\
+%         $\eta$                      & 1.561 &                 \\
+%         $\epsilon$                  & 3.372 & $^{\circ}$C/h   \\ \hline
+%     \end{tabular}
+% \end{table}
+
+% LONG FORMAT V2
+\begin{table}[!t]
+    \caption{Parameter Estimates of (\ref{eq:2ndFreezerStateSpace}).}
+    \label{tab:parameter_estimates}
+    \centering
+    \begin{tabular}[b]{|l|l|l||l|l|l|}
+        \hline
+        Parameter                 & Value & Unit            & Parameter                   & Value & Unit           \\ \hhline{|=|=|=|=|=|=|}
+        $C^{\rm{f}}$              & 6.552 & kWh/$^{\circ}$C & $R^{\rm{ci}, \text{night}}$ & 61.25 & $^{\circ}$C/kW \\
+        $C^{\rm{c}}$              & 0.077 & kWh/$^{\circ}$C & $\eta$                      & 1.561 &                \\
+        $R^{\rm{cf}}$             & 5.010 & $^{\circ}$C/kW  & $\epsilon$                  & 3.372 & $^{\circ}$C/h  \\
+        $R^{\rm{ci}, \text{day}}$ & 41.05 & $^{\circ}$C/kW  &                             &       &                \\ \hline
+    \end{tabular}
+    \vspace{-2mm}
+\end{table}
+
+% WIDE FORMAT
+% \begin{table}[!t]
+%     \caption{Parameter Estimates of (\ref{eq:2ndFreezerStateSpace}).}
+%     \label{tab:parameter_estimates}
+%     \centering
+%     \begin{tabular}[b]{|l|l|l||l|l|l||l||l|}
+%         \hline
+%         Parameter & $C^{\rm{f}}$ & $C^{\rm{c}}$ & $R^{\rm{cf}}$ & $R^{\rm{ci}, \text{day}}$ & $R^{\rm{ci}, \text{night}}$ & $\eta$ & $\epsilon$ \\ \hhline{|=|=|=||=|=|=|=|=|}
+%         Value     & 6.552        & 0.077        & 5.010         & 41.05                     & 61.25                       & 1.561  & 3.372      \\ \hline
+%     \end{tabular}
+% \end{table}
+
+
+
+
+The one-step residuals for the air temperature should ideally resemble white noise in order for a model to capture all dynamics observed in the data \cite{madsen2007time}. Fig. \ref{fig:2ndFreezerModelValidation} shows the auto-correlation and cumulative periodogram of the residuals. The autocorrelation shows two significant lags for lag two and seven, but looks satisfactory otherwise. Likewise,  it seems the model is able to capture most dynamics at all frequencies.
+%
+Since there are only $J = 96$ time steps, the defrosting period can result in relatively large residuals as it is difficult to capture such fast transient dynamics. Since up-regulation is not allowed during defrosting, the residuals are not too important during that period. To decrease their effect in the parameter estimation procedure, the term $ \epsilon \mathbbm{1}^{\rm{df}}_{t}$ was added to (\ref{eq:2ndFreezerStateSpace}).
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]{../figures/2ndFreezerModelValidation.png}
+    \caption{ Validation of the state-space model in (\ref{eq:2ndFreezerStateSpace}). \textbf{Left}: auto-correlation function (acf) of the  residuals. \textbf{Right}: cumulated periodogram of the residuals.}
+    \label{fig:2ndFreezerModelValidation}
+    \vspace{-1mm}
+\end{figure}
+
+
+
+Furthermore, Fig. \ref{fig:2ndFreezerModelSimulation} (left) shows a 24-hour simulation of  (\ref{eq:2ndFreezerStateSpace}). It is observed that the simulation is  reasonable and closely follows the measured air temperature, although a slight bias is observed as the simulated temperature is a bit higher. Such a visual validation is important because the model will be embedded later in an optimization model in Section \ref{sec:OptimizationModel}.
+
+Ideally, the validation of (\ref{eq:2ndFreezerStateSpace}) would also include real measurements from the air and food temperature in a freezer during demand-response events. However, by adhering to the fundamental physics governing the temperature dynamics as shown, the model is trusted to be accurate during demand-response events too. It brings an intuitive interpretation which can be used to understand the impact on temperature during a demand-response event.
+In Fig. \ref{fig:2ndFreezerModelSimulation} (right), such a simulated example of a demand-response event is shown. It can be observed how the air temperature increases when the power is turned off, and how it decreases when the power is turned back on. The food temperature is much more stable and only changes slightly, as expected. The \textit{rebound} occurs until the food temperature is back to its normal value.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]{../figures/2ndFreezerModelSimulation.png}
+    \caption{ \textbf{Left}: Simulation of food and air temperatures using (\ref{eq:2ndFreezerStateSpace}) with parameters in Table \ref{tab:parameter_estimates}, and its comparison to the measured air temperature. \textbf{Right}: Simulation where power is turned off for two hours with a subsequent rebound at the nominal power until the food temperature is back to its normal value.}
+    \label{fig:2ndFreezerModelSimulation}
+    \vspace{-3mm}
+\end{figure}
+
+%\noident
+\textit{Notational remark}: Hereafter, $t \in \{1, \ldots, J=96\}$ represents the index for 15-minutes time steps, whereas $h\in \{1, \ldots, 24 \}$ denotes the index for hours. 
+
+\vspace{-1mm}
+\subsection{mFRR}\label{sec:mFRR}
+%
+Fig. \ref{fig:timeline_mfrr} shows the timeline of the mFRR market in Denmark. There is a market for up-regulation only. One should note  that BRPs can choose \textit{not} to bid in the reserve market and  only bid in the real time for up- and down-regulation. We consider a case wherein the flexible demand delivers reservation through a BRP, since the payment is received for both reservation and activation. All prices considered are for the bidding zone DK2 (eastern Denmark).
+
+
+\begin{figure}[!t]
+    \centering
+    \includestandalone[width=\columnwidth]{../figures/timeline_mfrr_tikz}
+    \caption{Timeline of the Danish mFRR market. Symbols $\bm{p}$ denote power (in MW), whereas symbols  $\bm{\lambda}$ refer to price (in DKK/MW).}
+    \label{fig:timeline_mfrr}
+    \vspace{-3mm}
+\end{figure}
+
+
+According to Fig. \ref{fig:timeline_mfrr}, at 9:30am of day $\rm{D}$-1, the BRP submits reserve capacity bids $p_{h}^{\rm{r},\uparrow}$ $\forall{h}$ to the mFRR market for the next day $\rm{D}$. If accepted, she is paid at the reservation price $\lambda_{h}^{\rm{r}}$. Therefore, she earns $\lambda_{h}^{\rm{r}}p_{h}^{\rm{r},\uparrow}$. This happens \textit{before} the day-ahead (spot) market clearing at noon for which the BRP buys energy for her expected demand $P_{h}^{\rm{Base}}$ at the spot price $\lambda_{h}^{\rm{s}}$. After that, at 5pm, a regulating power bid, $\lambda_{h}^{\rm{bid}}$, must be submitted by the BRP for each hour of day $\rm{D}$, where $p_{h}^{\rm{r},\uparrow} > 0$ \cite{energinet:Systemydelser}. In hour $h$ of day $\rm{D}$, the reserves are activated if the following three conditions hold: (\textit{i}) there is a reservation accepted, i.e., $p_{h}^{\rm{r},\uparrow} > 0$, (\textit{ii}) the balancing price is higher than the spot price, i.e., $\lambda_{h}^{\rm{b}} > \lambda_{h}^{\rm{s}}$, and the regulating power bid is lower than or equal to the balancing price minus the spot price, i.e., $\lambda_{h}^{\rm{bid}} \leq  \lambda_{h}^{\rm{b}} - \lambda_{h}^{\rm{s}}$. If all these three conditions are met, the BRP is paid at the balancing price $\lambda_{h}^{\rm{b}}$ times her actual up-regulation $p_{h}^{\rm{b},\uparrow}$. The BRP may  incur a cost due to any subsequent rebound $p_{h}^{\rm{b},\downarrow}$. Furthermore, the BRP should pay at the penalty price $\lambda^{\rm{p}}$ for $s_{h} = \text{max}\{0, p_{h}^{\rm{r},\uparrow} - p_{h}^{\rm{b},\uparrow}$\}, i.e., if she fails delivering her promised reserve. In reality, $p_{h}^{\rm{b},\uparrow}$ is determined by the TSO, but for simplicity, we assume a bid is always activated in its entirety.
+Accordingly, the objective function of the BRP maximizing the flexibility value over a day (via mFRR provision) is
+%
+\begin{align}\label{eq:mFRRObjective}
+    % & \underbrace{C(\rm{cost})}_{\rm{mFRR}} = - \underbrace{\sum_{h=1}^{24}
+     & - \underbrace{\sum_{h=1}^{24} \lambda^{\rm{s}}_{h}P^{\rm{Base}}_{h}}_{\textrm{Energy cost}} + \underbrace{\sum_{h=1}^{24}\lambda_{h}^{\rm{r}} p^{\rm{r}, \uparrow}_{h}}_{\textrm{Reservation payment}}  \notag \\ & \quad \quad + \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\uparrow}_{h}}_{\textrm{Activation payment}} - \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\downarrow}_{h}}_{\textrm{Rebound cost}} - \underbrace{ \sum_{h=1}^{24}  \lambda^{\rm{p}}s_{h}}_{\textrm{Penalty cost}}.
+\end{align}
+
+Note that the first term of \eqref{eq:mFRRObjective}, i.e., the energy cost, contains $\lambda^{\rm{s}}_{h}$ and $P^{\rm{Base}}_{h}$, which are both parameters, and therefore, can be omitted from the objective function. However, we include it here for the completeness. 
+
+\vspace{-2mm}
+\subsection{Load shifting}
+%
+Another option for utilizing flexibility is to shift the load to a different time according to the spot market prices which are known already 12-36 hours in advance. Then, it is simply a matter of consuming in low-price hours.
+%
+For a TCL, there are additional constraints to how energy can be shifted due to the rebound effect. First, there can be temperature constraints which will result in less energy being shifted. Second, the rebound must happen immediately after reducing power consumption. Otherwise, the temperature deviation becomes too big for too long.
+The cost saving from load shifting is directly proportional to the volume and price difference between the baseline load and shifted load as given by
+%
+\begin{equation}\label{eq:load_shifting_savings}
+    \sum_{h=1}^{24} \lambda^{\rm{s}}_{h} \big(p^{\rm{Base}}_{h} -  p_{h}\big),
+\end{equation}
+%
+where $p_{h}$ is the power profile when the load is shifted, whereas $p^{\rm{Base}}_{h}$ is the baseline in the day-ahead stage.
+
+Since the load shifting action only occurs \textit{after} the day-ahead market clearing (cf. Fig. \ref{fig:timeline_mfrr}), the BRP has already bought $\lambda^{\rm{s}}_{h} p^{\rm{Base}}_{h}$ and any deviation results in an imbalance for the BRP. In this work, we look at the case where the flexible demand acts selfishly and excludes the BRP from her load shifting action. Therefore, the objective function for the flexible demand simply reduces to $\sum_{h=1}^{24} \lambda_{h}^{\rm{s}} p_{h}$.
+
+%\begin{equation}\label{eq:LoadShiftingObjective}
+% \underbrace{C(\rm{cost})}_{\rm{load shifting}} = \sum_{h=1}^{24} \lambda_{h}^{\rm{s}} p_{h}
+%    \sum_{h=1}^{24} \lambda_{h}^{\rm{s}} p_{h}
+%\end{equation}

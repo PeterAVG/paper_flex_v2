@@ -1,0 +1,137 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{alphalph}
+\usepackage{etoolbox}
+
+\newcommand{\alphalphval}[1]{\alphalph{\value{#1}}}
+
+\AtBeginDocument{%
+  \AtBeginEnvironment{subequations}{%
+    \let\alph\alphalphval%
+  }
+}
+
+% added packages from authors
+\usepackage{xcolor}
+\usepackage{booktabs} % for \midrule in tables
+\usepackage{hhline}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{makecell}
+\usepackage[mode=buildnew]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,patterns,intersections}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepgfplotslibrary{fillbetween}
+\usepackage[breaklinks]{hyperref}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{black}{#1}}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+
+
+%\title{Load Shifting Versus Manual Frequency Reserve: \\ Which One is More Appealing to Flexible Loads?}
+
+%\author{Peter A.V. Gade\textsuperscript{*}\textsuperscript{\textdagger}, Trygve Skjøtskift\textsuperscript{\textdagger}, Charalampos Ziras\textsuperscript{*}, Henrik W. Bindner\textsuperscript{*}, Jalal Kazempour\textsuperscript{*} \\
+%    \textsuperscript{*}Department of Wind and Energy Systems, Technical University of Denmark, Kgs. Lyngby, Denmark \\
+%    \textsuperscript{\textdagger}IBM Client Innovation Center, Copenhagen, Denmark
+    % <-this % stops a space
+%    \thanks{Corresponding author. Tel.: +45 24263865. \\ Email addresses: pega@dtu.dk (P.A.V. Gade), Trygve.Skjotskift@ibm.com (T. Skjøtskift), hwbi@dtu.dk (H.W. Bindner), jalal@dtu.dk (J. Kazempour).}% <-this % stops a space
+%    \thanks{Manuscript received April 19, 2021; revised August 16, 2021.}}
+
+\IEEEaftertitletext{\vspace{-0.5cm}}
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+\title{Load Shifting Versus Manual Frequency Reserve: \\ Which One is More Appealing to Flexible Loads?}
+
+\author{
+    \IEEEauthorblockN{%
+        Peter A. V. Gade,
+        Trygve Skjøtskift,
+        Charalampos Ziras,
+        Henrik W. Bindner, and
+        Jalal Kazempour%
+    }
+    \vspace{-0.38cm}
+    %\IEEEauthorblockA{\IEEEauthorrefmark{1} These authors contributed equally to this work.}
+    \thanks{P. A. V. Gade, C. Ziras, H. W. Bindner and J. Kazempour are with the Technical University of Denmark , 2800 Kgs. Lyngby, Denmark (e-mail: \{pega, chazi, hwbi, jalal\}@dtu.dk).}
+    \thanks{P. A. V. Gade and T. Skjøtskift are with IBM Client Innovation Center, Copenhagen, Denmark (e-mail: Trygve.Skjotskift@ibm.com)}
+    \thanks{This work  was supported in part by Innovation Fund Denmark, Grant Agreement No. 0153-00205B.}
+}
+
+
+% \footnote{Corresponding author. Tel.: +45 24263865. \\ Email addresses: pega@dtu.dk (P.A.V. Gade), Trygve.Skjotskift@ibm.com (T. Skjøtskift), hwbi@dtu.dk (H.W. Bindner), jalal@dtu.dk (J. Kazempour).}
+
+% The paper headers
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2021}%
+%{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+% \tableofcontents
+
+\begin{abstract}
+    \input{../sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+    Demand-side flexibility, thermostatically controlled loads, supermarket freezer, manual frequency restoration reserves, load shifting.
+\end{IEEEkeywords}
+
+\input{../sections/introduction}
+
+
+\input{../sections/section2}
+
+\input{../sections/section3}
+
+\input{../sections/results}
+
+\input{../sections/conclusion}
+
+\input{../sections/appendix}
+
+\input{../sections/acknowledgement}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{tex/bibliography/Bibliography}
+
+% \newpage
+
+% \begin{IEEEbiographynophoto}{Peter A.V. Gade}
+%     is an Industrial PhD researcher at IBM and affiliated with the Technical University of Denmark, Kongens Lyngby, Denmark, in the Energy Markets and Analytics Section within the Power and Energy Systems division at the Wind and Energy Systems Department. His research focuses on demand-side flexibility and the revenue streams from utilization of demand-side flexibility. He holds a M.S. in Mathematical Modelling and Computing and a B.S. in Biomedical Engineering, both from the Technical University of Denmark.
+% \end{IEEEbiographynophoto}
+% \begin{IEEEbiographynophoto}{Trygve Skjøtskfit}
+%     is an Associate Partner at IBM Denmark, with focus on energy transformation and demand-side flexibility. His solid experience and deep knowledge within intelligent energy systems, buildings, and civil infrastructures makes him a leading figure, strategic advisor, and a first mover in the flexibility market with a strong track record to find and deliver new cutting-edge solutions. He holds an MBA in Strategy from Universitat Pompeu Fabra, and a Master of Export Engineering from Copenhagen University, College of Engineering.
+% \end{IEEEbiographynophoto}
+% \begin{IEEEbiographynophoto}{Henrik W. Bindner}
+%     received the MSc in Electrical Engineering from Technical University of Denmark in 1988. He is currently a senior researcher with the Department of Wind and Energy Systems, Technical University of Denmark. He is heading the \textit{Distributed Energy Systems} Section and his research interests include control and management of smart grids, active distribution networks, and integrated energy systems.
+% \end{IEEEbiographynophoto}
+% \begin{IEEEbiographynophoto}{Charalampos Ziras}
+%     ...
+% \end{IEEEbiographynophoto}
+% \begin{IEEEbiographynophoto}{Jalal Kazempour}
+%     is an Associate Professor with the Department of Wind and Energy Systems, Technical University of Denmark, where he is heading the \textit{Energy Markets and Analytics} Section. He received the Ph.D. degree in Electrical Engineering from the University of Castilla-La Mancha, Ciudad Real, Spain, in 2013. His research interests include intersection of multiple fields, including power and energy systems, electricity markets, optimization, game theory, and machine learning.
+% \end{IEEEbiographynophoto}
+
+
+\vfill
+
+\end{document}
