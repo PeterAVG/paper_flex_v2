@@ -93,7 +93,7 @@
 \title{
     %A Pioneering Market Framework for Promoting Demand-side Flexibility in Denmark 
     %A New Ecosystem for Demand-side Flexibility Aggregators in Denmark 
-    Load Shifting Versus Manual Frequency Reserve: \\ Which One is More Appealing to Flexible Loads?
+    Load Shifting Versus Manual Frequency Reserve: \\ Which One is More Appealing to Flexible Loads in Denmark?
 }
 % Pioneering Market Framework for the Future Power System: the Case of Denmark
 %\author{Peter Alexander Vistar Gade$^{\textrm{a}}$, Henrik Bindner, Jalal
@@ -116,14 +116,17 @@
 
 \section*{Abstract}
 
-This paper investigates how a  thermostatically controlled load can deliver flexibility either in form of manual frequency restoration reserves (mFRR) or load shifting, and which one is financially more appealing to such a load. %We discuss advantages and disadvantages of the two and their appeal from a monetary point of view.
-A supermarket freezer is considered as a representative flexible load, and a grey-box model  describing its temperature dynamics is developed using real data from a supermarket in Denmark. Taking into account price and activation uncertainties, a two-stage stochastic mixed-integer linear program is formulated to maximize the flexibility value from the freezer. For practical reasons, we propose a linear policy to determine regulating power bids, and then linearize the mFRR activation conditions through the  McCormick relaxation approach. For computational ease, we develop a decomposition technique, splitting the problem to a set of smaller sub-problems, one per scenario. %An out-of-sample evaluation was done on unseen Danish market price data for 2022. 
+This paper investigates %how  thermostatically controlled loads can deliver flexibility 
+demand-side flexibility provision in two  forms of manual Frequency Restoration Reserve (mFRR) services and load shifting, and explores which one is financially more appealing to flexible loads in Denmark. While mFRR is an ancillary service required for the system and being bought by the system operator, load shifting is an individual act of the flexible load in response to the variation of hourly electricity prices.  %We discuss advantages and disadvantages of the two and their appeal from a monetary point of view.
+Without loss of generalization, we consider a supermarket freezer  as a representative flexible load, and develop a grey-box model  describing its temperature dynamics using real data from a supermarket in Denmark. Taking into account price and activation uncertainties, a stochastic mixed-integer linear program is formulated to maximize the flexibility value from the freezer. %For practical reasons, we propose a linear policy to determine regulating power bids.
+%, and then linearize the mFRR activation conditions. 
+%For computational ease, we develop a decomposition technique, splitting the problem to a set of smaller sub-problems, one per scenario. %An out-of-sample evaluation was done on unseen Danish market price data for 2022. 
 %
 %We observed that load shifting was more profitable, but had a greater impact on the air and food temperatures in the freezer as opposed to mFRR that depends on the system state and bid price for activation.
 %
 %solution strategies for mFRR are presented: one with a simple policy and the other one with a dynamically updated policy. The proposed model accurately captures the timeline of decisions for bidding in manual frequency reserves.
 %by using McCormick relaxation.
-Examined on an out-of-sample simulation based on real Danish spot and balancing market prices in 2022, load shifting shows to be more profitable than mFRR provision, but is also more consequential for temperature deviations in the freezer.
+Examined on an ex-post simulation based on  Danish spot and balancing market prices in 2022, load shifting shows to be more profitable than mFRR provision, but is also more consequential for temperature deviations in the freezer. This indicates the need for regulatory measures by the Danish  system operator to make the provision of ancillary services more attractive to  flexible loads. 
 
 \section*{Keywords}
 
@@ -132,17 +135,17 @@ Demand-side flexibility; thermostatically controlled loads; supermarket freezer;
 \section{Introduction}
 
 
-Power consumers are looking to reduce costs by any means due to sky-rocketing energy and gas prices. In Denmark, supermarkets are especially exposed due to their high energy consumption, and they are actively looking into initiatives to reduce their electricity bill. One of these initiatives is the application of demand-side flexibility, whereby a supermarket can shift consumption in time when spot (day-ahead) prices are comparatively lower or when the power system needs up-regulation services. There are thousands of supermarkets in Denmark willing to provide flexibility, and their freezers are especially suited for this as they constitute a big share of their energy consumption.
+Power consumers are looking to reduce costs by any means due to sky-rocketing energy and gas prices. In Denmark, supermarkets are especially exposed due to their high energy consumption, and they are actively looking into initiatives to reduce their electricity bill. One of these initiatives is the application of demand-side flexibility \cite{Iacopo,towards}, whereby a supermarket can shift consumption in time when spot (day-ahead) prices are comparatively lower or when the power system needs up-regulation services. There are thousands of supermarkets in Denmark willing to provide flexibility, and their freezers are especially suited for this as they constitute a big share of their energy consumption.
 
 IBM is currently developing a software platform, called \textit{Flex Platform}, aiming to harness flexibility from industrial and commercial consumers for bidding in ancillary service markets via a Balance Responsible Party (BRP). One large supermarket chain in Denmark has already signed up for the \textit{Flex Platform}, and another supermarket chain is currently exploring the possibility of joining.
 While these supermarket chains are keen on the provision of flexibility, the estimation of their monetary benefit still remains an open question. We aim to address it by considering two potential ways for supermarkets to exploit their consumption flexibility: (\textit{i}) load shifting, and (\textit{ii}) the provision of manual Frequency Restoration Reserve (mFRR)
 %\footnote{The term will be used for the remainder of the paper and is equivalent to tertiary reserves.})
-services. We  develop  a stochastic optimization tool capturing the temperature dynamics and therefore consumption flexibility of supermarkets, and compute the monetary benefit of flexibility implemented via load shifting or mFRR service provision. We use two scenario generation  strategies: one using a five-day lookback on spot and balancing market prices in Denmark, and the other one using those price data in 2021. We then systematically compare these two strategies ex-post via an out-of-sample simulation based on price data in 2022.
+services. We  develop  a stochastic optimization tool capturing the temperature dynamics and therefore consumption flexibility of supermarkets, and compute the monetary benefit of flexibility implemented via load shifting or mFRR service provision. We use two scenario generation  strategies: one using a five-day lookback on spot and balancing market prices in Denmark, and the other one using those price data in 2021. We then systematically compare these two strategies ex-post via an out-of-sample simulation based on Danish price data in 2022.
 
 
 \subsection{Dilemma: Load Shifting Versus mFRR}
 %
-For power consumers who are actively looking into cost saving solutions, it is important to estimate the monetary benefit of flexibility. In Nord Pool, spot prices are announced at 2pm for the next day, so supermarkets who purchase power through a retailer at  spot prices, have a chance to shift their consumption plan for the next day, accordingly. From their perspective, it is natural to first look into load shifting as the most obvious and straightforward way to utilize flexibility. Here, load shifting simply refers to shifting consumption to another point in time, typically when spot prices are lower.
+For power consumers who are actively looking into cost saving solutions, it is important to estimate the monetary benefit of flexibility. In Nord Pool, spot prices are announced at 2pm for the next day, so supermarkets who purchase power through a retailer at  spot prices, have a chance to shift their consumption plan for the next day, accordingly. From their perspective, it is natural to first look into load shifting as the most obvious and straightforward way to utilize flexibility. Here, load shifting simply refers to shifting consumption to another point in time, typically when spot prices are lower \cite{shift}.
 
 Nevertheless, load shifting, although might be attractive individually, is not necessarily in  favor of the power system.
 If a significant number of consumers start to act similarly, it could be detrimental to the power system by moving the peak consumption to a different time of the day. In this case, spot prices are no longer reflecting supply-demand equilibrium, and the demand distribution over the day.
@@ -155,21 +158,25 @@ As an alternative option which is certainly in favor of the power system, consum
 
 In order for a supermarket freezer to deliver mFRR, it must be part of a larger portfolio with potentially many small assets to meet the minimum bid size requirement for entering the mFRR market. In Denmark, this minimum bid size is currently 5 MW, but it is expected to reduce to 1 MW in 2024. Furthermore, there might be additional synergy effects such as increased operational flexibility in the control response, rebound, and temperature deviations \cite{koch2011modeling}.
 
-For simplicity, we assume that one freezer delivering mFRR can be scaled to many freezers in the same way. Therefore,
+Without loss of generalization, we assume that one freezer delivering mFRR can be scaled to many freezers in the same way. Therefore,
 %(and likewise for load shifting).
-demand response for consumers participating in the mFRR market versus load shifting will  look similar. From the perspective of consumers, it is of great interest to explore the monetary benefit of mFRR versus load shifting. Similarly, it is important for TSOs to understand the incentive of consumers to provide mFRR services opposed to simply shifting load.
+demand response for consumers participating in the mFRR market versus load shifting will  look similar. From the perspective of consumers, it is of great interest to explore the monetary benefit of mFRR versus load shifting. Similarly, it is important for TSOs to understand the incentive of consumers to provide mFRR services opposed to simply shifting load in time.
 
 \subsection{Research questions and literature review}
 %
-This work aims to investigate and answer the following research questions: (\textit{i}) how can the flexibility of a supermarket freezer be characterized? (\textit{ii}) how much monetary benefit can be earned by the mFRR provision opposed to load shifting? and finally (\textit{iii})
-what are the pros and cons of participating in the mFRR market versus load shifting? Some of these questions have been  looked at  in the literature, so we provide a  literature review to pinpoint where new work is required, and how our work differs from the current literature.
+Using real data from Denmark, this work aims to investigate and answer the following three research questions: (\textit{i}) how can the flexibility of a supermarket freezer as a flexible load be characterized?
+(\textit{ii}) how much monetary benefit can this flexible load earn by the mFRR provision opposed to load shifting? and finally (\textit{iii})
+what are the pros and cons of participating in the Danish mFRR market versus load shifting? Unlike the second and third questions, the first one has been addressed extensively in the literature. Therefore, the following literature review focuses on the first question, where we also differentiate our work from the current literature. To the best of our knowledge, there is no  work in the existing literature addressing the second and third questions.  
+
+
+%we provide a  literature review to pinpoint where new work is required, and how our work differs from the current literature. 
 
 
 
 %Demand-side flexibility has been extensively studied.
 The approach taken in each study in the literature is very much dependent on the perspective from which flexibility is utilized. Often, full knowledge and control of all assets is assumed. A prevalent implicit assumption is that the aggregator and the trading entity are the same, with an exclusive business relationship to flexible consumers \cite{gade2022ecosystem}. The incentives and investments required for delivering flexibility for the flexible consumer are often overlooked as well. Many also assume an idealized market mechanism or simply propose a new mechanism for trading flexibility.
 
-In \cite{petersen2012eso2} and \cite{pedersen2013direct}, a complete white-box model of a supermarket refrigeration system is presented and validated against real-life data. It is also shown how such a system can provide demand response. This work serves as a  benchmark for any grey-box model of a supermarket refrigeration system. However, such an approach is hard to scale and requires complete knowledge of every refrigeration system. In \cite{pedersen2016improving}, a second-order model is used to model the food and air temperature in a freezer in an experimental setting. It is shown how food temperature has much slower dynamics than air temperature. In \cite{hao2014aggregate}, a simple first-order virtual battery model for a Thermostatically Controlled Load (TCL) is presented. This model also constitutes the starting point for modeling temperature dynamics in this work, as it has an intuitive interpretation. A similar bucket model is introduced in \cite{petersen2013taxonomy}.
+In \cite{petersen2012eso2} and \cite{pedersen2013direct}, a complete white-box model of a supermarket refrigeration system is presented and validated against real-life data. It is also shown how such a system can provide demand response. This work serves as a  benchmark for any grey-box model of a supermarket refrigeration system. However, such an approach is hard to scale and requires complete knowledge of every refrigeration system. In \cite{pedersen2016improving}, a second-order model is used to model the food and air temperature in a freezer in an experimental setting. It is shown how food temperature has much slower dynamics than air temperature. In \cite{hao2014aggregate}, a simple first-order virtual battery model for a thermostatically controlled load is presented. This model also constitutes the starting point for modeling temperature dynamics in this work, as it has an intuitive interpretation. A similar bucket model is introduced in \cite{petersen2013taxonomy}.
 
 In \cite{de2019leveraging}, a Mixed-Integer Linear Programming (MILP) problem  is developed to  address up- and down-regulation hours from a baseline consumption. It is assumed that the energy for down-regulation is equal to the energy not consumed when up-regulating. A similar approach is taken in our work, except we will define the use of down-regulation until the temperature state is (approximately) back to its setpoint.
 
@@ -181,18 +188,18 @@ In \cite{biegel2013electricity}, a portfolio of residential heat pumps is modele
 
 \subsection{Our contribution and outline}
 %
-To the best of our knowledge, no work has investigated the monetary value and incentives for providing mFRR services versus load shifting, although both have been studied extensively. This work aims to fill that gap by taking a holistic view on the incentives from the flexible consumer's perspective. Furthermore, when stating the objective functions for mFRR, most studies have assumed a simplified market structure, and neglect the fact that the aggregator and the consumer are not necessarily the same entity. We discuss the consequences of this assumption in relation to the market structure in Denmark \cite{gade2022ecosystem}, and in the context of mFRR and load shifting.
+To the best of our knowledge, no work has investigated the monetary value and incentives for providing mFRR services versus load shifting, although both have been studied extensively. This work aims to fill that gap by taking a holistic view on the incentives from the flexible consumer's perspective in Denmark. Furthermore, when stating the objective functions for mFRR, most studies have assumed a simplified market structure, and neglect the fact that the aggregator and the consumer are not necessarily the same entity. We discuss the consequences of this assumption in relation to the market structure in Denmark \cite{gade2022ecosystem}, and in the context of mFRR and load shifting.
 
 We provide a realistic model formulation of the mFRR bidding, taking into account the sequence of decisions needed to be made. We propose two solution strategies for mFRR bidding: (\textit{i}) A simple one learned using the Alternating Direction Method of Multipliers (ADMM) on 2021 price data which can be applied for all of 2022, and (\textit{ii}) A dynamic one which computes a new policy every day by looking at spot prices for the past five days. Real data of a supermarket freezer  in Denmark is used.
 
 
-The rest of the paper is organized as follows. Section \ref{sec:monetizing_flex} describes modeling a supermarket freezer as a TCL. Thereafter, mFRR and load shifting are described in detail and their objective functions are stated. Section \ref{sec:OptimizationModel} presents the proposed stochastic optimization problem.
+The rest of the paper is organized as follows. Section \ref{sec:monetizing_flex} describes modeling a supermarket freezer as a thermostatically controlled load. Thereafter, mFRR and load shifting are described in detail and their objective functions are stated. Section \ref{sec:OptimizationModel} presents the proposed stochastic optimization problem.
 %Furthermore, the two solution strategies for solving the optimization problem for mFRR are introduced. 
 Section \ref{sec:results} provides  results for a case study. Section \ref{sec:conclusion} concludes the paper. Finally, an Appendix provides the full model formulation.
 
-\section{Describing flexibility of a TCL}\label{sec:monetizing_flex}
+\section{Describing flexibility of a thermostatically controlled load}\label{sec:monetizing_flex}
 
-There are several ways to monetize flexibility from TCLs. In this section, we focus on mFRR and load shifting. First, we describe how to mathematically model a TCL as a flexible resource. Second, we describe how to monetize the flexibility from TCLs for mFRR and load shifting, and provide the objective functions in both cases. For mFRR, the objective function includes all costs and revenues for the BRP, while for load shifting, the objective function only includes the flexible demand's perspective. This approach explicitly shows the situation where flexible demand is activated without including the BRP, as this is more realistic.
+There are several ways to monetize flexibility from a Thermostatically Controlled Load (TCL). In this section, we focus on mFRR and load shifting. First, we describe how to mathematically model a TCL as a flexible resource. Second, we describe how to monetize the flexibility from TCLs for mFRR and load shifting, and provide the objective functions in both cases. For mFRR, the objective function includes all costs and revenues for the BRP, while for load shifting, the objective function only includes the flexible demand's perspective. This approach explicitly shows the situation where flexible demand is activated without including the BRP, as this is more realistic.
 
 \subsection{Modeling TCL as a flexible resource}
 %
@@ -466,7 +473,7 @@ This decomposes the original problem to a set of deterministic sub-problems, one
 The ADMM algorithm is iterative. The convergence happens when we achieve a consensus over sub-problems on first-stage  variables. Due to having binary variables in the original problem, this ADMM algorithm is eventually a heuristic \cite{hong2016convergence}, i.e., it may not converge to optimality. However, we have observed in a case with a limited number of scenarios for which we can also solve the original MILP problem directly, the proposed ADMM exhibits a satisfactory performance.
 
 
-\section{Numerical Results and Discussion}\label{sec:results}
+\section{Numerical results and discussion}\label{sec:results}
 
 We consider five models to calculate the operational (energy) cost of a single freezer, including three models where the freezer provides mFRR services, one model where the freezer shifts the load in response to spot prices, and the last model, the so-called \textit{base cost}, where the freezer neither shifts the load nor provides mFRR services. The data availability for these five models is summarized in
 Table \ref{tab:price_visibility}. All source codes and relevant data are publicly shared in \cite{code}.
@@ -552,24 +559,6 @@ In the case of mFRR  provision, it is   assumed that the entire revenue from res
 %All strategies are better than the baseline costs, i.e., not utilizing flexibility, with savings of 10-14\%. Furthermore, the mFRR strategies are not far off the theoretically best mFRR strategy as indicated by the oracle in Figure \ref{fig:cumulative_cost_comparison}.
 
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\columnwidth]{figures/spot_single_case.png}
-    \caption{Example of load shifting in a representative day (an in-sample scenario). \textbf{Top}: Baseline consumption of the freezer and the power profile after load shifting. \textbf{Middle}: Air and food temperature dynamics. \textbf{Bottom}: Spot market prices.}
-    \label{fig:fig_first_case}
-\end{figure}
-
-
-
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\columnwidth]{figures/mFRR_single_case.png}
-    \caption{Example of mFRR  provision  in a representative day (an in-sample scenario). \textbf{Top}: Reservation capacities and baseline power of the freezer. \textbf{Upper middle}: Air and food temperature dynamics. \textbf{Lower middle}: mFRR activation in this specific scenario, i.e., when $\lambda_{h}^{\rm{bid}} \leq \lambda_{h}^{\rm{b}}-\lambda_{h}^{\rm{s}}$, $\lambda_{h}^{\rm{b}} > \lambda_{h}^{\rm{s}}$, and $p^{\rm{r},\uparrow}_{h} > 0$. \textbf{Bottom}: Spot and balancing market price as well as regulating power bids in this specific scenario.}
-    \label{fig:fig_second_case}
-\end{figure}
-
-
 \subsection{Technical results}
 Fig. \ref{fig:fig_first_case} shows technical results for the case of load shifting in a representative day. For given spot prices (bottom plot), it is evident that the freezer shifts the load to low-price hours, especially in the later hours of the day (top plot). However, this has a remarkable effect on the air and food temperatures with large deviations from the normal set-point (middle plot), which in turn can have an impact on food degradation.
 
@@ -582,15 +571,39 @@ Fig. \ref{fig:fig_second_case} presents technical results for the case of mFRR  
 
 Our second main observation is as follows: Although the cost saving is higher for load shifting in comparison to mFRR  provision, it is directly proportional to the energy shifted, and therefore, the temperature deviation in the freezer. This is not the case for mFRR, as the reservation is not always activated.
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/spot_single_case.png}
+    \caption{Example of load shifting in a representative day (an in-sample scenario). \textbf{Top}: Baseline consumption of the freezer and the power profile after load shifting. \textbf{Middle}: Air and food temperature dynamics. \textbf{Bottom}: Spot market prices.}
+    \label{fig:fig_first_case}
+\end{figure}
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/mFRR_single_case.png}
+    \caption{Example of mFRR  provision  in a representative day (an in-sample scenario). \textbf{Top}: Reservation capacities and baseline power of the freezer. \textbf{Upper middle}: Air and food temperature dynamics. \textbf{Lower middle}: mFRR activation in this specific scenario, i.e., when $\lambda_{h}^{\rm{bid}} \leq \lambda_{h}^{\rm{b}}-\lambda_{h}^{\rm{s}}$, $\lambda_{h}^{\rm{b}} > \lambda_{h}^{\rm{s}}$, and $p^{\rm{r},\uparrow}_{h} > 0$. \textbf{Bottom}: Spot and balancing market price as well as regulating power bids in this specific scenario.}
+    \label{fig:fig_second_case}
+\end{figure}
+
+
+
+
 \section{Conclusion}\label{sec:conclusion}
 
+To balance the power grid and ensure its stability in the future, there is a need to integrate industrial and commercial flexible demands into existing ancillary services where mFRR is the most energy-intensive one. To that end, it is crucial to estimate and model flexibility from flexible demands, especially thermostatically controlled loads.
+
 We investigated how a supermarket freezer can provide flexibility for mFRR and load shifting in Denmark, and explored which one provides a greater monetary incentive for a flexible load. To this end, we used actual data  from a Danish supermarket. This was done by developing a second-order grey-box model of the temperature dynamics in the freezer with the food temperature as a latent state. In the state-space form, the model was directly incorporated as constraints into a two-stage stochastic MILP problem, whose objective is to maximize the monetary value from the freezer's flexibility. Two scenario generation strategies were implemented: one with a five-day lookback strategy on the spot and balancing market prices in DK2, and the other one  based on price data for those markets in 2021. For mFRR, we used a linear policy, and then linearized the conditions for activation via the McCormick relaxation method. For computational ease, we used an ADMM-based scenario decomposition technique.  An out-of-sample evaluation was done on unseen 2022 price data. We observed that load shifting is more profitable, but has a greater impact on the air and food temperatures in the freezer as opposed to mFRR that depends on the system state and bid price for activation.
+
+From a policy perspective, it is concerning if load shifting happens to be more profitable than mFRR provision. It might be of great interest for TSOs to ensure flexible demands have an incentive to deliver mFRR to ensure stability in the power grid and avoid new peaks and imbalances. Such incentives could manifest in green credits for providing emission free mFRR or an add-on to the mFRR reservation price. From the perspective of the flexible demand, periods of high volatility in spot prices can readily be used for load shifting although great care should be taken with respect to temperature deviations. Provision of mFRR is more attractive with respect to temperature deviations, but it is much more complicated to get started with mFRR whereas load shifting does not depend on other market participants, hence load shifting is a simple and profitable revenue stream for flexible demands.
 
 We made a set of simplifications and assumptions, whose impacts need to be explored for the future work. The revenue share of BRP and aggregator was not considered. This may change our finding that load shifting is more financially appealing to a flexible load. As mentioned earlier, a single freezer or supermarket must be part of a larger portfolio through an aggregator in order to participate in the mFRR market. Such an aggregated portfolio has some issues that are neglected here, such as the baseline estimation for verification of the demand response, allocation of profits within the portfolio, and an accurate capacity estimation of the whole portfolio that bids in the mFRR market. Furthermore, the European mFRR markets will change from a 60-minute resolution to a 15-minute market in the next few years \cite{MARI}. This makes it more feasible for TCLs to participate in the mFRR market, given their sensitivity to large temperature deviations, and the fact that TCLs can get a passive income when there is no up-regulation need in the power grid.
 
 \section*{Credit author statement}
-
-In this work, Peter Gade conceived and designed study, developed the code, and write the original paper. All authors read and approved the final manuscript.
+Peter Gade conceived and designed study, developed the code, and write the initial draft of the manuscript. All authors contributed considerably to developing the idea, thoroughly discussed the model, scenarios, numerical results, and policy insights, and also revised the final manuscript.
 
 \section*{Acknowledgement}
 
