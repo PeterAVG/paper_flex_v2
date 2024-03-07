@@ -13,11 +13,14 @@
 }
 \begin{document}
 \definecolor{RectangleColor}{RGB}{197,224,180}
+\definecolor{LightBlue}{RGB}{173, 216, 230}
 
 \begin{tikzpicture}[scale=0.75,every text node part/.style={align=center}]
 
-  \node[align=center, draw=none, fill=none, rotate=90] at (-0.5,4) {mFRR market};
-  \node[align=center, draw=none, fill=none, rotate=90] at (-0.5,0) {Load shifting};
+  % Legend box with LightBlue color
+  \node[draw, rectangle, fill=LightBlue, rounded corners=3pt, minimum width=3cm, minimum height=0.7cm, align=center] at (13.5,6) {\textbf{Load shifting}};  
+  % Legend box with RectangleColor
+  \node[draw, rectangle, fill=RectangleColor, rounded corners=3pt, minimum width=3cm, minimum height=0.7cm, align=center] at (9,6) {\textbf{mFRR market}};
 
   \draw[rounded corners, fill=RectangleColor, very thick] (0, 3) rectangle (4, 5) node[midway]{\Large mFRR \\ \Large bidding};
   \node at (2,2) {\Large  $p_{h}^{\rm{r},\uparrow}$};
@@ -30,7 +33,7 @@
   \node at (7,-2) {\Large D$-$1};
   \node at (7,-2.7) {\large (12:00pm)};
   \node[align=center, draw=none, fill=none, rotate=90] at (6.7,1.9) {Day-ahead market clearing};
-  \draw[rounded corners, fill=RectangleColor, very thick] (7.375, 1) rectangle (11.375, 3) node[midway]{\Large Load shifting};
+  \draw[rounded corners, fill=LightBlue, very thick] (7.375, 1) rectangle (11.375, 3) node[midway]{\Large Load shifting \\ \Large decision};
   \node at (9.375,0) {\Large  $p_{h}^{\text{Base}}$};
 
   \draw[rounded corners, fill=RectangleColor, very thick] (12, 3) rectangle (16, 5) node[midway]{\Large Regulating  \\ \Large power \\ \Large bidding};
