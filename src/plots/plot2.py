@@ -1,4 +1,4 @@
-#%% # noqa
+# %% # noqa
 import datetime
 from copy import deepcopy
 from typing import Any, Dict, Optional
@@ -37,13 +37,13 @@ def plot_spot_case_result() -> None:
     # Temperature dynamics
     w = -1
     x2 = np.array(list(range(96))) / 4
-    ax[1].plot(x2, information.t_c[w, :], label=r"$T^{c}_{t}$")
-    ax[1].plot(x2, information.t_f[w, :], label=r"$T^{f}_{t}$")
+    ax[1].plot(x2, information.t_c[w, :], label=r"$T^{c}_{t}$ (Chiller temperature)")
+    ax[1].plot(x2, information.t_f[w, :], label=r"$T^{f}_{t}$ (Food temperature)")
     # ax[1].plot(x2, information.t_c_base, label=r"$T^{c}_{t}$", alpha=0.5)
     # ax[1].plot(x2, information.t_f_base, label=r"$T^{f}_{t}$", alpha=0.5)
-    ax[1].plot(
-        x2, information.t_c_data, label="Measurements", color="black", linestyle=":"
-    )
+    # ax[1].plot(
+    #     x2, information.t_c_data, label="Measurements", color="black", linestyle=":"
+    # )
     ax[1].set_ylabel(r"Temperature [$^\circ$C]")
     ax[1].legend(loc="upper right")
     # ax[1].set_xlabel("Time [h]")
@@ -51,8 +51,21 @@ def plot_spot_case_result() -> None:
     # power dynamics
     _pt = information.pt[w, :]
 
-    ax[0].step(x, information.p_base, label=r"$P^{B}_{h}$", color="black", where="post")
-    ax[0].step(x, _pt, label=r"$p_{h}$", color="black", linestyle="--", where="post")
+    ax[0].step(
+        x,
+        information.p_base,
+        label=r"$P^{B}_{h}$ (Baseline power)",
+        color="black",
+        where="post",
+    )
+    ax[0].step(
+        x,
+        _pt,
+        label=r"$p_{h}$ (Actual power)",
+        color="black",
+        linestyle="--",
+        where="post",
+    )
     # ax[0].set_xlabel("Time [h]")
     ax[0].set_ylabel("Power [kW]")
     ax[0].legend(loc="upper left")
@@ -60,7 +73,7 @@ def plot_spot_case_result() -> None:
     ax[2].step(
         x,
         information.lambda_spot[w, :],
-        label=r"$\lambda_{h}^{s}$",
+        label=r"$\lambda_{h}^{s}$ (Day-ahead price)",
         color="red",
         where="post",
     )
@@ -69,7 +82,7 @@ def plot_spot_case_result() -> None:
     ax[2].set_xlabel("Time [h]")
 
     # plt.rcParams.update({"font.size": 14})
-    _set_font_size(ax, legend=20)
+    _set_font_size(ax, misc=22, legend=18)
     plt.tight_layout()
 
     plt.savefig("tex/figures/spot_single_case", dpi=300)
@@ -96,22 +109,26 @@ def plot_mFRR_case_result() -> None:
     ax[0].step(x, y, color="black", linestyle="--", where="post")
     ax[0].set_ylabel("Power [kW]")
     ax[0].legend(
-        [r"$P^{Base}_{h}$", r"$P^{Base}_{h} - p^{r,\uparrow}_{h}$"],
-        loc="best",
+        [
+            r"$P^{Base}_{h}$ (Baseline power)",
+            r"$P^{Base}_{h} - p^{r,\uparrow}_{h}$ (Reservated capacity)",
+        ],
+        loc="upper left",
     )
+    ax[0].set_ylim(-0.1, 1.65 * information.p_base.max())
 
     # Temperature dynamics
     w = -1
     # _w = information.lambda_rp.shape[0]
     x2 = np.array(list(range(96))) / 4
     # ax[1].set_title("Scenario {}".format(w))
-    ax[1].plot(x2, information.t_c[w, :], label=r"$T^{c}_{t}$")
-    ax[1].plot(x2, information.t_f[w, :], label=r"$T^{f}_{t}$")
+    ax[1].plot(x2, information.t_c[w, :], label=r"$T^{c}_{t}$ (Chiller temperature)")
+    ax[1].plot(x2, information.t_f[w, :], label=r"$T^{f}_{t}$ (Food temperature)")
     # ax[1].plot(x2, information.t_c_base, label=r"$T^{c}_{t}$", alpha=0.5)
     # ax[1].plot(x2, information.t_f_base, label=r"$T^{f}_{t}$", alpha=0.5)
-    ax[1].plot(
-        x2, information.t_c_data, label="Measurements", color="black", linestyle=":"
-    )
+    # ax[1].plot(
+    #     x2, information.t_c_data, label="Measurements", color="black", linestyle=":"
+    # )
     # ax[1].plot(x2, t_f[w, :], label="TcFood")
     ax[1].set_ylabel(r"Temperature [$^\circ$C]")
     ax[1].legend(loc="best")
@@ -123,14 +140,14 @@ def plot_mFRR_case_result() -> None:
     ax[2].step(
         x,
         information.p_base,
-        label=r"$P^{Base}_{h}$",
+        label=r"$P^{Base}_{h}$ (Baseline power)",
         color="black",
         where="post",
     )
     ax[2].step(
         x,
         _pt,
-        label=r"$P^{Base}_{h} - p^{b,\uparrow}_{h} + p^{b,\downarrow}_{h}$",
+        label=r"$P^{Base}_{h} - p^{b,\uparrow}_{h} + p^{b,\downarrow}_{h}$ (Actual power)",
         color="black",
         linestyle="--",
         where="post",
@@ -138,12 +155,12 @@ def plot_mFRR_case_result() -> None:
     # ax[2].set_xlabel("Time [h]")
     ax[2].set_ylabel("Power [kW]")
     # ax[2].set_title("Scenario {}".format(w))
-    ax[2].legend(loc="best")
+    ax[2].legend(loc="best")  # , bbox_to_anchor=(1, 0.5))
 
     ax[3].step(
         x,
         information.lambda_spot[w, :],
-        label=r"$\lambda_{h}^{s}$",
+        label=r"$\lambda_{h}^{s}$ (Day-ahead price)",
         color="red",
         where="post",
     )
@@ -151,22 +168,23 @@ def plot_mFRR_case_result() -> None:
     ax[3].step(
         x,
         information.lambda_rp[w, :],
-        label=r"$\lambda_{h}^{b}$",
+        label=r"$\lambda_{h}^{b}$ (Balancing price)",
         color="blue",
         where="post",
     )
     ax[3].step(
         x,
         information.lambda_spot[w, :] + information.lambda_b[w, :],
-        label=r"$\lambda_{h}^{bid} + \lambda_{h}^{s}$",
+        label=r"$\lambda_{h}^{bid} + \lambda_{h}^{s}$ (Bid price)",
         color="orange",
         where="post",
     )
-    ax[3].legend(loc="best")
     ax[3].set_ylabel("Price [DKK/kWh]")
     ax[3].set_xlabel("Time [h]")
+    ax[3].legend(loc="best", ncol=3)
+    ax[3].set_ylim(-0.1, 1.1 * information.lambda_rp.max())
     # plt.rcParams.update({"font.size": 20})
-    _set_font_size(ax, legend=20)
+    _set_font_size(ax, misc=22, legend=16)
     plt.tight_layout()
     plt.savefig("tex/figures/mFRR_single_case", dpi=300)
 
@@ -342,17 +360,21 @@ def admm_scenarios() -> None:
     is_total_cost = [v[-1].total_cost for _, v in is_admm_experiments]
     oos_nb = [p["nb_scenarios_spot"] for p, _ in oos_admm_experiments]
     oos_total_cost = [
-        v[1].total_cost
-        if not isinstance(v[1], list)
-        else average_opt_results(v[1]).total_cost
+        (
+            v[1].total_cost
+            if not isinstance(v[1], list)
+            else average_opt_results(v[1]).total_cost
+        )
         for _, v in oos_admm_experiments
     ]
 
     is_base_cost = [v[-1].base_cost_today for _, v in is_admm_experiments]
     oos_base_cost = [
-        v[1].base_cost_today
-        if not isinstance(v[1], list)
-        else average_opt_results(v[1]).base_cost_today
+        (
+            v[1].base_cost_today
+            if not isinstance(v[1], list)
+            else average_opt_results(v[1]).base_cost_today
+        )
         for _, v in oos_admm_experiments
     ]
 
@@ -397,6 +419,70 @@ def admm_scenarios() -> None:
     _set_font_size(ax, legend=20)
     plt.tight_layout()
     plt.savefig("tex/figures/admm_nb_scenarios_effect.png", dpi=300)
+
+
+def plot_lookback_sensitivity() -> None:
+    def verify(params: Dict[str, Any]) -> bool:
+        return params["analysis"] == "analysis3" and params.get("lookback")
+
+    cache = load_cache()
+    _lookbacks = [(eval(p), v) for p, v in cache.items() if verify(eval(p))]
+    assert len(_lookbacks) == 7, "We expect only 7 experiments (lookback)"
+
+    def get_is_costs(experiment):
+        return sum([v.total_cost for v in experiment[1][0]])
+
+    def get_oos_costs(experiment):
+        return sum([v.total_cost for v in experiment[1][1]])
+
+    def get_base_costs(experiment):
+        return sum([v.base_cost_today for v in experiment[1][1]])
+
+    is_cost = [get_is_costs(experiment) for experiment in _lookbacks]
+    oos_cost = [get_oos_costs(experiment) for experiment in _lookbacks]
+    oos_base_cost = [get_base_costs(experiment) for experiment in _lookbacks]
+    lookback_scenarios = [experiment[0]["lookback"] for experiment in _lookbacks]
+    assert (
+        len(is_cost) == len(oos_cost) == len(lookback_scenarios) == len(oos_base_cost)
+    )
+
+    # now plot
+    fig, ax = plt.subplots(1, 1, figsize=(12, 8))
+    ax.plot(
+        lookback_scenarios,
+        is_cost,
+        label="In-sample",
+        linestyle="-",
+        linewidth=1,
+        marker="o",
+        markersize=1,
+        color="red",
+    )
+    ax.plot(
+        lookback_scenarios,
+        oos_cost,
+        label="Out-of-sample",
+        linestyle="--",
+        linewidth=1,
+        marker="s",
+        markersize=1,
+        color="blue",
+    )
+    ax.plot(
+        lookback_scenarios,
+        oos_base_cost,
+        label="Base cost",
+        linestyle="-",
+        linewidth=1.8,
+        color="black",
+    )
+    ax.set_xlabel("Lookback")
+    ax.set_ylabel("Total cost [DKK]")
+    ax.legend(loc="best")
+    _set_font_size(ax, legend=18)
+    plt.tight_layout()
+    plt.savefig("tex/figures/lookback_sensitivity.png", dpi=300)
+    plt.show()
 
 
 def receding_horizon_scenarios() -> None:
@@ -516,9 +602,10 @@ def receding_horizon_scenarios() -> None:
 
 
 def main() -> None:
-    admm_vs_normal_solution()
-    admm_scenarios()
-    receding_horizon_scenarios()
+    # admm_vs_normal_solution()
+    # admm_scenarios()
+    # plot_lookback_sensitivity()
+    # receding_horizon_scenarios()
     plot_spot_case_result()
     plot_mFRR_case_result()
 

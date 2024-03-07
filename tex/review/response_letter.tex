@@ -1,0 +1,346 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+% \ifCLASSINFOpdf
+% \else
+% \fi
+% \hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{calc}
+\usetikzlibrary{angles, quotes}
+\usepackage{enumitem}
+\usepackage{subfigure}
+\usepackage{rotate}
+\usepackage{fontawesome}
+\usepackage{amsthm}
+\usepackage{todonotes}
+\usepackage{makecell}
+\usepackage{bbm}
+\usepackage{float}
+\usepackage[noadjust]{cite}
+\usepackage{array}
+\usepackage{balance}
+\usepackage[bb=boondox]{mathalfa}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+% \doublespacing
+\setlength{\parskip}{12pt}
+\setlength{\parindent}{0pt}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{bm}
+\usepackage{ulem}
+
+\floatstyle{ruled}
+\newfloat{model}{thp}{lop}
+\floatname{model}{Model}
+\newcounter{models}
+
+
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{condition}{Condition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{property}{Property}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+
+% Helpers
+\newcommand{\minimize}[1]{\underset{{#1}}{\text{min}}}
+\newcommand{\maximize}[1]{\underset{{#1}}{\text{max}}}
+\newcommand{\fat}[1]{\boldsymbol{#1}}
+\newcommand{\centerit}[1]{\begin{center}{#1}\end{center}}
+\newcommand{\braceit}[1]{\left({#1}\right)}
+\usepackage{euscript}
+\newcommand{\set}{\EuScript}
+\usepackage{mathtools}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\normtwo}[2]{#1\lVert#2#1\rVert}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=0.5pt] (char) {\footnotesize{#1}};}}
+\newcommand\mydots{\hbox to 0.75em{.\hss.\hss.}}
+\newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
+\tikzset{myarr/.style={{Circle[black,length=4pt]}-{Circle[black,length=4pt]},shorten <=-2.5pt,shorten >=-2.5pt}}
+\newcommand{\squeezeup}{\vspace{-8mm}}
+\DeclareMathSymbol{\shortminus}{\mathbin}{AMSa}{"39}
+\newcommand{\mysum}[1]{\underset{{{#1}}}{\textstyle\sum}}
+\DeclareMathOperator*{\OPF}{\mathcal{O}}
+
+
+% make optimal notation
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+\newcommand{\optimal}[1]{\oset{\scalebox{.6}{$\star$}}{#1}}
+\newcommand{\loss}{{\scriptstyle\Delta}c}
+
+% colors
+\definecolor{maincolor}{HTML}{032F99}
+\definecolor{blue}{RGB}{31,64,122}
+\definecolor{red}{HTML}{e05a87}
+%\definecolor{maincolor}{HTML}{00796b}    %teal
+\definecolor{secondcolor}{HTML}{ff5722} % dark orange
+\definecolor{thirdcolor}{HTML}{bf360c}
+\definecolor{newtextcolor}{HTML}{bf360c}
+\newcommand{\nt}[1]{\textcolor{newtextcolor}{#1}}
+\newcommand{\crtl}[1]{\textcolor{secondcolor}{#1}}
+\newcommand{\auth}{\textbf{Authors response: }}
+\newcommand{\changes}{\textbf{Changes to the manuscript: }}
+
+% Nice color sets, see see http://colorbrewer2.org/
+\usepgfplotslibrary{colorbrewer}
+% initialize Set1-4 from colorbrewer (we're comparing 4 classes),
+% \pgfplotsset{compat = 1.15}
+\pgfplotsset{compat = 1.15, cycle list/Set1-8}
+% Tikz is loaded automatically by pgfplots
+\usetikzlibrary{pgfplots.statistics}
+% provides \pgfplotstabletranspose
+\usepackage{pgfplotstable}
+
+
+\usepackage[colorlinks=true, citecolor=green!50!black, linkcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+
+\begin{document}
+
+\begin{center}
+  \Large{\textbf{Response Letter to Paper EPSR-D-24-00414 \\ Load Shifting Versus Manual Frequency Reserve: Which One is More Appealing to Flexible Loads?}} \\
+  \vspace{0.2cm}
+  \small{By Peter~Gade,
+    Trygve~Skjøtskift,
+    Henrik~Bindner,
+    and~Jalal~Kazempour} \\
+\end{center}
+
+\begingroup
+\allowdisplaybreaks
+
+
+\textbf{\large{Response to the Editor}}
+
+
+\textbf{General comment:} \textit{[...] The research results reported are too premature for publication. More work is needed to substantiate the conclusions in your manuscript.}
+
+\auth Thank you for recognizing the merits of our submission and for the opportunity to revise it. In the following document, we provide detailed responses to the comments from the Reviewers and describe the changes made to the manuscript to address them. All corrections and clarifications to the manuscript are presented in \nt{red} color. The major changes are summarized below:
+
+\begin{itemize}
+  \item Reviewers 1 and 3 raised questions and requested clarifications about the number of scenarios used in the mFRR lookback strategy.
+
+  \item Reviewers 1 and and requested clarifications about the various energy prices used in the case studies.
+
+  \item Reviewer 2 requested clarifications regarding the phrase \textit{flexible load} we use to describe a load that can shift its power consumption in time.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%
+% REVIEWER 1
+%%%%%%%%%%%%%%%%
+\newpage
+\section{Response to Reviewer 1}
+
+\subsection{Summary Comment} \textit{This paper builds a mixed-integer linear program to maximize the flexibility value of the freezer and analyzes the demand-side flexibility provision in two forms of manual Frequency Restoration Reserve (mFRR) services and load shifting. However, there are some aspects of the content that require further explanation. The detailed comments are listed as follows.}
+
+\auth We thank the reviewer for thoughtful and constructive feedback on our paper. We appreciate your insights and will carefully address the points you've raised to enhance the clarity and depth of our content. We have devoted our attention to justifying the number of scenarios used in our mFRR lookback strategy.
+
+Further, we address the Specific Comments in the following.
+
+\subsection{Specific Comments}
+\textbf{Comment 1:} \textit{Why did the assumption that the Balance Responsible Party is not uncertain about the mFRR market price? This assumption makes the model of load shifting deterministic, increasing the gap between the model and reality.}
+
+\auth For load shifting, day-ahead prices are known beforehand and consumers are directly exposed to those. That is the case for Europe as opposed to North America where retailers might impose additional time-of-use prices. Thus, in Denmark, the electricity price is known 12-36 hours in advance which is in accordance with how we model load shifting. We have made changes to make it clear that day-ahead prices are known beforehand (see below). Furthermore, the mFRR reservation market price is not uncertain in our model, but in reality is is (as a result of a uniform clearing auction). However, it remains very stable and the main source of uncertainty relates to the activation of mFRR which we indeed model. Hence, our goal is to compare mFRR with uncertain activation and load shifting with has no uncertainty.
+
+\changes We have added the following sentence in the revised manuscript (p.9, Section 2.3) to clarify electricity prices used for load shifting:
+
+\nt{We note that in Europe and Denmark, day-ahead prices are directly exposed to consumers with no time-of-use price in between as is often the practice in North America.}
+
+\textbf{Comment 2:} \textit{There are different numbers of scenarios in the two mFRR cases, which would affect the comparability of the two cases. Please make some revisions to ensure that the comparison cases have the same number of scenarios.}
+
+\auth Thanks for the comment. It's a good and valid observation. First of all, the purpose of the ADMM strategy is to present a simple, i.e., fixed policy that an aggregator can use to bid for all of 2022 without ever having to run a daily optimization. Such a policy is practical and appealing to real-life aggregators whereas a lookback policy might be better, especially in case of non-stationarity, but more complicated to implement and incorporate in daily operations. None of this was mentioned in our manuscript, hence we have added some sentences to clarify (see below).
+
+Second, during the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+
+\changes Regarding the first item mentioned with the real-life practicality of a fixed policy (ADMM solution strategy) vs the more complicated lookback strategy, we have added the following to (p.10, Section 3.2):
+
+\nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary.}
+
+Regarding the second item with the sensitivity analysis, we have added the following statement immediately after the above addition:
+
+\nt{The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
+
+\textbf{Comment 3:} \textit{Please add text annotations to the legend to improve the legibility of Fig.7 and Fig. 8. Additionally, does the "measurements" mean the real measurements in Fig. 7 and Fig. 8? Why is there a big difference between the curve of measurements and the curve of simulated results? Is this phenomenon due to inaccurate modeling or unreasonable assumptions? Could you narrow the difference?}
+
+\auth Thanks for the comment. We have made changes to figures 7 and 8, accordingly, by adding descriptive names in parenthesis to the legends. For example: $P_{h}^{\text{Base}}$ \textit{(Baseline power)}. The measurements are real-life data as shown in Figure 3. The point of the measurements in Figure 3 is to show how our state-space model is able to simulate reality, i.e., the measurements, to a satisfactory degree. In Section 2.1.3 (\textit{Model validation}), we explain how our state-space model fits the measurements, and how it is able to simulate freezer temperatures for a whole day. To achieve a better performance, i.e., a narrower difference to the measurements, requires even more sophisticated modelling techniques and is perhaps difficult to achieve given the current data provided. For example, there are a lot of uncertain events like people opening the lids to the freezers causing temperature drops. The important element with the state-space models used here is that they capture the most fundamental physics and dynamics from which one can directly use within an optimization model. However, we concede that it is confusing to also show the measurements in Figures 7 and 8. We have therefore removed them from those figures.
+
+% \changes ...
+
+
+%%%%%%%%%%%%%%%%%
+% REVIEWER 2
+%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Response to Reviewer 2}
+
+\subsection{Summary Comments} \label{rl_sec:rev2_summary_comms}
+
+\textit{This paper investigates the economic potential of thermostatically controlled loads participating in load shifting and manual frequency reserve. [...] I hope my comments help the authors to improve their work. }
+
+\auth We sincerely appreciate your insightful review of our paper. Your feedback is invaluable as we explore the economic potential of thermostatically controlled loads, a characterization we agree with as opposed to the more general term, \textit{flexible load}, as we used before but has now changed. Your feedback in particular also prompted us to look at similar literature of prosumers (within this context) while also redesigning our figures of the mFRR market and load shifting within the report. Thank you for your time and thoughtful considerations.
+
+Further, we address the Specific Comments in the following.
+
+\textbf{Comment 1:} \textit{Title: I suggest modifying the title: "Load Shifting Versus Manual Frequency Reserve: Which One is More Appealing to Thermostatically Controlled Loads in Denmark?". The paper is only focused on a case study in Denmark. The conclusions may be different in other countries and markets. In addition, flexible loads can include many types of loads, such as washers, electric vehicles, pumps, and so on. The authors only model a supermarket freezer in their studies.}
+
+\auth Thank you for comment. We agree that \textit{flexible load} is too broad a term and it is better to use thermostatically controlled loads.
+
+\changes The title of the manuscript has been changed as follows:
+
+\nt{Load Shifting Versus Manual Frequency Reserve:  Which One is More Appealing to Thermostatically Controlled Loads in Denmark?}
+
+\textbf{Comment 2:} \textit{Abstract: The use of a supermarket freezer as a representative flexible load is ok. But, trying to generalize the results for all types of flexible loads, as suggested by the title, is not ok. As mentioned above, flexible loads can include many types of loads. None of the other loads were studied in this paper. I strongly suggest replacing flexible loads with thermostatically controlled loads.}
+
+\auth Thank you for your comment. As before, we agree and we will make sure to replace all instances of \textit{flexible load} with \textit{thermostatically controlled load}
+
+\changes The manuscript has been changes everywhere where \textit{flexible load} occurs which has been replaced with \nt{thermostatically controlled load} instead for the first instance and \nt{TCL} for all subsequent occurrences. This includes for the whole manuscript, including the abstract and all sections.
+
+\textbf{Comment 3:} \textit{Overall paper: It is well written.}
+
+\auth Thank you.
+
+\textbf{Comment 4:} \textit{Section 1: It is not clear to me the context of load shifting in section 1. Is load shifting made considering spot energy prices or retail prices (potentially mimicking spot prices)? Please make this clear in section 1.}
+
+\auth Thanks for the feedback. In Europe and in the Nordics, the day-ahead price (spot price) is directly exposed to consumers, i.e., there is no time-of-use price in between via retailers. This is indeed not clear in our manuscript.
+
+\changes Therefore, we have made the following changes to the manuscript (p.9, Section 2.3) by adding:
+
+\nt{We note that in Europe and Denmark, day-ahead prices are directly exposed to consumers with no time-of-use price in between as is often the practice in North America.}
+
+\textbf{Comment 5:} \textit{Section 1.3: I struggled to identify novel research contributions, but I found the discussion of the paper interesting. For instance, there are papers in the literature that studied the participation of aggregators of prosumers (with flexible loads) in both energy and tertiary reserve (mFRR) markets using two-stage stochastic optimization models. My point is that this type of study exists in literature, however in different contexts and markets. This deserves to be discussed in the paper.}
+
+\auth It is indeed the case that similar studies exist albeit under different settings and with different assumptions, especially around the level of knowledge assumed from an aggregator perspective which, in our case, is quite unique and directly reflects an actual aggregator in Denmark with incumbent market rules.
+
+\changes We have extended our literature review in the manuscript (p.4, Section 1.2) with the following:
+
+\nt{Similar studies exist in the literature albeit in different settings. For example, [20] uses a two-stage stochastic optimization for prosumers to bid into tertiary reserves, i.e., mFRR. A similar approach is taken in [21] although with a focus on scalability to thousands of assets and distribution of flexibility amongst prosumers. In [22], the authors show how batteries can be used to provide secondary reserves. TCLs have also been investigated for provision of primary reserves, i.e., frequency reserves, in the Nordics [23], in microgrids [24], and in the Australian power grid [25]}
+
+\textbf{Comment 6:} \textit{Section 2 and 3: The math looks ok.}
+
+\auth Thank you.
+
+\textbf{Comment 7:} \textit{Section 4: The mFRR models also consider energy prices. Therefore, they also consider some load shifting. Please explain why the discussion is framed as load shifting vs mFRR since load shifting is apparently included in mFRR models. In my opinion, this part deserves a better explanation.}
+
+\auth Thanks, the original manuscript was not clear on this point. The energy price is only a variable in the load shifting optimization, not in the mFRR optimization. It was only included in the mFRR model eq.(2) for cost comparison to load shifting.
+
+\changes To make it more clear, we have changed several things: (i) Merged Figures 4 and 5 into one figure showing the variables for both mFRR and load shifting, respectively.(ii) revised section 2.2, 2.3, and 3.1 to accommodate those changes. Furthermore, eq.(2) has been changes such that the energy cost term is not present, but we mention it immediately after:
+
+\begin{align}\label{eq:mFRRObjective}
+  % & \underbrace{C(\rm{cost})}_{\rm{mFRR}} = - \underbrace{\sum_{h=1}^{24}
+  \nt{\underbrace{\sum_{h=1}^{24}\lambda_{h}^{\rm{r}} p^{\rm{r}, \uparrow}_{h}}_{\textrm{Reservation payment}} + \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\uparrow}_{h}}_{\textrm{Activation payment}} - \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\downarrow}_{h}}_{\textrm{Rebound cost}} - \underbrace{ \sum_{h=1}^{24}  \lambda^{\rm{p}}s_{h}}_{\textrm{Penalty cost}}
+  }
+\end{align}
+
+\nt{
+We note that an additional term containing fixed energy cost is subtracted from \eqref{eq:mFRRObjective}, i.e., $\sum_{h=1}^{24} \lambda^{\rm{s}}_{h}P^{\rm{Base}}_{h}$. This term contains $\lambda^{\rm{s}}_{h}$ and $P^{\rm{Base}}_{h}$, which are both parameters, and therefore, can be omitted from the objective function. However, we include it for cost comparison with load shifting.
+}
+
+\textbf{Comment 8:} \textit{Sections 4 and 5: Please explain the following sentence "From a policy perspective, it is concerning if load shifting happens to be more profitable than mFRR provision." based on the results of Figure 6. The 2022-09 cumulative costs of mFRR (red) and load shifting are almost the same in Figure 6. How can the authors derive this conclusion based on the results?}
+
+\auth Thanks for the feedback. You are right, instead it is better to rephrase it. Load shifting is almost as least as profitable as mFRR during the whole of 2022. Combined with the fact that the TCL in reality has to split the mFRR revenue with an aggregator and/or balance responsible party, we argue that is concerning for transmission system operator since load shifting is very easy to get started with and fairly profitable.
+
+\changes We have made the following changes to the manuscript (p.17, Section 5) as highlighted in red:
+
+[...]From a policy perspective, it is concerning if load shifting happens to be \nt{almost as} profitable \nt{as} mFRR provision.[...]
+
+
+%%%%%%%%%%%%%%%%%
+% REVIEWER 3
+%%%%%%%%%%%%%%%%
+\newpage
+\section{Response to Reviewer 3}
+
+\subsection{Summary Comment} \textit{I think the topic is quite interesting, the text is easy to read, and the English is quite good also. By reading the text I had some questions, that later I found as future works in the conclusions.}
+
+\auth Thank you for your positive feedback and for highlighting the clarity and readability of our paper. We're glad to hear that you found the topic interesting and the language accessible. We also appreciate your engagement with our work and attention to details and inconsistencies in our references. Your main question regarding our scenario approach highlighted a need to clarify and justify this in more detail. We hope our response, outlining the details around our sensitivity analysis on the number of scenarios used, provides satisfactory.
+
+\subsection{Specific Comments}
+
+Further, we address the Specific Comments in the following.
+
+\textbf{Comment 1:} \textit{I think the paper is quite fine in general. My only concern is regarding the scenario generation (Section 3.2). Please, provide more details on the 5 days look back strategy.}
+
+\auth Thanks for the comment. It's a good and valid observation. During the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+
+\changes We have made the following changes to the manuscript (p.10, Section 3.2):
+
+\nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary. The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
+
+
+\textbf{Comment 2 (minor comments):} \textit{
+  \begin{itemize}
+    \item In [9], [10], [11], and [11], residential air...
+    \item In the Reference section: "[2] Peter AV Gade..." $->$ "[2] Peter A.V. Gade..."; "[7] Mette K Petersen..." $->$ "[7] Mette K. Petersen..." and so on ([1], [11], [23])
+  \end{itemize}
+}
+
+\auth We have made changes to compress references into once citation bracket and fixed the inconsistencies in the references.
+
+\changes The following changes have been made to the manuscript:
+
+\begin{itemize}
+  \item \nt{In [9, 10, 11]}
+  \item The reference section uses \nt{Peter A.V. Gade}, \nt{Mette K. Petersen}, \nt{Rachel L. Moglen}, \nt{Johanna L. Mathieu}, and \nt{ Manuel A. Matos}  consistently now.
+\end{itemize}
+
+% ###### Bibliography ######
+
+\newpage
+\begin{thebibliography}{1}
+  \providecommand{\natexlab}[1]{#1}
+  \providecommand{\url}[1]{\texttt{#1}}
+  \providecommand{\urlprefix}{URL}
+
+
+  % \bibitem[Iria et al.(2018)]{iria2018trading}Iria, Jose P, Soares, Filipe Joel, \& Matos, Manuel A. Trading small prosumers flexibility in the energy and tertiary reserve markets. \textit{IEEE transactions on smart grid}, 10(3), 2371--2382 (2018).
+
+  % \bibitem[La Bella et al.(2021)]{la2021mixed}La Bella, Alessio, Falsone, Alessandro, Ioli, Daniele, Prandini, Maria, \& Scattolini, Riccardo. A mixed-integer distributed approach to prosumers aggregation for providing balancing services. \textit{International Journal of Electrical Power \& Energy Systems}, 133, 107228 (2021).
+
+  % \bibitem[Nitsch et al.(2021)]{nitsch2021economic}Nitsch, Felix, Deissenroth-Uhrig, Marc, Schimeczek, Christoph, \& Bertsch, Valentin. Economic evaluation of battery storage systems bidding on day-ahead and automatic frequency restoration reserves markets. \textit{Applied Energy}, 298, 117267 (2021).
+
+  % \bibitem[Paridari \& Nordström(2020)]{paridari2020flexibility}Paridari, Kaveh, \& Nordstr{\"o}m, Lars. Flexibility prediction, scheduling and control of aggregated TCLs. \textit{Electric Power Systems Research}, 178, 106004 (2020).
+
+  % \bibitem[Mendieta \& Ca{\~n}izares(2020)]{mendieta2020primary}Mendieta, William, \& Ca{\~n}izares, Claudio A. Primary frequency control in isolated microgrids using thermostatically controllable loads. \textit{IEEE Transactions on Smart Grid}, 12(1), 93--105 (2020).
+
+  % \bibitem[Attarha et al.(2020)]{attarha2020network}Attarha, Ahmad, Scott, Paul, \& Thi{\'e}baux, Sylvie. Network-aware co-optimisation of residential DER in energy and FCAS markets. \textit{Electric Power Systems Research}, 189, 106730 (2020).
+
+  % \bibitem[Schaperow et al.(2019)]{schaperow2019simulation}Schaperow, Jacob R, Gabriel, Steven, Siemann, Michael, \& Crawford, Jaden. A simulation-based model for optimal demand response load shifting: A case study for the {T}exas power market. \textit{Journal of Energy Markets}, 12(4), 53--80 (2019).
+
+  % \bibitem[Chanpiwat et al.(2020)]{chanpiwat2020using}Chanpiwat, Pattanun, Gabriel, Steven A, Moglen, Rachel L, \& Siemann, Michael J. Using Cluster Analysis and Dynamic Programming for Demand Response Applied to Electricity Load in Residential Homes. \textit{ASME Journal of Engineering for Sustainable Buildings and Cities}, 1(1), 011006 (2020). Publisher: American Society of Mechanical Engineers Digital Collection.
+
+  % \bibitem[Moglen et al.(2023)]{moglen2020optimal}Moglen, Rachel L, Chanpiwat, Pattanun, Gabriel, Steven A, \& Blohm, Andrew. Optimal thermostatically-controlled residential demand response for retail electric providers. \textit{Energy Systems}, 14, 641--661 (2023). Publisher: Springer.
+
+
+
+\end{thebibliography}
+
+\endgroup
+\end{document}

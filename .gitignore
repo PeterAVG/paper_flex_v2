@@ -154,3 +154,5 @@ tex/figures/*.out
 
 # old cache
 src/experiments/cache/cache_old.pkl
+
+poetry.lock
