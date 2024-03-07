@@ -197,7 +197,7 @@ We provide a realistic model formulation of the mFRR bidding, taking into accoun
 
 The rest of the paper is organized as follows. Section \ref{sec:monetizing_flex} describes modeling a supermarket freezer as a thermostatically controlled load. Thereafter, mFRR and load shifting are described in detail and their objective functions are stated. Section \ref{sec:OptimizationModel} presents the proposed stochastic optimization problem.
 %Furthermore, the two solution strategies for solving the optimization problem for mFRR are introduced. 
-Section \ref{sec:results} provides  results for a case study. Section \ref{sec:conclusion} concludes the paper. Finally, an Appendix provides the full model formulation.
+Section \ref{sec:results} provides  results for a case study. Section \ref{sec:conclusion} concludes the paper. Finally, \textcolor{red}{Appendix A} provides the full model formulation.
 
 \section{Describing flexibility of a thermostatically controlled load}\label{sec:monetizing_flex}
 
@@ -390,7 +390,7 @@ the regulating power bid $\lambda_{h,\omega}^{\rm{bid}}$ and the set of real-tim
 
 
 \subsection{Scenario generation}\label{sec:scenario_generation}
-To make decisions on reservation capacity $p_{h}^{\rm{r},\uparrow}$ and regulating power bid $\lambda_{h,\omega}^{\rm{bid}}$, we generate a set of scenarios $\omega \in \Omega$ for spot and balancing price data., i.e., $ \lambda_{h,\omega}^{\rm{s}}$ and $ \lambda_{h,\omega}^{\rm{b}}$. Each scenario contains spot and balancing price data for the entire day in question. The number of scenarios is $|\Omega|$, and we assume all scenarios are equiprobable. We refer to them as \textit{in-sample} scenarios. We use two different strategies for in-sample scenario generation: (\textit{i}) considering historical spot and balancing prices in DK2 in 2021. \textcolor{red}{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary. The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
+To make decisions on reservation capacity $p_{h}^{\rm{r},\uparrow}$ and regulating power bid $\lambda_{h,\omega}^{\rm{bid}}$, we generate a set of scenarios $\omega \in \Omega$ for spot and balancing price data., i.e., $ \lambda_{h,\omega}^{\rm{s}}$ and $ \lambda_{h,\omega}^{\rm{b}}$. Each scenario contains spot and balancing price data for the entire day in question. The number of scenarios is $|\Omega|$, and we assume all scenarios are equiprobable. We refer to them as \textit{in-sample} scenarios. We use two different strategies for in-sample scenario generation: (\textit{i}) considering historical spot and balancing prices in DK2 in 2021. \textcolor{red}{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary. The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance as shown in Appendix B. The same was the case for choosing five days in the second solution strategy.}
 %, with different cases where the number of scenarios $|\Omega|$ is 1, 5, 10, 20, 30, 40, 50, 100, and 250. 
 (\textit{ii}) considering prices of the most recent five days (lookback strategy). In both scenario generation strategies, balancing prices $\lambda_{h,\omega}^{\rm{b}}$ are sampled in the following way: First, an integer $v$ is sampled uniformly from $\{0, \ldots, 24\}$ which represents the total number of up-regulation hours in a day. We then sample spot and balancing price differentials from a single day within the set of all days where up-regulation happened $v$ times. This constitutes one scenario and is repeated $|\Omega|$ times. In this way, days where up-regulation happened are essentially up-sampled, and the model learns more when up-regulation happens than otherwise. The in-sample results are systematically compared against the same set of unseen \textit{Out-of-Sample} (OOS) scenarios, which are DK2 prices for 2022.
 
@@ -465,7 +465,7 @@ where $\mathbbm{1}^{(.)}$ is 1 if conditions (.) are met, otherwise it is zero. 
 where $M$ is a large enough positive constant.
 Constraint \eqref{con_bid:subeq1} ensures that $g_{h,\omega} = 1$ when $\lambda_{h,\omega}^{\rm{b}} - \lambda_{h,\omega}^{\rm{s}} \geq \lambda^{\rm{bid}}_{h, \omega}$. Otherwise, it sets $g_{h,\omega} = 0$. Constraints \eqref{con_bid:subeq3}-\eqref{con_bid:subeq4} set the up-regulation equal to $\phi_{h,\omega}$ (or incurs a penalty through $s_{h,\omega}$) if there is an up-regulation event in the system, i.e., if $\mathbbm{1}^{\lambda^{\rm{b}}_{h,\omega} > \lambda^{\rm{s}}_{h,\omega}} = 1$. Constraint \eqref{con_bid:subeq5} enforces  $\phi_{h,\omega} = 0$ when $g_{h,\omega} = 0$, implying the balancing price minus the spot price is smaller than the power regulating bid. Constraint \eqref{con_bid:subeq7} ensures that $\phi_{h,\omega}$ is equal to the reservation capacity $p^{\rm{r},\uparrow}_{h}$ whenever $g_{h,\omega} = 1$, i.e., if $\lambda_{h,\omega}^{\rm{b}} - \lambda_{h,\omega}^{\rm{s}} \geq \lambda^{\rm{bid}}_{h, \omega}$. Note that in the final model,  $\lambda^{\rm{bid}}_{h, \omega}$ in \eqref{eq:bid_constraint_relaxed} should be replaced as defined in \eqref{eq:affine_policy}. The resulting model formulation, which is a MILP, is given in the Appendix.
 
-\subsection{Scenario decomposition with ADMM}
+\subsection{Scenario decomposition with ADMM}\label{sec:admm}
 By increasing the number of scenarios,  the proposed stochastic program  quickly becomes computationally intractable due to the number of binary variables and intertemporal constraints. To resolve it, we apply a scenario decomposition approach built upon the ADMM algorithm \cite{boyd2011distributed}. To do so, we relax non-anticipativity constraints by adding a scenario index to the first-stage variables, i.e.,
 %
 \begin{equation}\label{eq:non_anticipativity}
@@ -612,7 +612,7 @@ Peter Gade conceived and designed study, developed the code, and write the initi
 
 The authors would also like to thank Coop and AK-Centralen for providing the freezer and power data from a supermarket.
 
-\section*{Appendix: MILP problem formulation}\label{appendix:A}
+\section*{Appendix \textcolor{red}{A}: MILP problem formulation}\label{appendix:A}
 
 \begingroup
 \allowdisplaybreaks
@@ -705,6 +705,17 @@ Constraint \eqref{temp:1} restricts the food temperature for the last time perio
 Constraints \eqref{rebound:1}-\eqref{rebound:4} control the rebound behavior such that the rebound finishes when the temperature is below the baseline temperature. Note that $M$ is a sufficiently big positive constant such that the food temperature is allowed to deviate from the baseline. Also, they ensure that the rebound happens right after up-regulation.
 %
 Lastly, (\ref{up_reg_first}) ensures that up-regulation happens first. This makes sense since it impossible (or at least difficult) to anticipate potential up-regulation events in the power system. As such, it does not make sense to pre-cool (or pre-heat) a TCL in the context of mFRR.
+
+\section*{\textcolor{red}{Appendix B: Sensitivity analysis of scenarios}}\label{appendix:B}
+
+\textcolor{red}{A sensitivity analysis was carried out to investigate the number of scenarios to use in the mFRR model using only 2021 data. Figure \ref{fig:admm_sensitivity} shows the IS and OOS costs when increasing the number of scenarios used from 2021. It was chosen to use 50 scenarios as this provided good performance both IS and OOS while more scenarios did not yield any particular improvement.}
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/admm_nb_scenarios_effect.png}
+    \caption{\textcolor{red}{Total cost per day for supermarket freezer using the mFRR model in \eqref{P1:compact_model} with 2021 data and the ADMM solution strategy described in Section \ref{sec:admm} and for a different number of scenarios used from 2021.}}
+    \label{fig:admm_sensitivity}
+\end{figure}
 
 % \pagebreak
 %\bibliographystyle{model5-names}\biboptions{authoryear}
