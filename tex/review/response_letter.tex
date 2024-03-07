@@ -144,11 +144,11 @@
 \auth Thank you for recognizing the merits of our submission and for the opportunity to revise it. In the following document, we provide detailed responses to the comments from the Reviewers and describe the changes made to the manuscript to address them. All corrections and clarifications to the manuscript are presented in \nt{red} color. The major changes are summarized below:
 
 \begin{itemize}
-  \item Reviewers 1 and 3 raised questions and requested clarifications about the number of scenarios used in the mFRR lookback strategy.
+  \item Reviewers 1 and 3 raised questions and requested clarifications about the number of scenarios used in the mFRR lookback strategy. We have made changes to the manuscript accordingly to explain our choices while also including an additional section in the appendix on the sensitivity analysis on the mFRR 2021 model (using ADMM as a solution strategy) of the number of scenarios.
 
-  \item Reviewers 1 and and requested clarifications about the various energy prices used in the case studies.
+  \item Reviewers 1 and 2 and requested clarifications about the various energy prices used in the case studies, especially confusion regarding day-ahead (spot) prices and retail prices. This has lead to revisions to the manuscript to explicitly note the distinction and the Europe and the Nordics do not use time-of-use prices and consumers are directly exposed to spot prices. Furthermore, we changed figures 4 and 5 by merging them into one figure clearly explaining both the mFRR market and load shifting. Special focus has been devoted to making it clear that baseline power is indeed changed for load shifting but remains a parameter for the mFRR model.
 
-  \item Reviewer 2 requested clarifications regarding the phrase \textit{flexible load} we use to describe a load that can shift its power consumption in time.
+  \item Reviewer 2 requested clarifications regarding the phrase \textit{flexible load} we use to describe a load that can shift its power consumption in time. We agreed that it is too general and we have replaced the phrase with \textit{thermostatically controlled load} (or TCL) everywhere.
 \end{itemize}
 
 
@@ -177,15 +177,15 @@ Further, we address the Specific Comments in the following.
 
 \auth Thanks for the comment. It's a good and valid observation. First of all, the purpose of the ADMM strategy is to present a simple, i.e., fixed policy that an aggregator can use to bid for all of 2022 without ever having to run a daily optimization. Such a policy is practical and appealing to real-life aggregators whereas a lookback policy might be better, especially in case of non-stationarity, but more complicated to implement and incorporate in daily operations. None of this was mentioned in our manuscript, hence we have added some sentences to clarify (see below).
 
-Second, during the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+Second, during the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios which we added as an appendix to the manuscript), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
 
 \changes Regarding the first item mentioned with the real-life practicality of a fixed policy (ADMM solution strategy) vs the more complicated lookback strategy, we have added the following to (p.10, Section 3.2):
 
 \nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary.}
 
-Regarding the second item with the sensitivity analysis, we have added the following statement immediately after the above addition:
+Regarding the second item with the sensitivity analysis, we have added the following statement immediately after the above addition while also adding a plot of the sensitivity analysis for the mFRR 2021 model as an additional appendix:
 
-\nt{The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
+\nt{The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance as shown in Appendix B.. The same was the case for choosing five days in the second solution strategy.}
 
 \textbf{Comment 3:} \textit{Please add text annotations to the legend to improve the legibility of Fig.7 and Fig. 8. Additionally, does the "measurements" mean the real measurements in Fig. 7 and Fig. 8? Why is there a big difference between the curve of measurements and the curve of simulated results? Is this phenomenon due to inaccurate modeling or unreasonable assumptions? Could you narrow the difference?}
 
@@ -288,9 +288,9 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 1:} \textit{I think the paper is quite fine in general. My only concern is regarding the scenario generation (Section 3.2). Please, provide more details on the 5 days look back strategy.}
 
-\auth Thanks for the comment. It's a good and valid observation. During the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+\auth Thanks for the comment. It's a good and valid observation. During the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios which we added as an appendix as well), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
 
-\changes We have made the following changes to the manuscript (p.10, Section 3.2):
+\changes We have made the following changes to the manuscript (p.10, Section 3.2) while also adding a plot of the sensitivity analysis for the mFRR 2021 model as an additional appendix:
 
 \nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary. The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
 
@@ -313,34 +313,34 @@ Further, we address the Specific Comments in the following.
 
 % ###### Bibliography ######
 
-\newpage
-\begin{thebibliography}{1}
-  \providecommand{\natexlab}[1]{#1}
-  \providecommand{\url}[1]{\texttt{#1}}
-  \providecommand{\urlprefix}{URL}
+% \newpage
+% \begin{thebibliography}{1}
+%   \providecommand{\natexlab}[1]{#1}
+%   \providecommand{\url}[1]{\texttt{#1}}
+%   \providecommand{\urlprefix}{URL}
 
 
-  % \bibitem[Iria et al.(2018)]{iria2018trading}Iria, Jose P, Soares, Filipe Joel, \& Matos, Manuel A. Trading small prosumers flexibility in the energy and tertiary reserve markets. \textit{IEEE transactions on smart grid}, 10(3), 2371--2382 (2018).
+% \bibitem[Iria et al.(2018)]{iria2018trading}Iria, Jose P, Soares, Filipe Joel, \& Matos, Manuel A. Trading small prosumers flexibility in the energy and tertiary reserve markets. \textit{IEEE transactions on smart grid}, 10(3), 2371--2382 (2018).
 
-  % \bibitem[La Bella et al.(2021)]{la2021mixed}La Bella, Alessio, Falsone, Alessandro, Ioli, Daniele, Prandini, Maria, \& Scattolini, Riccardo. A mixed-integer distributed approach to prosumers aggregation for providing balancing services. \textit{International Journal of Electrical Power \& Energy Systems}, 133, 107228 (2021).
+% \bibitem[La Bella et al.(2021)]{la2021mixed}La Bella, Alessio, Falsone, Alessandro, Ioli, Daniele, Prandini, Maria, \& Scattolini, Riccardo. A mixed-integer distributed approach to prosumers aggregation for providing balancing services. \textit{International Journal of Electrical Power \& Energy Systems}, 133, 107228 (2021).
 
-  % \bibitem[Nitsch et al.(2021)]{nitsch2021economic}Nitsch, Felix, Deissenroth-Uhrig, Marc, Schimeczek, Christoph, \& Bertsch, Valentin. Economic evaluation of battery storage systems bidding on day-ahead and automatic frequency restoration reserves markets. \textit{Applied Energy}, 298, 117267 (2021).
+% \bibitem[Nitsch et al.(2021)]{nitsch2021economic}Nitsch, Felix, Deissenroth-Uhrig, Marc, Schimeczek, Christoph, \& Bertsch, Valentin. Economic evaluation of battery storage systems bidding on day-ahead and automatic frequency restoration reserves markets. \textit{Applied Energy}, 298, 117267 (2021).
 
-  % \bibitem[Paridari \& Nordström(2020)]{paridari2020flexibility}Paridari, Kaveh, \& Nordstr{\"o}m, Lars. Flexibility prediction, scheduling and control of aggregated TCLs. \textit{Electric Power Systems Research}, 178, 106004 (2020).
+% \bibitem[Paridari \& Nordström(2020)]{paridari2020flexibility}Paridari, Kaveh, \& Nordstr{\"o}m, Lars. Flexibility prediction, scheduling and control of aggregated TCLs. \textit{Electric Power Systems Research}, 178, 106004 (2020).
 
-  % \bibitem[Mendieta \& Ca{\~n}izares(2020)]{mendieta2020primary}Mendieta, William, \& Ca{\~n}izares, Claudio A. Primary frequency control in isolated microgrids using thermostatically controllable loads. \textit{IEEE Transactions on Smart Grid}, 12(1), 93--105 (2020).
+% \bibitem[Mendieta \& Ca{\~n}izares(2020)]{mendieta2020primary}Mendieta, William, \& Ca{\~n}izares, Claudio A. Primary frequency control in isolated microgrids using thermostatically controllable loads. \textit{IEEE Transactions on Smart Grid}, 12(1), 93--105 (2020).
 
-  % \bibitem[Attarha et al.(2020)]{attarha2020network}Attarha, Ahmad, Scott, Paul, \& Thi{\'e}baux, Sylvie. Network-aware co-optimisation of residential DER in energy and FCAS markets. \textit{Electric Power Systems Research}, 189, 106730 (2020).
+% \bibitem[Attarha et al.(2020)]{attarha2020network}Attarha, Ahmad, Scott, Paul, \& Thi{\'e}baux, Sylvie. Network-aware co-optimisation of residential DER in energy and FCAS markets. \textit{Electric Power Systems Research}, 189, 106730 (2020).
 
-  % \bibitem[Schaperow et al.(2019)]{schaperow2019simulation}Schaperow, Jacob R, Gabriel, Steven, Siemann, Michael, \& Crawford, Jaden. A simulation-based model for optimal demand response load shifting: A case study for the {T}exas power market. \textit{Journal of Energy Markets}, 12(4), 53--80 (2019).
+% \bibitem[Schaperow et al.(2019)]{schaperow2019simulation}Schaperow, Jacob R, Gabriel, Steven, Siemann, Michael, \& Crawford, Jaden. A simulation-based model for optimal demand response load shifting: A case study for the {T}exas power market. \textit{Journal of Energy Markets}, 12(4), 53--80 (2019).
 
-  % \bibitem[Chanpiwat et al.(2020)]{chanpiwat2020using}Chanpiwat, Pattanun, Gabriel, Steven A, Moglen, Rachel L, \& Siemann, Michael J. Using Cluster Analysis and Dynamic Programming for Demand Response Applied to Electricity Load in Residential Homes. \textit{ASME Journal of Engineering for Sustainable Buildings and Cities}, 1(1), 011006 (2020). Publisher: American Society of Mechanical Engineers Digital Collection.
+% \bibitem[Chanpiwat et al.(2020)]{chanpiwat2020using}Chanpiwat, Pattanun, Gabriel, Steven A, Moglen, Rachel L, \& Siemann, Michael J. Using Cluster Analysis and Dynamic Programming for Demand Response Applied to Electricity Load in Residential Homes. \textit{ASME Journal of Engineering for Sustainable Buildings and Cities}, 1(1), 011006 (2020). Publisher: American Society of Mechanical Engineers Digital Collection.
 
-  % \bibitem[Moglen et al.(2023)]{moglen2020optimal}Moglen, Rachel L, Chanpiwat, Pattanun, Gabriel, Steven A, \& Blohm, Andrew. Optimal thermostatically-controlled residential demand response for retail electric providers. \textit{Energy Systems}, 14, 641--661 (2023). Publisher: Springer.
+% \bibitem[Moglen et al.(2023)]{moglen2020optimal}Moglen, Rachel L, Chanpiwat, Pattanun, Gabriel, Steven A, \& Blohm, Andrew. Optimal thermostatically-controlled residential demand response for retail electric providers. \textit{Energy Systems}, 14, 641--661 (2023). Publisher: Springer.
 
 
 
-\end{thebibliography}
+% \end{thebibliography}
 
 \endgroup
 \end{document}

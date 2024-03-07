@@ -413,10 +413,10 @@ def admm_scenarios() -> None:
         color="black",
     )
 
-    ax.set_xlabel("# training scenarios")
-    ax.set_ylabel("Total cost [DKK]")
+    ax.set_xlabel("# Scenarios")
+    ax.set_ylabel("Total cost [DKK/day]")
     ax.legend(loc="best")
-    _set_font_size(ax, legend=20)
+    _set_font_size(ax, misc=22, legend=20)
     plt.tight_layout()
     plt.savefig("tex/figures/admm_nb_scenarios_effect.png", dpi=300)
 
@@ -602,10 +602,10 @@ def receding_horizon_scenarios() -> None:
 
 
 def main() -> None:
-    # admm_vs_normal_solution()
-    # admm_scenarios()
-    # plot_lookback_sensitivity()
-    # receding_horizon_scenarios()
+    admm_vs_normal_solution()
+    admm_scenarios()
+    plot_lookback_sensitivity()
+    receding_horizon_scenarios()
     plot_spot_case_result()
     plot_mFRR_case_result()
 
