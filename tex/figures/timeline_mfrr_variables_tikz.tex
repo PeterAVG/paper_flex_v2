@@ -16,26 +16,35 @@
 
 \begin{tikzpicture}[scale=0.75,every text node part/.style={align=center}]
 
-  \draw[rounded corners, fill=RectangleColor, very thick] (0, 1) rectangle (4, 3) node[midway]{\LARGE mFRR \\ \LARGE reservation};
-  \node at (2,0) {\LARGE  $p_{h}^{\rm{r},\uparrow}$};
-  \node at (2,-2) {\LARGE D$-$1};
-  \node at (2,-2.7) {\large (9:30am)};
+  \node[align=center, draw=none, fill=none, rotate=90] at (-0.5,4) {mFRR market};
+  \node[align=center, draw=none, fill=none, rotate=90] at (-0.5,0) {Load shifting};
 
+  \draw[rounded corners, fill=RectangleColor, very thick] (0, 3) rectangle (4, 5) node[midway]{\Large mFRR \\ \Large bidding};
+  \node at (2,2) {\Large  $p_{h}^{\rm{r},\uparrow}$};
+  \draw[dashed, black, line width=1.5pt] (4.5,-1) -- (4.5,5);
+  \node at (4.5,-2) {\Large D$-$1};
+  \node at (4.5,-2.7) {\large (9:30am)};
+  \node[align=center, draw=none, fill=none, rotate=90] at (4.8,1.2) {mFRR gate closure};
 
-  \draw[rounded corners, fill=RectangleColor, very thick] (5, 1) rectangle (9, 3) node[midway]{\LARGE Day-ahead \\ \LARGE clearing};
-  \node at (7,-2) {\LARGE D$-$1};
+  \draw[dashed, black, line width=1.5pt] (7,-1) -- (7,5);
+  \node at (7,-2) {\Large D$-$1};
   \node at (7,-2.7) {\large (12:00pm)};
+  \node[align=center, draw=none, fill=none, rotate=90] at (6.7,1.9) {Day-ahead market clearing};
+  \draw[rounded corners, fill=RectangleColor, very thick] (7.375, 1) rectangle (11.375, 3) node[midway]{\Large Load shifting};
+  \node at (9.375,0) {\Large  $p_{h}^{\text{Base}}$};
 
-  \draw[rounded corners, fill=RectangleColor, very thick] (10, 1) rectangle (14, 3) node[midway]{\LARGE Regulating  \\ \LARGE power bid};
-  \node at (12,0) { \LARGE $\lambda_{h,\omega}^{\text{bid}}$};
-  \node at (12,-2) {\LARGE D$-$1};
-  \node at (12,-2.7) {\large (5:00pm)};
+  \draw[rounded corners, fill=RectangleColor, very thick] (12, 3) rectangle (16, 5) node[midway]{\Large Regulating  \\ \Large power \\ \Large bidding};
+  \node at (14,2) { \Large $\lambda_{h,\omega}^{\text{bid}}$};
+  \draw[dashed, black, line width=1.5pt] (16.25,-1) -- (16.25,5);
+  \node[align=center, draw=none, fill=none, rotate=90] at (16.65,1.9) {Regulation bid gate closure};
+  \node at (16.25,-2) {\Large D$-$1};
+  \node at (16.25,-2.7) {\large (5:00pm)};
 
-  \draw[rounded corners, fill=RectangleColor, very thick] (15, 1) rectangle (19, 3) node[midway]{\LARGE Real time};
-  \node at (17,0) {\LARGE $\Gamma_{h,\omega}$};
-  % {\LARGE $\Bigl( \bm{p}^{\rm{r},\uparrow}, \bm{\lambda}_{\omega}^{\text{bid}}, \bm{p}_{\omega}^{b,\uparrow}, \bm{p}_{\omega}^{b,\downarrow}, \bm{s}_{\omega}, \bm{T}_{\omega}^{c}, \bm{T}_{\omega}^{f}, \notag \\ \quad & \quad \bm{T}_{\omega}^{c, B}, \bm{T}_{\omega}^{f,B}, \bm{\phi}_{\omega}, \bm{g}_{\omega} \Bigr)$};
-  \node at (17,-2) {\LARGE D};
-  \node at (17,-2.7) {\large (12pm -- 12am)};
+  \draw[rounded corners, fill=RectangleColor, very thick] (17.5, 3) rectangle (21.5, 5) node[midway]{\Large Activation};
+  \node at (19.5,2) {\Large $\Gamma_{h,\omega}$};
+  % {\Large $\Bigl( \bm{p}^{\rm{r},\uparrow}, \bm{\lambda}_{\omega}^{\text{bid}}, \bm{p}_{\omega}^{b,\uparrow}, \bm{p}_{\omega}^{b,\downarrow}, \bm{s}_{\omega}, \bm{T}_{\omega}^{c}, \bm{T}_{\omega}^{f}, \notag \\ \quad & \quad \bm{T}_{\omega}^{c, B}, \bm{T}_{\omega}^{f,B}, \bm{\phi}_{\omega}, \bm{g}_{\omega} \Bigr)$};
+  \node at (19.5,-2) {\Large D};
+  \node at (19.5,-2.7) {\large (12pm -- 12am)};
 
 
   % Right arrow
@@ -45,6 +54,7 @@
 
 
 \end{tikzpicture}
+
 
 
 
