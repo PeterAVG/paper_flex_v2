@@ -146,7 +146,7 @@
 \begin{itemize}
   \item Reviewers 1 and 3 raised questions and requested clarifications about the number of scenarios used in the mFRR lookback strategy. We have made changes to the manuscript accordingly to explain our choices while also including an additional section in the appendix on the sensitivity analysis on the mFRR 2021 model (using ADMM as a solution strategy) of the number of scenarios.
 
-  \item Reviewers 1 and 2 and requested clarifications about the various energy prices used in the case studies, especially confusion regarding day-ahead (spot) prices and retail prices. This has lead to revisions to the manuscript to explicitly note the distinction and the Europe and the Nordics do not use time-of-use prices and consumers are directly exposed to spot prices. Furthermore, we changed figures 4 and 5 by merging them into one figure clearly explaining both the mFRR market and load shifting. Special focus has been devoted to making it clear that baseline power is indeed changed for load shifting but remains a parameter for the mFRR model.
+  \item Reviewers 1 and 2  requested clarifications about the various energy prices used in the case studies, especially confusion regarding day-ahead (spot) prices and retail prices. This has lead to revisions to the manuscript to explicitly note the distinction and the Europe and the Nordics do not use time-of-use prices and consumers are directly exposed to spot prices. Furthermore, we changed figures 4 and 5 by merging them into one figure clearly explaining both the mFRR market and load shifting. Special focus has been devoted to making it clear that baseline power is indeed changed for load shifting but remains a parameter for the mFRR model.
 
   \item Reviewer 2 requested clarifications regarding the phrase \textit{flexible load} we use to describe a load that can shift its power consumption in time. We agreed that it is too general and we have replaced the phrase with \textit{thermostatically controlled load} (or TCL) everywhere.
 \end{itemize}
@@ -160,36 +160,39 @@
 
 \subsection{Summary Comment} \textit{This paper builds a mixed-integer linear program to maximize the flexibility value of the freezer and analyzes the demand-side flexibility provision in two forms of manual Frequency Restoration Reserve (mFRR) services and load shifting. However, there are some aspects of the content that require further explanation. The detailed comments are listed as follows.}
 
-\auth We thank the reviewer for thoughtful and constructive feedback on our paper. We appreciate your insights and will carefully address the points you've raised to enhance the clarity and depth of our content. We have devoted our attention to justifying the number of scenarios used in our mFRR lookback strategy.
+\auth We thank the Reviewer for thoughtful and constructive feedback on our manuscript. We appreciate the insights and carefully addressed the points raised to enhance the clarity and depth of our content. We have devoted our attention to justifying the number of scenarios used in our mFRR lookback strategy.
 
 Further, we address the Specific Comments in the following.
 
 \subsection{Specific Comments}
 \textbf{Comment 1:} \textit{Why did the assumption that the Balance Responsible Party is not uncertain about the mFRR market price? This assumption makes the model of load shifting deterministic, increasing the gap between the model and reality.}
 
-\auth For load shifting, day-ahead prices are known beforehand and consumers are directly exposed to those. That is the case for Europe as opposed to North America where retailers might impose additional time-of-use prices. Thus, in Denmark, the electricity price is known 12-36 hours in advance which is in accordance with how we model load shifting. We have made changes to make it clear that day-ahead prices are known beforehand (see below). Furthermore, the mFRR reservation market price is not uncertain in our model, but in reality is is (as a result of a uniform clearing auction). However, it remains very stable and the main source of uncertainty relates to the activation of mFRR which we indeed model. Hence, our goal is to compare mFRR with uncertain activation and load shifting with has no uncertainty.
+\auth For load shifting, day-ahead prices are known beforehand and consumers are directly exposed to those prices. That is the case for Europe as opposed to North America where retailers might impose additional time-of-use prices. Thus, in Denmark, the electricity price is known 12-36 hours in advance which is in accordance with how we model load shifting. We have made changes to make it clear that day-ahead prices are known beforehand (please see below). Furthermore, the mFRR reservation market price is not uncertain in our model, but in reality it is (as a result of a uniform clearing auction). However, it remains very stable and the main source of uncertainty relates to the activation of mFRR which we indeed model. Hence, our goal is to compare mFRR with uncertain activation and load shifting with no uncertainty.
 
 \changes We have added the following sentence in the revised manuscript (p.9, Section 2.3) to clarify electricity prices used for load shifting:
 
-\nt{We note that in Europe and Denmark, day-ahead prices are directly exposed to consumers with no time-of-use price in between as is often the practice in North America.}
+\nt{For this, the TCL makes a load shifting decision right after the day-ahead market as shown by the blue box in Fig. 4. Note that in Denmark and generally in Europe, day-ahead prices are directly exposed to consumers with no fixed time-of-use price in between as is often the practice in North America.}
 
 \textbf{Comment 2:} \textit{There are different numbers of scenarios in the two mFRR cases, which would affect the comparability of the two cases. Please make some revisions to ensure that the comparison cases have the same number of scenarios.}
 
-\auth Thanks for the comment. It's a good and valid observation. First of all, the purpose of the ADMM strategy is to present a simple, i.e., fixed policy that an aggregator can use to bid for all of 2022 without ever having to run a daily optimization. Such a policy is practical and appealing to real-life aggregators whereas a lookback policy might be better, especially in case of non-stationarity, but more complicated to implement and incorporate in daily operations. None of this was mentioned in our manuscript, hence we have added some sentences to clarify (see below).
+\auth Thanks for this astute comment. It is indeed a valid observation. First of all, the purpose of the ADMM strategy is to present a simple, i.e., fixed policy, that an aggregator can use to bid for entire 2022 without ever having to run a daily optimization. Such a policy is practical and appealing to real-life aggregators. On the contrary, the lookback policy might exhibit a better performance, especially in case of non-stationarity, but more complicated to implement and incorporate in daily operations. None of this was mentioned in our initial manuscript, hence we have added some sentences to clarify (please see below).
 
-Second, during the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios which we added as an appendix to the manuscript), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+Second, during the analysis phase preceding this manuscript, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analyses focused on the number of scenarios used in both cases and showed that ADMM performed the best when using at least 50 scenarios (with no improved performance using additional scenarios which we added as an appendix to the manuscript), and the same was the case for using five days in the lookback strategy. This has been clarified in the revised manuscript (please see below).
 
 \changes Regarding the first item mentioned with the real-life practicality of a fixed policy (ADMM solution strategy) vs the more complicated lookback strategy, we have added the following to (p.10, Section 3.2):
 
-\nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary.}
+\nt{We use two different strategies for in-sample scenario generation: (\textit{i}) considering historical spot and balancing prices in DK2 in 2021.
+%, with different cases where the number of scenarios $|\Omega|$ is 1, 5, 10, 20, 30, 40, 50, 100, and 250. 
+(\textit{ii}) considering prices of the most recent five days (lookback strategy). This first scenario generation strategy represents the case where an aggregator relies on a simple, fixed policy without the need to run a daily optimization as opposed to the second  strategy, although it might exhibit a better performance in case the underlying uncertainty is non-stationary. The first  strategy uses 50 scenarios. Using a sensitivity analysis, we found out that increasing the number of scenarios beyond 50 does not improve the performance remarkably as explained in Appendix B. We made a similar observation for choosing five days in the second solution strategy.}
 
-Regarding the second item with the sensitivity analysis, we have added the following statement immediately after the above addition while also adding a plot of the sensitivity analysis for the mFRR 2021 model as an additional appendix:
+We then add Appendix B (including newly added Figure 8) as follows:
 
-\nt{The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance as shown in Appendix B.. The same was the case for choosing five days in the second solution strategy.}
+\nt{A sensitivity analysis was carried out to investigate the number of scenarios to use in the mFRR model using  2021 data. Fig. 8 shows the in-sample (IS) and out-of-sample (OOS) costs when increasing the number of scenarios used from 2021. It was eventually chosen to use 50 scenarios as this provided a satisfactory performance both IS and OOS --- a higher number of scenarios did not yield any particular improvement.}
+
 
 \textbf{Comment 3:} \textit{Please add text annotations to the legend to improve the legibility of Fig.7 and Fig. 8. Additionally, does the "measurements" mean the real measurements in Fig. 7 and Fig. 8? Why is there a big difference between the curve of measurements and the curve of simulated results? Is this phenomenon due to inaccurate modeling or unreasonable assumptions? Could you narrow the difference?}
 
-\auth Thanks for the comment. We have made changes to figures 7 and 8, accordingly, by adding descriptive names in parenthesis to the legends. For example: $P_{h}^{\text{Base}}$ \textit{(Baseline power)}. The measurements are real-life data as shown in Figure 3. The point of the measurements in Figure 3 is to show how our state-space model is able to simulate reality, i.e., the measurements, to a satisfactory degree. In Section 2.1.3 (\textit{Model validation}), we explain how our state-space model fits the measurements, and how it is able to simulate freezer temperatures for a whole day. To achieve a better performance, i.e., a narrower difference to the measurements, requires even more sophisticated modelling techniques and is perhaps difficult to achieve given the current data provided. For example, there are a lot of uncertain events like people opening the lids to the freezers causing temperature drops. The important element of the state-space models used here is that they capture the most fundamental physics and dynamics from which one can directly use within an optimization model. However, we concede that it is confusing to also show the measurements in Figures 7 and 8. We have therefore removed them from those figures.
+\auth Thanks for the comment. We have made changes to Figures 7 and 8 on the initial submission, accordingly, by adding descriptive names in parenthesis to the legends --- for example: $P_{h}^{\text{Base}}$ \textit{(Baseline power)}. The measurements are real-life data as shown in Figure 3. The point of the measurements in Figure 3 is to show how our state-space model is able to simulate reality, i.e., the measurements, to a satisfactory degree. In Section 2.1.3 (\textit{Model validation}), we have explained how our state-space model fits the measurements, and how it is able to simulate freezer temperatures for a whole day. To achieve a  satisfactory performance, i.e., a narrower difference to the measurements, requires even more sophisticated modeling techniques and is perhaps difficult to achieve given the current data provided. For example, there are a lot of uncertain events like people opening the lids to the freezers causing temperature drops. The important element of the state-space models used here is that they capture the most fundamental physics and dynamics from which one can directly use within an optimization model. However, we have conceded that it might be confusing to also show the measurements in Figures 7 and 8. We have therefore removed them from those figures.
 
 % \changes ...
 
@@ -211,7 +214,7 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 1:} \textit{Title: I suggest modifying the title: "Load Shifting Versus Manual Frequency Reserve: Which One is More Appealing to Thermostatically Controlled Loads in Denmark?". The paper is only focused on a case study in Denmark. The conclusions may be different in other countries and markets. In addition, flexible loads can include many types of loads, such as washers, electric vehicles, pumps, and so on. The authors only model a supermarket freezer in their studies.}
 
-\auth Thank you for comment. We agree that \textit{flexible load} is too broad a term and it is better to use thermostatically controlled loads.
+\auth Thank you for comment. We agree that \textit{flexible load} is too broad a term and it is better to use thermostatically controlled loads. We made this change in the revised manuscript. 
 
 \changes The title of the manuscript has been changed as follows:
 
@@ -219,7 +222,7 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 2:} \textit{Abstract: The use of a supermarket freezer as a representative flexible load is ok. But, trying to generalize the results for all types of flexible loads, as suggested by the title, is not ok. As mentioned above, flexible loads can include many types of loads. None of the other loads were studied in this paper. I strongly suggest replacing flexible loads with thermostatically controlled loads.}
 
-\auth Thank you for your comment. As before, we agree and we will make sure to replace all instances of \textit{flexible load} with \textit{thermostatically controlled load}
+\auth Thank you for your comment. As before, we do agree and have replaced all instances of \textit{flexible load} with \textit{thermostatically controlled load}.
 
 \changes The manuscript has been changed everywhere where \textit{flexible load} occurs which has been replaced with \nt{thermostatically controlled load} instead for the first instance, and \nt{TCL} for all subsequent occurrences. This includes for the whole manuscript, including the abstract and all sections.
 
@@ -229,11 +232,11 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 4:} \textit{Section 1: It is not clear to me the context of load shifting in section 1. Is load shifting made considering spot energy prices or retail prices (potentially mimicking spot prices)? Please make this clear in section 1.}
 
-\auth Thanks for the feedback. In Europe and in the Nordics, the day-ahead price (spot price) is directly exposed to consumers, i.e., there is no time-of-use price in between via retailers. This is indeed not clear in our manuscript.
+\auth Thanks for the feedback. In Europe and in the Nordics, the day-ahead price (spot price) is directly exposed to consumers, i.e., there is no fixed time-of-use price in between via retailers. This was indeed not clear in our initial manuscript.
 
 \changes Therefore, we have made the following changes to the manuscript (p.9, Section 2.3) by adding:
 
-\nt{We note that in Europe and Denmark, day-ahead prices are directly exposed to consumers with no time-of-use price in between as is often the practice in North America.}
+\nt{For this, the TCL makes a load shifting decision right after the day-ahead market as shown by the blue box in Fig. 4. Note that in Denmark and generally in Europe, day-ahead prices are directly exposed to consumers with no fixed time-of-use price in between as is often the practice in North America.}
 
 \textbf{Comment 5:} \textit{Section 1.3: I struggled to identify novel research contributions, but I found the discussion of the paper interesting. For instance, there are papers in the literature that studied the participation of aggregators of prosumers (with flexible loads) in both energy and tertiary reserve (mFRR) markets using two-stage stochastic optimization models. My point is that this type of study exists in literature, however in different contexts and markets. This deserves to be discussed in the paper.}
 
@@ -241,7 +244,9 @@ Further, we address the Specific Comments in the following.
 
 \changes We have extended our literature review in the manuscript (p.4, Section 1.2) with the following:
 
-\nt{Similar studies exist in the literature albeit in different settings. For example, [20] uses a two-stage stochastic optimization for prosumers to bid into tertiary reserves, i.e., mFRR. A similar approach is taken in [21] although with a focus on scalability to thousands of assets and distribution of flexibility amongst prosumers. In [22], the authors show how batteries can be used to provide secondary reserves. TCLs have also been investigated for provision of primary reserves, i.e., frequency reserves, in the Nordics [23], in microgrids [24], and in the Australian power grid [25]}
+
+\nt{Similar studies exist in the literature albeit in different settings. For example, [20] uses a two-stage stochastic optimization for prosumers to bid into tertiary reserves, i.e., mFRR. A similar approach is taken in [21] although with a focus on scalability to thousands of assets and distribution of flexibility amongst prosumers. In [22], it is shown how batteries can be used to provide secondary reserves. TCLs have also been investigated for provision of primary reserves in the Nordics [23], in a microgrid [24], and in the Australian power grid [25].}
+
 
 \textbf{Comment 6:} \textit{Section 2 and 3: The math looks ok.}
 
@@ -249,23 +254,23 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 7:} \textit{Section 4: The mFRR models also consider energy prices. Therefore, they also consider some load shifting. Please explain why the discussion is framed as load shifting vs mFRR since load shifting is apparently included in mFRR models. In my opinion, this part deserves a better explanation.}
 
-\auth Thanks, the original manuscript was not clear on this point. The energy price is only a variable in the load shifting optimization, not in the mFRR optimization. It was only included in the mFRR model eq.(2) for cost comparison to load shifting.
+\auth Thanks for this comment, which made us realized the original manuscript was not sufficiently clear. The energy price is only a variable in the load shifting optimization, not in the mFRR optimization. It was only included in the mFRR model eq.(2) for cost comparison to load shifting.
 
-\changes To make it more clear, we have changed several things: (i) Merged Figures 4 and 5 into one figure showing the variables for both mFRR and load shifting, respectively.(ii) revised section 2.2, 2.3, and 3.1 to accommodate those changes. Furthermore, eq.(2) has been changes such that the energy cost term is not present, but we mention it immediately after:
+\changes To make it clear, we have changed several things: (i) Merged Figures 4 and 5 into one figure showing the variables for both mFRR and load shifting, respectively.(ii) revised section 2.2, 2.3, and 3.1 to accommodate those changes. Furthermore, eq.(2) has been changes such that the energy cost term is not present, but we mention it immediately after:
 
 \begin{align}\label{eq:mFRRObjective}
   % & \underbrace{C(\rm{cost})}_{\rm{mFRR}} = - \underbrace{\sum_{h=1}^{24}
-  \nt{\underbrace{\sum_{h=1}^{24}\lambda_{h}^{\rm{r}} p^{\rm{r}, \uparrow}_{h}}_{\textrm{Reservation payment}} + \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\uparrow}_{h}}_{\textrm{Activation payment}} - \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\downarrow}_{h}}_{\textrm{Rebound cost}} - \underbrace{ \sum_{h=1}^{24}  \lambda^{\rm{p}}s_{h}}_{\textrm{Penalty cost}}
+  \nt{\underbrace{\sum_{h=1}^{24}\lambda_{h}^{\rm{r}} p^{\rm{r}, \uparrow}_{h}}_{\textrm{Reservation payment}} + \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\uparrow}_{h}}_{\textrm{Activation payment}} - \underbrace{\sum_{h=1}^{24}  \lambda_{h}^{\rm{b}} p^{\rm{b},\downarrow}_{h}}_{\textrm{Rebound cost}} - \underbrace{ \sum_{h=1}^{24}  \lambda^{\rm{p}}s_{h}}_{\textrm{Penalty cost}}.
   }
 \end{align}
 
 \nt{
-We note that an additional term containing fixed energy cost is subtracted from \eqref{eq:mFRRObjective}, i.e., $\sum_{h=1}^{24} \lambda^{\rm{s}}_{h}P^{\rm{Base}}_{h}$. This term contains $\lambda^{\rm{s}}_{h}$ and $P^{\rm{Base}}_{h}$, which are both parameters, and therefore, can be omitted from the objective function. However, we include it for cost comparison with load shifting.
+Note that an additional term containing the energy cost $\sum_{h=1}^{24} \lambda^{\rm{s}}_{h}P^{\rm{Base}}_{h}$ is removed from \eqref{eq:mFRRObjective}, since it is a fixed term in our setup. This term contains $\lambda^{\rm{s}}_{h}$ and $P^{\rm{Base}}_{h}$, which are both parameters, and therefore, can be omitted from the objective function. However, we will consider it when numerically comparing cost savings associated with two alternatives of mFRR provision and load shifting.
 }
 
 \textbf{Comment 8:} \textit{Sections 4 and 5: Please explain the following sentence "From a policy perspective, it is concerning if load shifting happens to be more profitable than mFRR provision." based on the results of Figure 6. The 2022-09 cumulative costs of mFRR (red) and load shifting are almost the same in Figure 6. How can the authors derive this conclusion based on the results?}
 
-\auth Thanks for the feedback. You are right, instead it is better to rephrase it. Load shifting is almost as least as profitable as mFRR during the whole of 2022. Combined with the fact that the TCL in reality has to split the mFRR revenue with an aggregator and/or balance responsible party, we argue that is concerning for transmission system operator since load shifting is very easy to get started with and fairly profitable.
+\auth Thanks for the feedback. We do agree that it is better to rephrase it. Load shifting is almost as least as profitable as mFRR during the whole of 2022. Combined with the fact that the TCL in reality has to split the mFRR revenue with an aggregator and/or balance responsible party, we argue that is concerning for transmission system operator since load shifting is very easy to get started with and fairly profitable.
 
 \changes We have made the following changes to the manuscript (p.17, Section 5) as highlighted in red:
 
@@ -280,7 +285,7 @@ We note that an additional term containing fixed energy cost is subtracted from 
 
 \subsection{Summary Comment} \textit{I think the topic is quite interesting, the text is easy to read, and the English is quite good also. By reading the text I had some questions, that later I found as future works in the conclusions.}
 
-\auth Thank you for your positive feedback and for highlighting the clarity and readability of our paper. We're glad to hear that you found the topic interesting and the language accessible. We also appreciate your engagement with our work and attention to details and inconsistencies in our references. Your main question regarding our scenario approach highlighted a need to clarify and justify this in more detail. We hope our response, outlining the details around our sensitivity analysis on the number of scenarios used, provides satisfactory.
+\auth Thank you for your positive feedback and for highlighting the clarity and readability of our paper. We are glad to hear that you found the topic interesting and the language accessible. We also appreciate your engagement with our work and attention to details and inconsistencies in our references. Your main question regarding our scenario approach highlighted a need to clarify and justify this in more detail. We hope our response, outlining the details around our sensitivity analysis on the number of scenarios used, provides satisfactory.
 
 \subsection{Specific Comments}
 
@@ -288,11 +293,19 @@ Further, we address the Specific Comments in the following.
 
 \textbf{Comment 1:} \textit{I think the paper is quite fine in general. My only concern is regarding the scenario generation (Section 3.2). Please, provide more details on the 5 days look back strategy.}
 
-\auth Thanks for the comment. It's a good and valid observation. During the analysis phase preceding this paper, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analysis focused on the number of scenarios used in both cases and showed that ADMM performed the best when using 50 scenarios (with no more performance using additional scenarios which we added as an appendix as well), and the same was the case for using five days in the lookback strategy. This was not mentioned in the manuscript and has been added (please see below).
+\auth Thanks for this pertinent comment. It is indeed a valid observation. First of all, the purpose of the ADMM strategy is to present a simple, i.e., fixed policy, that an aggregator can use to bid for entire 2022 without ever having to run a daily optimization. Such a policy is practical and appealing to real-life aggregators. On the contrary, the lookback policy might exhibit a better performance, especially in case of non-stationarity, but more complicated to implement and incorporate in daily operations. None of this was mentioned in our initial manuscript, hence we have added some sentences to clarify (please see below).
 
-\changes We have made the following changes to the manuscript (p.10, Section 3.2) while also adding a plot of the sensitivity analysis for the mFRR 2021 model as an additional appendix:
+Second, during the analysis phase preceding this manuscript, a sensitivity analysis was made of both the ADMM strategy (based on scenarios from 2021) and for the lookback strategy (based on the last five days). The sensitivity analyses focused on the number of scenarios used in both cases and showed that ADMM performed the best when using at least 50 scenarios (with no improved performance using additional scenarios which we added as an appendix to the manuscript), and the same was the case for using five days in the lookback strategy. This has been clarified in the revised manuscript (please see below).
 
-\nt{Solution strategy (i) represents the case where an aggregator can rely on a simple, fixed policy without having to run a daily optimization as opposed to the second solution strategy, although it might prove better in case the underlying uncertainty is non-stationary. The first solution strategy uses 50 scenarios which, and we found that increasing the number of scenarios further did not improve the performance. The same was the case for choosing five days in the second solution strategy.}
+\changes Regarding the first item mentioned with the real-life practicality of a fixed policy (ADMM solution strategy) vs the more complicated lookback strategy, we have added the following to (p.10, Section 3.2):
+
+\nt{We use two different strategies for in-sample scenario generation: (\textit{i}) considering historical spot and balancing prices in DK2 in 2021.
+%, with different cases where the number of scenarios $|\Omega|$ is 1, 5, 10, 20, 30, 40, 50, 100, and 250. 
+(\textit{ii}) considering prices of the most recent five days (lookback strategy). This first scenario generation strategy represents the case where an aggregator relies on a simple, fixed policy without the need to run a daily optimization as opposed to the second  strategy, although it might exhibit a better performance in case the underlying uncertainty is non-stationary. The first  strategy uses 50 scenarios. Using a sensitivity analysis, we found out that increasing the number of scenarios beyond 50 does not improve the performance remarkably as explained in Appendix B. We made a similar observation for choosing five days in the second solution strategy.}
+
+We then add Appendix B (including newly added Figure 8) as follows:
+
+\nt{A sensitivity analysis was carried out to investigate the number of scenarios to use in the mFRR model using  2021 data. Fig. 8 shows the in-sample (IS) and out-of-sample (OOS) costs when increasing the number of scenarios used from 2021. It was eventually chosen to use 50 scenarios as this provided a satisfactory performance both IS and OOS --- a higher number of scenarios did not yield any particular improvement.}
 
 
 \textbf{Comment 2 (minor comments):} \textit{
